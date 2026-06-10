@@ -1,0 +1,2238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 FIFA World Cup — The Full Bracket & Group Guide</title>
+<meta name="description" content="All 12 groups, all 48 teams, predictions, FIFA rankings, confederations, history. The complete guide to the 2026 FIFA World Cup in USA, Canada, and Mexico.">
+<style>
+:root {
+  --bg: #0a0f1a;
+  --bg-card: #111827;
+  --bg-card-hover: #1f2937;
+  --text: #f3f4f6;
+  --text-muted: #9ca3af;
+  --text-dim: #6b7280;
+  --accent: #22c55e;
+  --accent-2: #fbbf24;
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.16);
+  --qual-glow: rgba(34, 197, 94, 0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(circle at 20% 10%, rgba(34, 197, 94, 0.08), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(251, 191, 36, 0.06), transparent 40%);
+}
+
+.container { max-width: 1280px; margin: 0 auto; padding: 24px; }
+
+.hero {
+  text-align: center;
+  padding: 64px 24px 48px;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.3), transparent 70%);
+  z-index: -1;
+}
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #22c55e 0%, #fbbf24 50%, #ef4444 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.hero .subtitle {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.hero-stat {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+.hero-stat .num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-2);
+  line-height: 1;
+}
+.hero-stat .lbl {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+
+.hosts-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 32px auto 0;
+  padding: 16px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  max-width: 720px;
+}
+.host {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+.host img { width: 32px; border-radius: 4px; box-shadow: 0 0 0 1px var(--border); }
+.host-divider { color: var(--text-dim); font-weight: 300; }
+
+.section { margin: 48px 0; }
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-title::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 24px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.section-sub {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+.qualifiers-strip {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 24px;
+}
+.qualifiers-strip .lbl {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 4px 4px 4px 0;
+}
+.chip-flag {
+  width: 18px;
+  height: 13px;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px var(--border);
+}
+
+.groups-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 20px;
+}
+.group-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.group-card:hover {
+  border-color: var(--border-strong);
+}
+.group-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.group-letter {
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  min-width: 48px;
+}
+.group-pred {
+  flex: 1;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.qual-label {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+.qual-list {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.teams-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.team {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  position: relative;
+  transition: background 0.15s;
+}
+.team.qualifier {
+  background: var(--qual-glow);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+.team:hover {
+  background: var(--bg-card-hover);
+}
+.team-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.flag {
+  width: 32px;
+  height: 22px;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--border);
+  flex-shrink: 0;
+}
+.team-name-block {
+  flex: 1;
+  min-width: 0;
+}
+.team-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.team-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 3px;
+  flex-wrap: wrap;
+}
+.conf-badge, .pot-badge, .rank-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #0a0f1a;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.pot-badge {
+  background: rgba(255,255,255,0.1);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.rank-badge {
+  color: #0a0f1a;
+}
+.pred-check {
+  color: var(--accent);
+  font-size: 1.25rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.team-stats {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+}
+.stat-label {
+  color: var(--text-dim);
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+.stat-value {
+  color: var(--text);
+  font-weight: 500;
+}
+.stat.best .stat-value {
+  font-weight: 600;
+}
+.team-badges {
+  margin-top: 6px;
+  display: flex;
+  gap: 4px;
+}
+.host-badge, .first-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.host-badge {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+.first-badge {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.group-matches {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+.matches-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+.match {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.match-date {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.75rem;
+  min-width: 70px;
+}
+.match-teams { flex: 1; text-align: right; }
+.vs { color: var(--text-dim); margin: 0 4px; font-size: 0.7rem; }
+
+.format-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.format-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.format-card .lbl {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+.format-card .val {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text);
+}
+.format-card .sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+footer {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+  margin-top: 64px;
+}
+footer a { color: var(--text-muted); text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .groups-grid { grid-template-columns: 1fr; }
+  .hosts-banner { gap: 12px; padding: 12px 16px; }
+  .container { padding: 16px; }
+  .hero { padding: 32px 16px 24px; }
+  .team-stats { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .stat.best { grid-column: 1 / -1; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="hero">
+    <h1>2026 FIFA World Cup</h1>
+    <p class="subtitle">June 11 – July 19, 2026 · Canada, Mexico, United States · 48 teams, 12 groups, 1 trophy</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">48</div><div class="lbl">Teams</div></div>
+      <div class="hero-stat"><div class="num">12</div><div class="lbl">Groups</div></div>
+      <div class="hero-stat"><div class="num">104</div><div class="lbl">Matches</div></div>
+      <div class="hero-stat"><div class="num">16</div><div class="lbl">Host cities</div></div>
+    </div>
+    <div class="hosts-banner">
+      <div class="host"><img src="https://flagcdn.com/h40/ca.png" alt="Canada"><span>Canada</span></div><div class="host-divider">·</div><div class="host"><img src="https://flagcdn.com/h40/mx.png" alt="Mexico"><span>Mexico</span></div><div class="host-divider">·</div><div class="host"><img src="https://flagcdn.com/h40/us.png" alt="United States"><span>United States</span></div>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">Predicted qualifiers · all 24</h2>
+    <p class="section-sub">Top 2 from each of the 12 groups advance. Predictions based on FIFA World Rankings (Nov 2025) + pot seeding + tournament history.</p>
+    <div class="qualifiers-strip">
+      <div class="lbl">24 of 48 expected to reach the Round of 32</div>
+      <div><span class="chip"><img src="https://flagcdn.com/h20/es.png" class="chip-flag">Spain</span><span class="chip"><img src="https://flagcdn.com/h20/ar.png" class="chip-flag">Argentina</span><span class="chip"><img src="https://flagcdn.com/h20/fr.png" class="chip-flag">France</span><span class="chip"><img src="https://flagcdn.com/h20/gb-eng.png" class="chip-flag">England</span><span class="chip"><img src="https://flagcdn.com/h20/br.png" class="chip-flag">Brazil</span><span class="chip"><img src="https://flagcdn.com/h20/pt.png" class="chip-flag">Portugal</span><span class="chip"><img src="https://flagcdn.com/h20/nl.png" class="chip-flag">Netherlands</span><span class="chip"><img src="https://flagcdn.com/h20/be.png" class="chip-flag">Belgium</span><span class="chip"><img src="https://flagcdn.com/h20/de.png" class="chip-flag">Germany</span><span class="chip"><img src="https://flagcdn.com/h20/hr.png" class="chip-flag">Croatia</span><span class="chip"><img src="https://flagcdn.com/h20/ma.png" class="chip-flag">Morocco</span><span class="chip"><img src="https://flagcdn.com/h20/co.png" class="chip-flag">Colombia</span><span class="chip"><img src="https://flagcdn.com/h20/us.png" class="chip-flag">United States</span><span class="chip"><img src="https://flagcdn.com/h20/mx.png" class="chip-flag">Mexico</span><span class="chip"><img src="https://flagcdn.com/h20/uy.png" class="chip-flag">Uruguay</span><span class="chip"><img src="https://flagcdn.com/h20/ch.png" class="chip-flag">Switzerland</span><span class="chip"><img src="https://flagcdn.com/h20/jp.png" class="chip-flag">Japan</span><span class="chip"><img src="https://flagcdn.com/h20/sn.png" class="chip-flag">Senegal</span><span class="chip"><img src="https://flagcdn.com/h20/ir.png" class="chip-flag">Iran</span><span class="chip"><img src="https://flagcdn.com/h20/kr.png" class="chip-flag">South Korea</span><span class="chip"><img src="https://flagcdn.com/h20/ec.png" class="chip-flag">Ecuador</span><span class="chip"><img src="https://flagcdn.com/h20/at.png" class="chip-flag">Austria</span><span class="chip"><img src="https://flagcdn.com/h20/au.png" class="chip-flag">Australia</span><span class="chip"><img src="https://flagcdn.com/h20/ca.png" class="chip-flag">Canada</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Tournament format</h2>
+    <p class="section-sub">The first 48-team World Cup. More teams, more games, more chaos.</p>
+    <div class="format-grid">
+      <div class="format-card">
+        <div class="lbl">Group stage</div>
+        <div class="val">12 × 4</div>
+        <div class="sub">12 groups of 4 teams. 6 matches per group. 48 total group-stage matches.</div>
+      </div>
+      <div class="format-card">
+        <div class="lbl">Knockout qualifiers</div>
+        <div class="val">24 teams</div>
+        <div class="sub">Top 2 from each group + 8 best 3rd-place teams advance to the Round of 32.</div>
+      </div>
+      <div class="format-card">
+        <div class="lbl">Knockout stage</div>
+        <div class="val">R32 → Final</div>
+        <div class="sub">Round of 32, Round of 16, Quarter-finals, Semi-finals, Final. 15 matches.</div>
+      </div>
+      <div class="format-card">
+        <div class="lbl">Final</div>
+        <div class="val">July 19, 2026</div>
+        <div class="sub">MetLife Stadium, New Jersey, USA. Defending champion: Argentina.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">All 12 groups · 48 teams</h2>
+    <p class="section-sub">Click any team to see the full profile. Predicted qualifiers (top 2) are highlighted in green.</p>
+    <div class="legend">
+      <div class="legend-item"><span class="legend-dot" style="background:#fbbf24"></span> FIFA Top 5</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#f87171"></span> Top 15</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#a78bfa"></span> Top 30</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#60a5fa"></span> Top 60</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#94a3b8"></span> 60+ / Unranked</div>
+      <div class="legend-item" style="margin-left:auto"><span style="color:var(--accent);font-weight:700">✓</span> Predicted qualifier</div>
+    </div>
+    <div class="groups-grid">
+      
+    <section class="group-card" id="group-A">
+      <div class="group-header">
+        <div class="group-letter">A</div>
+        <div class="group-pred">
+          <span class="qual-label">Predicted qualifiers:</span>
+          <span class="qual-list">Mexico, South Korea</span>
+        </div>
+      </div>
+      <div class="teams-grid">
+        
+    <div class="team qualifier" data-team="Mexico">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/mx.png" alt="Mexico" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Mexico</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#10b981">CONCACAF</span>
+            <span class="pot-badge">Pot 1</span>
+            <span class="rank-badge" style="background:#f87171">#15</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">18th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Quarter-finals</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        <span class="host-badge">🏠 Host</span>
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="South Africa">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/za.png" alt="South Africa" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">South Africa</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#ef4444">CAF</span>
+            <span class="pot-badge">Pot 3</span>
+            <span class="rank-badge" style="background:#94a3b8">#61</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">4th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2010</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Group stage</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team qualifier" data-team="South Korea">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/kr.png" alt="South Korea" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">South Korea</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#a855f7">AFC</span>
+            <span class="pot-badge">Pot 2</span>
+            <span class="rank-badge" style="background:#a78bfa">#22</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">12th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Fourth place</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Czech Republic">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/cz.png" alt="Czech Republic" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Czech Republic</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#3b82f6">UEFA</span>
+            <span class="pot-badge">Pot 4</span>
+            <span class="rank-badge" style="background:#94a3b8">—</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">10th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2006</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Runner-up</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+      </div>
+      <div class="group-matches">
+        <div class="matches-title">📅 Fixtures</div>
+        <div class="match"><span class="match-date">Thu Jun 11</span><span class="match-teams">Mexico <span class="vs">vs</span> South Africa</span></div><div class="match"><span class="match-date">Thu Jun 11</span><span class="match-teams">South Korea <span class="vs">vs</span> Czech Republic</span></div><div class="match"><span class="match-date">Fri Jun 19</span><span class="match-teams">Czech Republic <span class="vs">vs</span> South Africa</span></div><div class="match"><span class="match-date">Fri Jun 19</span><span class="match-teams">Mexico <span class="vs">vs</span> South Korea</span></div><div class="match"><span class="match-date">Wed Jun 24</span><span class="match-teams">Czech Republic <span class="vs">vs</span> Mexico</span></div><div class="match"><span class="match-date">Wed Jun 24</span><span class="match-teams">South Africa <span class="vs">vs</span> South Korea</span></div>
+      </div>
+    </section>
+    <section class="group-card" id="group-B">
+      <div class="group-header">
+        <div class="group-letter">B</div>
+        <div class="group-pred">
+          <span class="qual-label">Predicted qualifiers:</span>
+          <span class="qual-list">Canada, Switzerland</span>
+        </div>
+      </div>
+      <div class="teams-grid">
+        
+    <div class="team qualifier" data-team="Canada">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/ca.png" alt="Canada" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Canada</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#10b981">CONCACAF</span>
+            <span class="pot-badge">Pot 1</span>
+            <span class="rank-badge" style="background:#a78bfa">#27</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">3rd</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Group stage</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        <span class="host-badge">🏠 Host</span>
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Bosnia and Herzegovina">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/ba.png" alt="Bosnia and Herzegovina" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Bosnia and Herzegovina</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#3b82f6">UEFA</span>
+            <span class="pot-badge">Pot 4</span>
+            <span class="rank-badge" style="background:#94a3b8">—</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">2nd</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2014</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Group stage</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Qatar">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/qa.png" alt="Qatar" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Qatar</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#a855f7">AFC</span>
+            <span class="pot-badge">Pot 3</span>
+            <span class="rank-badge" style="background:#60a5fa">#51</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">2nd</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Group stage</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team qualifier" data-team="Switzerland">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/ch.png" alt="Switzerland" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Switzerland</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#3b82f6">UEFA</span>
+            <span class="pot-badge">Pot 2</span>
+            <span class="rank-badge" style="background:#a78bfa">#17</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">13th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Quarterfinals</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+      </div>
+      <div class="group-matches">
+        <div class="matches-title">📅 Fixtures</div>
+        <div class="match"><span class="match-date">Fri Jun 12</span><span class="match-teams">Canada <span class="vs">vs</span> Bosnia and Herzegovina</span></div><div class="match"><span class="match-date">Fri Jun 12</span><span class="match-teams">Qatar <span class="vs">vs</span> Switzerland</span></div><div class="match"><span class="match-date">Thu Jun 18</span><span class="match-teams">Switzerland <span class="vs">vs</span> Bosnia and Herzegovina</span></div><div class="match"><span class="match-date">Thu Jun 18</span><span class="match-teams">Canada <span class="vs">vs</span> Qatar</span></div><div class="match"><span class="match-date">Wed Jun 24</span><span class="match-teams">Switzerland <span class="vs">vs</span> Canada</span></div><div class="match"><span class="match-date">Wed Jun 24</span><span class="match-teams">Bosnia and Herzegovina <span class="vs">vs</span> Qatar</span></div>
+      </div>
+    </section>
+    <section class="group-card" id="group-C">
+      <div class="group-header">
+        <div class="group-letter">C</div>
+        <div class="group-pred">
+          <span class="qual-label">Predicted qualifiers:</span>
+          <span class="qual-list">Brazil, Morocco</span>
+        </div>
+      </div>
+      <div class="teams-grid">
+        
+    <div class="team qualifier" data-team="Brazil">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/br.png" alt="Brazil" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Brazil</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#f59e0b">CONMEBOL</span>
+            <span class="pot-badge">Pot 1</span>
+            <span class="rank-badge" style="background:#fbbf24">#5</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">23rd</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Winner</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team qualifier" data-team="Morocco">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/ma.png" alt="Morocco" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Morocco</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#ef4444">CAF</span>
+            <span class="pot-badge">Pot 2</span>
+            <span class="rank-badge" style="background:#f87171">#11</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">7th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Fourth place</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Haiti">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/ht.png" alt="Haiti" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Haiti</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#10b981">CONCACAF</span>
+            <span class="pot-badge">Pot 4</span>
+            <span class="rank-badge" style="background:#94a3b8">#84</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">2nd</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">1974</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Group stage</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Scotland">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/gb-sct.png" alt="Scotland" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Scotland</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#3b82f6">UEFA</span>
+            <span class="pot-badge">Pot 3</span>
+            <span class="rank-badge" style="background:#60a5fa">#36</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">9th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">1998</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Group stage</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+      </div>
+      <div class="group-matches">
+        <div class="matches-title">📅 Fixtures</div>
+        <div class="match"><span class="match-date">Sat Jun 13</span><span class="match-teams">Brazil <span class="vs">vs</span> Morocco</span></div><div class="match"><span class="match-date">Sat Jun 13</span><span class="match-teams">Haiti <span class="vs">vs</span> Scotland</span></div><div class="match"><span class="match-date">Fri Jun 19</span><span class="match-teams">Scotland <span class="vs">vs</span> Morocco</span></div><div class="match"><span class="match-date">Fri Jun 19</span><span class="match-teams">Brazil <span class="vs">vs</span> Haiti</span></div><div class="match"><span class="match-date">Wed Jun 24</span><span class="match-teams">Scotland <span class="vs">vs</span> Brazil</span></div><div class="match"><span class="match-date">Wed Jun 24</span><span class="match-teams">Morocco <span class="vs">vs</span> Haiti</span></div>
+      </div>
+    </section>
+    <section class="group-card" id="group-D">
+      <div class="group-header">
+        <div class="group-letter">D</div>
+        <div class="group-pred">
+          <span class="qual-label">Predicted qualifiers:</span>
+          <span class="qual-list">United States, Australia</span>
+        </div>
+      </div>
+      <div class="teams-grid">
+        
+    <div class="team qualifier" data-team="United States">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/us.png" alt="United States" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">United States</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#10b981">CONCACAF</span>
+            <span class="pot-badge">Pot 1</span>
+            <span class="rank-badge" style="background:#f87171">#14</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">12th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Third place</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        <span class="host-badge">🏠 Host</span>
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Paraguay">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/py.png" alt="Paraguay" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Paraguay</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#f59e0b">CONMEBOL</span>
+            <span class="pot-badge">Pot 3</span>
+            <span class="rank-badge" style="background:#60a5fa">#39</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">9th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2010</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Quarterfinals</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team qualifier" data-team="Australia">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/au.png" alt="Australia" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Australia</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#a855f7">AFC</span>
+            <span class="pot-badge">Pot 2</span>
+            <span class="rank-badge" style="background:#a78bfa">#26</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">7th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Round of 16</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Turkey">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/tr.png" alt="Turkey" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Turkey</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#3b82f6">UEFA</span>
+            <span class="pot-badge">Pot 4</span>
+            <span class="rank-badge" style="background:#94a3b8">—</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">3rd</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2002</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Third place</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+      </div>
+      <div class="group-matches">
+        <div class="matches-title">📅 Fixtures</div>
+        <div class="match"><span class="match-date">Fri Jun 12</span><span class="match-teams">United States <span class="vs">vs</span> Paraguay</span></div><div class="match"><span class="match-date">Fri Jun 12</span><span class="match-teams">Australia <span class="vs">vs</span> Turkey</span></div><div class="match"><span class="match-date">Thu Jun 18</span><span class="match-teams">United States <span class="vs">vs</span> Australia</span></div><div class="match"><span class="match-date">Thu Jun 18</span><span class="match-teams">Turkey <span class="vs">vs</span> Paraguay</span></div><div class="match"><span class="match-date">Thu Jun 25</span><span class="match-teams">Turkey <span class="vs">vs</span> United States</span></div><div class="match"><span class="match-date">Thu Jun 25</span><span class="match-teams">Paraguay <span class="vs">vs</span> Australia</span></div>
+      </div>
+    </section>
+    <section class="group-card" id="group-E">
+      <div class="group-header">
+        <div class="group-letter">E</div>
+        <div class="group-pred">
+          <span class="qual-label">Predicted qualifiers:</span>
+          <span class="qual-list">Germany, Ecuador</span>
+        </div>
+      </div>
+      <div class="teams-grid">
+        
+    <div class="team qualifier" data-team="Germany">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/de.png" alt="Germany" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Germany</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#3b82f6">UEFA</span>
+            <span class="pot-badge">Pot 1</span>
+            <span class="rank-badge" style="background:#f87171">#9</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">21st</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Winner</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Curaçao">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/cw.png" alt="Curaçao" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Curaçao</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#10b981">CONCACAF</span>
+            <span class="pot-badge">Pot 4</span>
+            <span class="rank-badge" style="background:#94a3b8">#82</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">1st</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">—</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">First appearance</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        <span class="first-badge">Debut</span>
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Ivory Coast">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/ci.png" alt="Ivory Coast" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Ivory Coast</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#ef4444">CAF</span>
+            <span class="pot-badge">Pot 3</span>
+            <span class="rank-badge" style="background:#60a5fa">#42</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">4th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2014</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Group stage</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team qualifier" data-team="Ecuador">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/ec.png" alt="Ecuador" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Ecuador</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#f59e0b">CONMEBOL</span>
+            <span class="pot-badge">Pot 2</span>
+            <span class="rank-badge" style="background:#a78bfa">#23</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">5th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Round of 16</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+      </div>
+      <div class="group-matches">
+        <div class="matches-title">📅 Fixtures</div>
+        <div class="match"><span class="match-date">Sun Jun 14</span><span class="match-teams">Ivory Coast <span class="vs">vs</span> Ecuador</span></div><div class="match"><span class="match-date">Sun Jun 14</span><span class="match-teams">Germany <span class="vs">vs</span> Curaçao</span></div><div class="match"><span class="match-date">Sat Jun 20</span><span class="match-teams">Ecuador <span class="vs">vs</span> Curaçao</span></div><div class="match"><span class="match-date">Sat Jun 20</span><span class="match-teams">Germany <span class="vs">vs</span> Ivory Coast</span></div><div class="match"><span class="match-date">Thu Jun 25</span><span class="match-teams">Curaçao <span class="vs">vs</span> Ivory Coast</span></div><div class="match"><span class="match-date">Thu Jun 25</span><span class="match-teams">Ecuador <span class="vs">vs</span> Germany</span></div>
+      </div>
+    </section>
+    <section class="group-card" id="group-F">
+      <div class="group-header">
+        <div class="group-letter">F</div>
+        <div class="group-pred">
+          <span class="qual-label">Predicted qualifiers:</span>
+          <span class="qual-list">Netherlands, Japan</span>
+        </div>
+      </div>
+      <div class="teams-grid">
+        
+    <div class="team qualifier" data-team="Netherlands">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/nl.png" alt="Netherlands" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Netherlands</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#3b82f6">UEFA</span>
+            <span class="pot-badge">Pot 1</span>
+            <span class="rank-badge" style="background:#f87171">#7</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">12th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Runner-up</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team qualifier" data-team="Japan">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/jp.png" alt="Japan" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Japan</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#a855f7">AFC</span>
+            <span class="pot-badge">Pot 2</span>
+            <span class="rank-badge" style="background:#a78bfa">#18</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">8th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Round of 16</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Sweden">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/se.png" alt="Sweden" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Sweden</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#3b82f6">UEFA</span>
+            <span class="pot-badge">Pot 4</span>
+            <span class="rank-badge" style="background:#94a3b8">—</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">13th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2018</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Runner-up</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Tunisia">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/tn.png" alt="Tunisia" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Tunisia</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#ef4444">CAF</span>
+            <span class="pot-badge">Pot 3</span>
+            <span class="rank-badge" style="background:#60a5fa">#40</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">7th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Group stage</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+      </div>
+      <div class="group-matches">
+        <div class="matches-title">📅 Fixtures</div>
+        <div class="match"><span class="match-date">Sun Jun 14</span><span class="match-teams">Netherlands <span class="vs">vs</span> Japan</span></div><div class="match"><span class="match-date">Sun Jun 14</span><span class="match-teams">Sweden <span class="vs">vs</span> Tunisia</span></div><div class="match"><span class="match-date">Sat Jun 20</span><span class="match-teams">Netherlands <span class="vs">vs</span> Sweden</span></div><div class="match"><span class="match-date">Sat Jun 20</span><span class="match-teams">Tunisia <span class="vs">vs</span> Japan</span></div><div class="match"><span class="match-date">Thu Jun 25</span><span class="match-teams">Japan <span class="vs">vs</span> Sweden</span></div><div class="match"><span class="match-date">Thu Jun 25</span><span class="match-teams">Tunisia <span class="vs">vs</span> Netherlands</span></div>
+      </div>
+    </section>
+    <section class="group-card" id="group-G">
+      <div class="group-header">
+        <div class="group-letter">G</div>
+        <div class="group-pred">
+          <span class="qual-label">Predicted qualifiers:</span>
+          <span class="qual-list">Belgium, Iran</span>
+        </div>
+      </div>
+      <div class="teams-grid">
+        
+    <div class="team qualifier" data-team="Belgium">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/be.png" alt="Belgium" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Belgium</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#3b82f6">UEFA</span>
+            <span class="pot-badge">Pot 1</span>
+            <span class="rank-badge" style="background:#f87171">#8</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">15th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Third place</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Egypt">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/eg.png" alt="Egypt" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Egypt</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#ef4444">CAF</span>
+            <span class="pot-badge">Pot 3</span>
+            <span class="rank-badge" style="background:#60a5fa">#34</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">4th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2018</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">First round, group stage</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team qualifier" data-team="Iran">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/ir.png" alt="Iran" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Iran</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#a855f7">AFC</span>
+            <span class="pot-badge">Pot 2</span>
+            <span class="rank-badge" style="background:#a78bfa">#20</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">7th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Group stage</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="New Zealand">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/nz.png" alt="New Zealand" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">New Zealand</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#06b6d4">OFC</span>
+            <span class="pot-badge">Pot 4</span>
+            <span class="rank-badge" style="background:#94a3b8">#86</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">3rd</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2010</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Group stage</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+      </div>
+      <div class="group-matches">
+        <div class="matches-title">📅 Fixtures</div>
+        <div class="match"><span class="match-date">Mon Jun 15</span><span class="match-teams">Belgium <span class="vs">vs</span> Egypt</span></div><div class="match"><span class="match-date">Mon Jun 15</span><span class="match-teams">Iran <span class="vs">vs</span> New Zealand</span></div><div class="match"><span class="match-date">Sun Jun 21</span><span class="match-teams">Belgium <span class="vs">vs</span> Iran</span></div><div class="match"><span class="match-date">Sun Jun 21</span><span class="match-teams">New Zealand <span class="vs">vs</span> Egypt</span></div><div class="match"><span class="match-date">Fri Jun 26</span><span class="match-teams">Egypt <span class="vs">vs</span> Iran</span></div><div class="match"><span class="match-date">Fri Jun 26</span><span class="match-teams">New Zealand <span class="vs">vs</span> Belgium</span></div>
+      </div>
+    </section>
+    <section class="group-card" id="group-H">
+      <div class="group-header">
+        <div class="group-letter">H</div>
+        <div class="group-pred">
+          <span class="qual-label">Predicted qualifiers:</span>
+          <span class="qual-list">Spain, Uruguay</span>
+        </div>
+      </div>
+      <div class="teams-grid">
+        
+    <div class="team qualifier" data-team="Spain">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/es.png" alt="Spain" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Spain</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#3b82f6">UEFA</span>
+            <span class="pot-badge">Pot 1</span>
+            <span class="rank-badge" style="background:#fbbf24">#1</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">17th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Winner</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Cape Verde">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/cv.png" alt="Cape Verde" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Cape Verde</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#ef4444">CAF</span>
+            <span class="pot-badge">Pot 4</span>
+            <span class="rank-badge" style="background:#94a3b8">#68</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">1st</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">—</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">First appearance</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        <span class="first-badge">Debut</span>
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Saudi Arabia">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/sa.png" alt="Saudi Arabia" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Saudi Arabia</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#a855f7">AFC</span>
+            <span class="pot-badge">Pot 3</span>
+            <span class="rank-badge" style="background:#60a5fa">#60</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">7th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Round of 16</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team qualifier" data-team="Uruguay">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/uy.png" alt="Uruguay" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Uruguay</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#f59e0b">CONMEBOL</span>
+            <span class="pot-badge">Pot 2</span>
+            <span class="rank-badge" style="background:#a78bfa">#16</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">15th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Winner</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+      </div>
+      <div class="group-matches">
+        <div class="matches-title">📅 Fixtures</div>
+        <div class="match"><span class="match-date">Mon Jun 15</span><span class="match-teams">Spain <span class="vs">vs</span> Cape Verde</span></div><div class="match"><span class="match-date">Mon Jun 15</span><span class="match-teams">Saudi Arabia <span class="vs">vs</span> Uruguay</span></div><div class="match"><span class="match-date">Sun Jun 21</span><span class="match-teams">Spain <span class="vs">vs</span> Saudi Arabia</span></div><div class="match"><span class="match-date">Sun Jun 21</span><span class="match-teams">Uruguay <span class="vs">vs</span> Cape Verde</span></div><div class="match"><span class="match-date">Fri Jun 26</span><span class="match-teams">Cape Verde <span class="vs">vs</span> Saudi Arabia</span></div><div class="match"><span class="match-date">Fri Jun 26</span><span class="match-teams">Uruguay <span class="vs">vs</span> Spain</span></div>
+      </div>
+    </section>
+    <section class="group-card" id="group-I">
+      <div class="group-header">
+        <div class="group-letter">I</div>
+        <div class="group-pred">
+          <span class="qual-label">Predicted qualifiers:</span>
+          <span class="qual-list">France, Senegal</span>
+        </div>
+      </div>
+      <div class="teams-grid">
+        
+    <div class="team qualifier" data-team="France">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/fr.png" alt="France" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">France</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#3b82f6">UEFA</span>
+            <span class="pot-badge">Pot 1</span>
+            <span class="rank-badge" style="background:#fbbf24">#3</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">17th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Winner</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team qualifier" data-team="Senegal">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/sn.png" alt="Senegal" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Senegal</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#ef4444">CAF</span>
+            <span class="pot-badge">Pot 2</span>
+            <span class="rank-badge" style="background:#a78bfa">#19</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">4th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Quarterfinals</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Iraq">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/iq.png" alt="Iraq" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Iraq</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#a855f7">AFC</span>
+            <span class="pot-badge">Pot 4</span>
+            <span class="rank-badge" style="background:#94a3b8">—</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">2nd</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">1986</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Group stage</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Norway">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/no.png" alt="Norway" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Norway</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#3b82f6">UEFA</span>
+            <span class="pot-badge">Pot 3</span>
+            <span class="rank-badge" style="background:#a78bfa">#29</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">4th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">1998</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Round of 16</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+      </div>
+      <div class="group-matches">
+        <div class="matches-title">📅 Fixtures</div>
+        <div class="match"><span class="match-date">Tue Jun 16</span><span class="match-teams">France <span class="vs">vs</span> Senegal</span></div><div class="match"><span class="match-date">Tue Jun 16</span><span class="match-teams">Iraq <span class="vs">vs</span> Norway</span></div><div class="match"><span class="match-date">Mon Jun 22</span><span class="match-teams">France <span class="vs">vs</span> Iraq</span></div><div class="match"><span class="match-date">Mon Jun 22</span><span class="match-teams">Norway <span class="vs">vs</span> Senegal</span></div><div class="match"><span class="match-date">Fri Jun 26</span><span class="match-teams">Norway <span class="vs">vs</span> France</span></div><div class="match"><span class="match-date">Fri Jun 26</span><span class="match-teams">Senegal <span class="vs">vs</span> Iraq</span></div>
+      </div>
+    </section>
+    <section class="group-card" id="group-J">
+      <div class="group-header">
+        <div class="group-letter">J</div>
+        <div class="group-pred">
+          <span class="qual-label">Predicted qualifiers:</span>
+          <span class="qual-list">Argentina, Austria</span>
+        </div>
+      </div>
+      <div class="teams-grid">
+        
+    <div class="team qualifier" data-team="Argentina">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/ar.png" alt="Argentina" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Argentina</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#f59e0b">CONMEBOL</span>
+            <span class="pot-badge">Pot 1</span>
+            <span class="rank-badge" style="background:#fbbf24">#2</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">19th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Winner</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Algeria">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/dz.png" alt="Algeria" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Algeria</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#ef4444">CAF</span>
+            <span class="pot-badge">Pot 3</span>
+            <span class="rank-badge" style="background:#60a5fa">#35</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">5th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2014</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Round of 16</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team qualifier" data-team="Austria">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/at.png" alt="Austria" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Austria</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#3b82f6">UEFA</span>
+            <span class="pot-badge">Pot 2</span>
+            <span class="rank-badge" style="background:#a78bfa">#24</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">8th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">1998</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Third place</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Jordan">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/jo.png" alt="Jordan" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Jordan</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#a855f7">AFC</span>
+            <span class="pot-badge">Pot 4</span>
+            <span class="rank-badge" style="background:#94a3b8">#66</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">1st</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">—</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">First appearance</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        <span class="first-badge">Debut</span>
+      </div>
+    </div>
+      </div>
+      <div class="group-matches">
+        <div class="matches-title">📅 Fixtures</div>
+        <div class="match"><span class="match-date">Tue Jun 16</span><span class="match-teams">Argentina <span class="vs">vs</span> Algeria</span></div><div class="match"><span class="match-date">Tue Jun 16</span><span class="match-teams">Austria <span class="vs">vs</span> Jordan</span></div><div class="match"><span class="match-date">Mon Jun 22</span><span class="match-teams">Argentina <span class="vs">vs</span> Austria</span></div><div class="match"><span class="match-date">Mon Jun 22</span><span class="match-teams">Jordan <span class="vs">vs</span> Algeria</span></div><div class="match"><span class="match-date">Sat Jun 27</span><span class="match-teams">Algeria <span class="vs">vs</span> Austria</span></div><div class="match"><span class="match-date">Sat Jun 27</span><span class="match-teams">Jordan <span class="vs">vs</span> Argentina</span></div>
+      </div>
+    </section>
+    <section class="group-card" id="group-K">
+      <div class="group-header">
+        <div class="group-letter">K</div>
+        <div class="group-pred">
+          <span class="qual-label">Predicted qualifiers:</span>
+          <span class="qual-list">Portugal, Colombia</span>
+        </div>
+      </div>
+      <div class="teams-grid">
+        
+    <div class="team qualifier" data-team="Portugal">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/pt.png" alt="Portugal" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Portugal</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#3b82f6">UEFA</span>
+            <span class="pot-badge">Pot 1</span>
+            <span class="rank-badge" style="background:#f87171">#6</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">9th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Third place</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="DR Congo">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/cd.png" alt="DR Congo" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">DR Congo</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#ef4444">CAF</span>
+            <span class="pot-badge">Pot 4</span>
+            <span class="rank-badge" style="background:#94a3b8">—</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">2nd</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">1974</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Group stage</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Uzbekistan">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/uz.png" alt="Uzbekistan" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Uzbekistan</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#a855f7">AFC</span>
+            <span class="pot-badge">Pot 3</span>
+            <span class="rank-badge" style="background:#60a5fa">#50</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">1st</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">—</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">First appearance</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        <span class="first-badge">Debut</span>
+      </div>
+    </div>
+    <div class="team qualifier" data-team="Colombia">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/co.png" alt="Colombia" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Colombia</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#f59e0b">CONMEBOL</span>
+            <span class="pot-badge">Pot 2</span>
+            <span class="rank-badge" style="background:#f87171">#13</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">7th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2018</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Quarterfinals</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+      </div>
+      <div class="group-matches">
+        <div class="matches-title">📅 Fixtures</div>
+        <div class="match"><span class="match-date">Wed Jun 17</span><span class="match-teams">Portugal <span class="vs">vs</span> DR Congo</span></div><div class="match"><span class="match-date">Wed Jun 17</span><span class="match-teams">Uzbekistan <span class="vs">vs</span> Colombia</span></div><div class="match"><span class="match-date">Tue Jun 23</span><span class="match-teams">Portugal <span class="vs">vs</span> Uzbekistan</span></div><div class="match"><span class="match-date">Tue Jun 23</span><span class="match-teams">Colombia <span class="vs">vs</span> DR Congo</span></div><div class="match"><span class="match-date">Sat Jun 27</span><span class="match-teams">Colombia <span class="vs">vs</span> Portugal</span></div><div class="match"><span class="match-date">Sat Jun 27</span><span class="match-teams">DR Congo <span class="vs">vs</span> Uzbekistan</span></div>
+      </div>
+    </section>
+    <section class="group-card" id="group-L">
+      <div class="group-header">
+        <div class="group-letter">L</div>
+        <div class="group-pred">
+          <span class="qual-label">Predicted qualifiers:</span>
+          <span class="qual-list">England, Croatia</span>
+        </div>
+      </div>
+      <div class="teams-grid">
+        
+    <div class="team qualifier" data-team="England">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/gb-eng.png" alt="England" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">England</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#3b82f6">UEFA</span>
+            <span class="pot-badge">Pot 1</span>
+            <span class="rank-badge" style="background:#fbbf24">#4</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">17th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Winner</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team qualifier" data-team="Croatia">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/hr.png" alt="Croatia" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Croatia</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#3b82f6">UEFA</span>
+            <span class="pot-badge">Pot 2</span>
+            <span class="rank-badge" style="background:#f87171">#10</span>
+          </div>
+        </div>
+        <div class="pred-check">✓</div>
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">7th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Runner-up</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Ghana">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/gh.png" alt="Ghana" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Ghana</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#ef4444">CAF</span>
+            <span class="pot-badge">Pot 4</span>
+            <span class="rank-badge" style="background:#94a3b8">#72</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">5th</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2022</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Quarterfinals</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+    <div class="team non-qualifier" data-team="Panama">
+      <div class="team-header">
+        <img src="https://flagcdn.com/h40/pa.png" alt="Panama" class="flag" loading="lazy">
+        <div class="team-name-block">
+          <div class="team-name">Panama</div>
+          <div class="team-meta">
+            <span class="conf-badge" style="background:#10b981">CONCACAF</span>
+            <span class="pot-badge">Pot 3</span>
+            <span class="rank-badge" style="background:#a78bfa">#30</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Apps</div>
+          <div class="stat-value">2nd</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last</div>
+          <div class="stat-value">2018</div>
+        </div>
+        <div class="stat best">
+          <div class="stat-label">Best</div>
+          <div class="stat-value">Group stage</div>
+        </div>
+      </div>
+      <div class="team-badges">
+        
+        
+      </div>
+    </div>
+      </div>
+      <div class="group-matches">
+        <div class="matches-title">📅 Fixtures</div>
+        <div class="match"><span class="match-date">Wed Jun 17</span><span class="match-teams">England <span class="vs">vs</span> Croatia</span></div><div class="match"><span class="match-date">Wed Jun 17</span><span class="match-teams">Ghana <span class="vs">vs</span> Panama</span></div><div class="match"><span class="match-date">Tue Jun 23</span><span class="match-teams">England <span class="vs">vs</span> Ghana</span></div><div class="match"><span class="match-date">Tue Jun 23</span><span class="match-teams">Panama <span class="vs">vs</span> Croatia</span></div><div class="match"><span class="match-date">Sat Jun 27</span><span class="match-teams">Panama <span class="vs">vs</span> England</span></div><div class="match"><span class="match-date">Sat Jun 27</span><span class="match-teams">Croatia <span class="vs">vs</span> Ghana</span></div>
+      </div>
+    </section>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>2026 FIFA World Cup — Full Bracket & Group Guide</strong></p>
+    <p>Data: FIFA World Rankings (Nov 2025) · Wikipedia (tournament pages) · FIFA.com. Compiled June 10, 2026.</p>
+    <p>Predictions are heuristic (FIFA rank + pot seeding + tournament history) — not bookmaker odds. For entertainment.</p>
+  </footer>
+</div>
+</body>
+</html>
