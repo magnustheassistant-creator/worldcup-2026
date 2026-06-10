@@ -101,29 +101,68 @@ body{
 
 .gb-matches{display:flex;flex-direction:column;gap:8px;}
 .match-row{
-  display:grid;grid-template-columns:100px 1fr 140px;gap:12px;align-items:center;
-  background:var(--bg-3);border-radius:10px;padding:10px 12px;
+  display:flex;flex-direction:column;gap:6px;
+  background:var(--bg-3);border-radius:10px;padding:12px;
+  border-left:3px solid var(--accent);
 }
+.match-row.is-draw-fav{border-left-color:#fbbf24;}
+.match-time{
+  font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;
+  font-weight:600;margin-bottom:2px;
+}
+.match-main{display:flex;flex-direction:column;gap:6px;}
+.winner-row{
+  display:flex;align-items:center;gap:10px;padding:10px 12px;
+  background:linear-gradient(90deg,rgba(34,197,94,0.18),rgba(34,197,94,0.05));
+  border:1px solid rgba(34,197,94,0.35);border-radius:8px;
+  min-height:48px;
+}
+.winner-flag{width:32px;height:22px;border-radius:3px;box-shadow:0 0 0 1px var(--border);flex-shrink:0;}
+.winner-info{flex:1;min-width:0;}
+.winner-name{font-size:1rem;font-weight:800;color:#22c55e;line-height:1.2;}
+.winner-sub{font-size:0.7rem;color:var(--text-muted);margin-top:1px;}
+.winner-pct{font-size:1.5rem;font-weight:900;color:#22c55e;line-height:1;}
+.winner-pct-draw{font-size:1.5rem;font-weight:900;color:#fbbf24;line-height:1;padding:0 12px;}
+.winner-badge{
+  font-size:0.6rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;
+  padding:3px 8px;border-radius:4px;
+  background:rgba(34,197,94,0.2);color:#22c55e;border:1px solid rgba(34,197,94,0.4);
+  flex-shrink:0;
+}
+.loser-row{
+  display:flex;align-items:center;gap:10px;padding:6px 12px;
+  opacity:0.55;
+}
+.loser-flag{width:24px;height:16px;border-radius:2px;box-shadow:0 0 0 1px var(--border);flex-shrink:0;}
+.loser-info{flex:1;min-width:0;}
+.loser-name{font-size:0.85rem;font-weight:600;color:var(--text-muted);line-height:1.2;}
+.loser-sub{font-size:0.65rem;color:var(--text-dim);margin-top:1px;}
+.loser-pct{font-size:0.95rem;font-weight:700;color:#ef4444;font-family:monospace;}
+.draw-row{
+  display:flex;align-items:center;gap:8px;padding:4px 12px;
+  border-top:1px dashed var(--border);
+}
+.draw-dot{width:6px;height:6px;border-radius:50%;background:#fbbf24;flex-shrink:0;}
+.draw-label{font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;font-weight:600;flex:1;}
+.draw-pct{font-size:0.85rem;font-weight:700;color:#fbbf24;font-family:monospace;}
+.match-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:4px 12px 0;margin-top:2px;
+  border-top:1px solid var(--border);
+  font-size:0.7rem;
+}
+.meta-odds{color:var(--text-muted);font-family:monospace;font-weight:600;}
+.meta-venue{color:var(--text-dim);font-size:0.65rem;}
 .match-time{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;}
-.match-teams{display:flex;flex-direction:column;gap:4px;}
-.mt-row{display:flex;align-items:center;gap:8px;font-size:0.85rem;}
 .mt-flag{width:20px;height:14px;border-radius:2px;box-shadow:0 0 0 1px var(--border);}
-.mt-name{flex:1;font-weight:500;}
-.mt-pct{font-weight:700;color:var(--text-muted);font-family:monospace;min-width:36px;text-align:right;}
 .mt-pct.win{color:var(--accent);}
 .mt-pct.lose{color:var(--text-dim);}
-.match-pred{text-align:right;display:flex;flex-direction:column;gap:4px;}
-.wdl-bar{display:flex;height:8px;border-radius:4px;overflow:hidden;background:var(--bg-2);}
 .wdl-h{background:#22c55e;}
 .wdl-d{background:#fbbf24;}
 .wdl-a{background:#ef4444;}
-.wdl-labels{display:flex;justify-content:space-between;font-size:0.7rem;font-family:monospace;}
 .wdl-labels span{flex:1;text-align:center;}
 .wdl-labels span:first-child{text-align:left;}
 .wdl-labels span:last-child{text-align:right;}
-.pred-odds{font-size:0.7rem;color:var(--text-muted);font-family:monospace;}
-.pred-venue{font-size:0.65rem;color:var(--text-dim);}
-
 .b3-table{width:100%;border-collapse:collapse;}
 .b3-table th{text-align:left;padding:8px 4px;font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border);font-weight:600;}
 .b3-table td{padding:8px 4px;font-size:0.9rem;border-bottom:1px solid rgba(255,255,255,0.04);}
@@ -169,10 +208,57 @@ footer strong{color:var(--text);}
   .hero-stats{grid-template-columns:repeat(2,1fr);}
   .teams-grid{grid-template-columns:1fr;}
   .locks-grid,.closes-grid{grid-template-columns:1fr;}
-  .match-row{grid-template-columns:80px 1fr 90px;gap:8px;padding:8px;}
-  .match-time{font-size:0.65rem;}
-  .tc-stats{grid-template-columns:1fr;}
   .container{padding:16px;}
+  .winner-pct{font-size:1.25rem;}
+  .winner-name{font-size:0.95rem;}
+}
+@media(max-width:480px){
+  .hero h1{font-size:1.75rem;}
+  .hero .sub{font-size:0.9rem;}
+  .hero-stats{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .hs .n{font-size:1.5rem;}
+  .hs .l{font-size:0.65rem;}
+  .hosts-banner{gap:12px;padding:10px 14px;}
+  .host img{width:24px;}
+  .container{padding:12px;}
+  .section{margin:32px 0;}
+  .section-title{font-size:1.25rem;}
+  .group-block{padding:14px;}
+  .gb-title{font-size:1.25rem;}
+  .gb-meta{font-size:0.75rem;}
+  .standings-table th,.standings-table td{font-size:0.75rem;padding:4px 2px;}
+  .match-row{padding:10px;}
+  .winner-row{padding:8px 10px;gap:8px;}
+  .winner-flag{width:28px;height:18px;}
+  .winner-pct{font-size:1.1rem;}
+  .winner-name{font-size:0.9rem;}
+  .winner-sub{font-size:0.65rem;}
+  .winner-badge{font-size:0.55rem;padding:2px 6px;}
+  .loser-row{padding:4px 10px;}
+  .loser-flag{width:20px;height:14px;}
+  .loser-name{font-size:0.8rem;}
+  .loser-pct{font-size:0.85rem;}
+  .draw-row{padding:2px 10px;}
+  .draw-pct{font-size:0.8rem;}
+  .match-meta{font-size:0.65rem;padding:2px 10px 0;}
+  .team-card{font-size:0.85rem;}
+  .tc-header{padding:10px 12px;gap:10px;}
+  .tc-flag{width:36px;height:24px;}
+  .tc-name{font-size:0.95rem;}
+  .tc-stats{grid-template-columns:1fr;gap:6px;}
+  .lock-wdl-labels{font-size:0.6rem;}
+  .close-card{padding:12px;}
+  .close-matchup{font-size:0.8rem;flex-wrap:wrap;}
+  .close-probs .prob{font-size:0.75rem;padding:4px 2px;}
+  .b3-table th,.b3-table td{font-size:0.75rem;padding:4px 2px;}
+}
+@media(max-width:360px){
+  .hero{padding:32px 12px 20px;}
+  .hero h1{font-size:1.5rem;}
+  .winner-pct{font-size:1rem;}
+  .winner-name{font-size:0.85rem;}
+  .winner-badge{display:none;}
+  .meta-venue{display:none;}
 }
 
 .lock-wdl{flex:1;}
@@ -536,126 +622,12 @@ footer strong{color:var(--text);}
         </table>
       </div>
       <div class="gb-matches">
-        <div class="match-row">
-          <div class="match-time">Thu Jun 11</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/mx.png" class="mt-flag"><span class="mt-name">Mexico</span><span class="mt-pct win">68%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/za.png" class="mt-flag"><span class="mt-name">South Africa</span><span class="mt-pct lose">11%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:68%" title="Home win 68%"></div>
-              <div class="wdl-d" style="width:21%" title="Draw 21%"></div>
-              <div class="wdl-a" style="width:11%" title="Away win 11%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 68%</span>
-              <span style="color:#9ca3af;font-weight:500">D 21%</span>
-              <span style="color:#9ca3af;font-weight:500">A 11%</span>
-            </div>
-            <div class="pred-odds">ML -245 / +750</div>
-            <div class="pred-venue">Mexico City</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Fri Jun 12</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/kr.png" class="mt-flag"><span class="mt-name">South Korea</span><span class="mt-pct win">36%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/cz.png" class="mt-flag"><span class="mt-name">Czech Republic</span><span class="mt-pct lose">33%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:36%" title="Home win 36%"></div>
-              <div class="wdl-d" style="width:31%" title="Draw 31%"></div>
-              <div class="wdl-a" style="width:33%" title="Away win 33%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 36%</span>
-              <span style="color:#9ca3af;font-weight:500">D 31%</span>
-              <span style="color:#9ca3af;font-weight:500">A 33%</span>
-            </div>
-            <div class="pred-odds">ML +165 / +190</div>
-            <div class="pred-venue">Guadalajara</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Thu Jun 18</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/cz.png" class="mt-flag"><span class="mt-name">Czech Republic</span><span class="mt-pct win">49%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/za.png" class="mt-flag"><span class="mt-name">South Africa</span><span class="mt-pct lose">23%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:49%" title="Home win 49%"></div>
-              <div class="wdl-d" style="width:28%" title="Draw 28%"></div>
-              <div class="wdl-a" style="width:23%" title="Away win 23%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 49%</span>
-              <span style="color:#9ca3af;font-weight:500">D 28%</span>
-              <span style="color:#9ca3af;font-weight:500">A 23%</span>
-            </div>
-            <div class="pred-odds">ML -105 / +320</div>
-            <div class="pred-venue">Atlanta, Georgia</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Fri Jun 19</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/mx.png" class="mt-flag"><span class="mt-name">Mexico</span><span class="mt-pct win">53%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/kr.png" class="mt-flag"><span class="mt-name">South Korea</span><span class="mt-pct lose">20%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:53%" title="Home win 53%"></div>
-              <div class="wdl-d" style="width:27%" title="Draw 27%"></div>
-              <div class="wdl-a" style="width:20%" title="Away win 20%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 53%</span>
-              <span style="color:#9ca3af;font-weight:500">D 27%</span>
-              <span style="color:#9ca3af;font-weight:500">A 20%</span>
-            </div>
-            <div class="pred-odds">ML -125 / +370</div>
-            <div class="pred-venue">Guadalajara</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Thu Jun 25</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/cz.png" class="mt-flag"><span class="mt-name">Czech Republic</span><span class="mt-pct lose">20%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/mx.png" class="mt-flag"><span class="mt-name">Mexico</span><span class="mt-pct win">53%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:20%" title="Home win 20%"></div>
-              <div class="wdl-d" style="width:27%" title="Draw 27%"></div>
-              <div class="wdl-a" style="width:53%" title="Away win 53%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 20%</span>
-              <span style="color:#9ca3af;font-weight:500">D 27%</span>
-              <span style="color:#22c55e;font-weight:700">A 53%</span>
-            </div>
-            <div class="pred-odds">ML +370 / -125</div>
-            <div class="pred-venue">Mexico City</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Thu Jun 25</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/za.png" class="mt-flag"><span class="mt-name">South Africa</span><span class="mt-pct lose">24%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/kr.png" class="mt-flag"><span class="mt-name">South Korea</span><span class="mt-pct win">49%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:24%" title="Home win 24%"></div>
-              <div class="wdl-d" style="width:27%" title="Draw 27%"></div>
-              <div class="wdl-a" style="width:49%" title="Away win 49%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 24%</span>
-              <span style="color:#9ca3af;font-weight:500">D 27%</span>
-              <span style="color:#22c55e;font-weight:700">A 49%</span>
-            </div>
-            <div class="pred-odds">ML +300 / -105</div>
-            <div class="pred-venue">Guadalupe</div>
-          </div></div></div>
+        <div class="match-row"><div class="match-time">Thu Jun 11</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/mx.png" class="winner-flag" alt="Mexico"><div class="winner-info"><div class="winner-name">Mexico</div><div class="winner-sub">predicted winner · 68%</div></div><div class="winner-pct">68%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/za.png" class="loser-flag" alt="South Africa"><div class="loser-info"><div class="loser-name">South Africa</div><div class="loser-sub">underdog</div></div><div class="loser-pct">11%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">21%</span></div><div class="match-meta"><span class="meta-odds">ML -245 / +750</span><span class="meta-venue">Mexico City</span></div></div></div>
+        <div class="match-row"><div class="match-time">Fri Jun 12</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/kr.png" class="winner-flag" alt="South Korea"><div class="winner-info"><div class="winner-name">South Korea</div><div class="winner-sub">predicted winner · 36%</div></div><div class="winner-pct">36%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/cz.png" class="loser-flag" alt="Czech Republic"><div class="loser-info"><div class="loser-name">Czech Republic</div><div class="loser-sub">underdog</div></div><div class="loser-pct">33%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">31%</span></div><div class="match-meta"><span class="meta-odds">ML +165 / +190</span><span class="meta-venue">Guadalajara</span></div></div></div>
+        <div class="match-row"><div class="match-time">Thu Jun 18</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/cz.png" class="winner-flag" alt="Czech Republic"><div class="winner-info"><div class="winner-name">Czech Republic</div><div class="winner-sub">predicted winner · 49%</div></div><div class="winner-pct">49%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/za.png" class="loser-flag" alt="South Africa"><div class="loser-info"><div class="loser-name">South Africa</div><div class="loser-sub">underdog</div></div><div class="loser-pct">23%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">28%</span></div><div class="match-meta"><span class="meta-odds">ML -105 / +320</span><span class="meta-venue">Atlanta, Georgia</span></div></div></div>
+        <div class="match-row"><div class="match-time">Fri Jun 19</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/mx.png" class="winner-flag" alt="Mexico"><div class="winner-info"><div class="winner-name">Mexico</div><div class="winner-sub">predicted winner · 53%</div></div><div class="winner-pct">53%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/kr.png" class="loser-flag" alt="South Korea"><div class="loser-info"><div class="loser-name">South Korea</div><div class="loser-sub">underdog</div></div><div class="loser-pct">20%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">27%</span></div><div class="match-meta"><span class="meta-odds">ML -125 / +370</span><span class="meta-venue">Guadalajara</span></div></div></div>
+        <div class="match-row"><div class="match-time">Thu Jun 25</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/mx.png" class="winner-flag" alt="Mexico"><div class="winner-info"><div class="winner-name">Mexico</div><div class="winner-sub">predicted winner · 53%</div></div><div class="winner-pct">53%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/cz.png" class="loser-flag" alt="Czech Republic"><div class="loser-info"><div class="loser-name">Czech Republic</div><div class="loser-sub">underdog</div></div><div class="loser-pct">20%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">27%</span></div><div class="match-meta"><span class="meta-odds">ML +370 / -125</span><span class="meta-venue">Mexico City</span></div></div></div>
+        <div class="match-row"><div class="match-time">Thu Jun 25</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/kr.png" class="winner-flag" alt="South Korea"><div class="winner-info"><div class="winner-name">South Korea</div><div class="winner-sub">predicted winner · 49%</div></div><div class="winner-pct">49%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/za.png" class="loser-flag" alt="South Africa"><div class="loser-info"><div class="loser-name">South Africa</div><div class="loser-sub">underdog</div></div><div class="loser-pct">24%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">27%</span></div><div class="match-meta"><span class="meta-odds">ML +300 / -105</span><span class="meta-venue">Guadalupe</span></div></div></div></div>
     </section>
     <section class="group-block" id="group-B">
       <div class="gb-header">
@@ -693,126 +665,12 @@ footer strong{color:var(--text);}
         </table>
       </div>
       <div class="gb-matches">
-        <div class="match-row">
-          <div class="match-time">Fri Jun 12</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ca.png" class="mt-flag"><span class="mt-name">Canada</span><span class="mt-pct win">52%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ba.png" class="mt-flag"><span class="mt-name">Bosnia and Herzegovina</span><span class="mt-pct lose">21%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:52%" title="Home win 52%"></div>
-              <div class="wdl-d" style="width:27%" title="Draw 27%"></div>
-              <div class="wdl-a" style="width:21%" title="Away win 21%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 52%</span>
-              <span style="color:#9ca3af;font-weight:500">D 27%</span>
-              <span style="color:#9ca3af;font-weight:500">A 21%</span>
-            </div>
-            <div class="pred-odds">ML -120 / +360</div>
-            <div class="pred-venue">Toronto</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sat Jun 13</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/qa.png" class="mt-flag"><span class="mt-name">Qatar</span><span class="mt-pct lose">8%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ch.png" class="mt-flag"><span class="mt-name">Switzerland</span><span class="mt-pct win">77%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:8%" title="Home win 8%"></div>
-              <div class="wdl-d" style="width:15%" title="Draw 15%"></div>
-              <div class="wdl-a" style="width:77%" title="Away win 77%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 8%</span>
-              <span style="color:#9ca3af;font-weight:500">D 15%</span>
-              <span style="color:#22c55e;font-weight:700">A 77%</span>
-            </div>
-            <div class="pred-odds">ML +1100 / -425</div>
-            <div class="pred-venue">Santa Clara, California</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Thu Jun 18</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ch.png" class="mt-flag"><span class="mt-name">Switzerland</span><span class="mt-pct win">59%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ba.png" class="mt-flag"><span class="mt-name">Bosnia and Herzegovina</span><span class="mt-pct lose">18%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:59%" title="Home win 59%"></div>
-              <div class="wdl-d" style="width:23%" title="Draw 23%"></div>
-              <div class="wdl-a" style="width:18%" title="Away win 18%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 59%</span>
-              <span style="color:#9ca3af;font-weight:500">D 23%</span>
-              <span style="color:#9ca3af;font-weight:500">A 18%</span>
-            </div>
-            <div class="pred-odds">ML -160 / +450</div>
-            <div class="pred-venue">Inglewood, California</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Thu Jun 18</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ca.png" class="mt-flag"><span class="mt-name">Canada</span><span class="mt-pct win">73%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/qa.png" class="mt-flag"><span class="mt-name">Qatar</span><span class="mt-pct lose">9%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:73%" title="Home win 73%"></div>
-              <div class="wdl-d" style="width:18%" title="Draw 18%"></div>
-              <div class="wdl-a" style="width:9%" title="Away win 9%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 73%</span>
-              <span style="color:#9ca3af;font-weight:500">D 18%</span>
-              <span style="color:#9ca3af;font-weight:500">A 9%</span>
-            </div>
-            <div class="pred-odds">ML -320 / +1000</div>
-            <div class="pred-venue">Vancouver</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Wed Jun 24</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ba.png" class="mt-flag"><span class="mt-name">Bosnia and Herzegovina</span><span class="mt-pct win">61%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/qa.png" class="mt-flag"><span class="mt-name">Qatar</span><span class="mt-pct lose">15%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:61%" title="Home win 61%"></div>
-              <div class="wdl-d" style="width:24%" title="Draw 24%"></div>
-              <div class="wdl-a" style="width:15%" title="Away win 15%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 61%</span>
-              <span style="color:#9ca3af;font-weight:500">D 24%</span>
-              <span style="color:#9ca3af;font-weight:500">A 15%</span>
-            </div>
-            <div class="pred-odds">ML -175 / +550</div>
-            <div class="pred-venue">Seattle, Washington</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Wed Jun 24</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ch.png" class="mt-flag"><span class="mt-name">Switzerland</span><span class="mt-pct win">45%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ca.png" class="mt-flag"><span class="mt-name">Canada</span><span class="mt-pct lose">28%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:45%" title="Home win 45%"></div>
-              <div class="wdl-d" style="width:27%" title="Draw 27%"></div>
-              <div class="wdl-a" style="width:28%" title="Away win 28%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 45%</span>
-              <span style="color:#9ca3af;font-weight:500">D 27%</span>
-              <span style="color:#9ca3af;font-weight:500">A 28%</span>
-            </div>
-            <div class="pred-odds">ML +115 / +250</div>
-            <div class="pred-venue">Vancouver</div>
-          </div></div></div>
+        <div class="match-row"><div class="match-time">Fri Jun 12</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/ca.png" class="winner-flag" alt="Canada"><div class="winner-info"><div class="winner-name">Canada</div><div class="winner-sub">predicted winner · 52%</div></div><div class="winner-pct">52%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/ba.png" class="loser-flag" alt="Bosnia and Herzegovina"><div class="loser-info"><div class="loser-name">Bosnia and Herzegovina</div><div class="loser-sub">underdog</div></div><div class="loser-pct">21%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">27%</span></div><div class="match-meta"><span class="meta-odds">ML -120 / +360</span><span class="meta-venue">Toronto</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sat Jun 13</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/ch.png" class="winner-flag" alt="Switzerland"><div class="winner-info"><div class="winner-name">Switzerland</div><div class="winner-sub">predicted winner · 77%</div></div><div class="winner-pct">77%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/qa.png" class="loser-flag" alt="Qatar"><div class="loser-info"><div class="loser-name">Qatar</div><div class="loser-sub">underdog</div></div><div class="loser-pct">8%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">15%</span></div><div class="match-meta"><span class="meta-odds">ML +1100 / -425</span><span class="meta-venue">Santa Clara, California</span></div></div></div>
+        <div class="match-row"><div class="match-time">Thu Jun 18</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/ch.png" class="winner-flag" alt="Switzerland"><div class="winner-info"><div class="winner-name">Switzerland</div><div class="winner-sub">predicted winner · 59%</div></div><div class="winner-pct">59%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/ba.png" class="loser-flag" alt="Bosnia and Herzegovina"><div class="loser-info"><div class="loser-name">Bosnia and Herzegovina</div><div class="loser-sub">underdog</div></div><div class="loser-pct">18%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">23%</span></div><div class="match-meta"><span class="meta-odds">ML -160 / +450</span><span class="meta-venue">Inglewood, California</span></div></div></div>
+        <div class="match-row"><div class="match-time">Thu Jun 18</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/ca.png" class="winner-flag" alt="Canada"><div class="winner-info"><div class="winner-name">Canada</div><div class="winner-sub">predicted winner · 73%</div></div><div class="winner-pct">73%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/qa.png" class="loser-flag" alt="Qatar"><div class="loser-info"><div class="loser-name">Qatar</div><div class="loser-sub">underdog</div></div><div class="loser-pct">9%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">18%</span></div><div class="match-meta"><span class="meta-odds">ML -320 / +1000</span><span class="meta-venue">Vancouver</span></div></div></div>
+        <div class="match-row"><div class="match-time">Wed Jun 24</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/ba.png" class="winner-flag" alt="Bosnia and Herzegovina"><div class="winner-info"><div class="winner-name">Bosnia and Herzegovina</div><div class="winner-sub">predicted winner · 61%</div></div><div class="winner-pct">61%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/qa.png" class="loser-flag" alt="Qatar"><div class="loser-info"><div class="loser-name">Qatar</div><div class="loser-sub">underdog</div></div><div class="loser-pct">15%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">24%</span></div><div class="match-meta"><span class="meta-odds">ML -175 / +550</span><span class="meta-venue">Seattle, Washington</span></div></div></div>
+        <div class="match-row"><div class="match-time">Wed Jun 24</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/ch.png" class="winner-flag" alt="Switzerland"><div class="winner-info"><div class="winner-name">Switzerland</div><div class="winner-sub">predicted winner · 45%</div></div><div class="winner-pct">45%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/ca.png" class="loser-flag" alt="Canada"><div class="loser-info"><div class="loser-name">Canada</div><div class="loser-sub">underdog</div></div><div class="loser-pct">28%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">27%</span></div><div class="match-meta"><span class="meta-odds">ML +115 / +250</span><span class="meta-venue">Vancouver</span></div></div></div></div>
     </section>
     <section class="group-block" id="group-C">
       <div class="gb-header">
@@ -850,126 +708,12 @@ footer strong{color:var(--text);}
         </table>
       </div>
       <div class="gb-matches">
-        <div class="match-row">
-          <div class="match-time">Sat Jun 13</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/br.png" class="mt-flag"><span class="mt-name">Brazil</span><span class="mt-pct win">57%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ma.png" class="mt-flag"><span class="mt-name">Morocco</span><span class="mt-pct lose">18%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:57%" title="Home win 57%"></div>
-              <div class="wdl-d" style="width:25%" title="Draw 25%"></div>
-              <div class="wdl-a" style="width:18%" title="Away win 18%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 57%</span>
-              <span style="color:#9ca3af;font-weight:500">D 25%</span>
-              <span style="color:#9ca3af;font-weight:500">A 18%</span>
-            </div>
-            <div class="pred-odds">ML -145 / +450</div>
-            <div class="pred-venue">East Rutherford, New Jersey</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sun Jun 14</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ht.png" class="mt-flag"><span class="mt-name">Haiti</span><span class="mt-pct lose">16%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/gb-sct.png" class="mt-flag"><span class="mt-name">Scotland</span><span class="mt-pct win">62%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:16%" title="Home win 16%"></div>
-              <div class="wdl-d" style="width:22%" title="Draw 22%"></div>
-              <div class="wdl-a" style="width:62%" title="Away win 62%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 16%</span>
-              <span style="color:#9ca3af;font-weight:500">D 22%</span>
-              <span style="color:#22c55e;font-weight:700">A 62%</span>
-            </div>
-            <div class="pred-odds">ML +500 / -180</div>
-            <div class="pred-venue">Foxborough, Massachusetts</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Fri Jun 19</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/gb-sct.png" class="mt-flag"><span class="mt-name">Scotland</span><span class="mt-pct lose">23%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ma.png" class="mt-flag"><span class="mt-name">Morocco</span><span class="mt-pct win">48%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:23%" title="Home win 23%"></div>
-              <div class="wdl-d" style="width:29%" title="Draw 29%"></div>
-              <div class="wdl-a" style="width:48%" title="Away win 48%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 23%</span>
-              <span style="color:#9ca3af;font-weight:500">D 29%</span>
-              <span style="color:#22c55e;font-weight:700">A 48%</span>
-            </div>
-            <div class="pred-odds">ML +320 / +100</div>
-            <div class="pred-venue">Foxborough, Massachusetts</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sat Jun 20</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/br.png" class="mt-flag"><span class="mt-name">Brazil</span><span class="mt-pct win">89%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ht.png" class="mt-flag"><span class="mt-name">Haiti</span><span class="mt-pct lose">4%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:89%" title="Home win 89%"></div>
-              <div class="wdl-d" style="width:7%" title="Draw 7%"></div>
-              <div class="wdl-a" style="width:4%" title="Away win 4%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 89%</span>
-              <span style="color:#9ca3af;font-weight:500">D 7%</span>
-              <span style="color:#9ca3af;font-weight:500">A 4%</span>
-            </div>
-            <div class="pred-odds">ML -1200 / +2500</div>
-            <div class="pred-venue">Philadelphia, Pennsylvania</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Wed Jun 24</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ma.png" class="mt-flag"><span class="mt-name">Morocco</span><span class="mt-pct win">72%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ht.png" class="mt-flag"><span class="mt-name">Haiti</span><span class="mt-pct lose">10%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:72%" title="Home win 72%"></div>
-              <div class="wdl-d" style="width:18%" title="Draw 18%"></div>
-              <div class="wdl-a" style="width:10%" title="Away win 10%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 72%</span>
-              <span style="color:#9ca3af;font-weight:500">D 18%</span>
-              <span style="color:#9ca3af;font-weight:500">A 10%</span>
-            </div>
-            <div class="pred-odds">ML -285 / +850</div>
-            <div class="pred-venue">Atlanta, Georgia</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Wed Jun 24</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/gb-sct.png" class="mt-flag"><span class="mt-name">Scotland</span><span class="mt-pct lose">16%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/br.png" class="mt-flag"><span class="mt-name">Brazil</span><span class="mt-pct win">64%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:16%" title="Home win 16%"></div>
-              <div class="wdl-d" style="width:20%" title="Draw 20%"></div>
-              <div class="wdl-a" style="width:64%" title="Away win 64%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 16%</span>
-              <span style="color:#9ca3af;font-weight:500">D 20%</span>
-              <span style="color:#22c55e;font-weight:700">A 64%</span>
-            </div>
-            <div class="pred-odds">ML +500 / -205</div>
-            <div class="pred-venue">Miami Gardens, Florida</div>
-          </div></div></div>
+        <div class="match-row"><div class="match-time">Sat Jun 13</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/br.png" class="winner-flag" alt="Brazil"><div class="winner-info"><div class="winner-name">Brazil</div><div class="winner-sub">predicted winner · 57%</div></div><div class="winner-pct">57%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/ma.png" class="loser-flag" alt="Morocco"><div class="loser-info"><div class="loser-name">Morocco</div><div class="loser-sub">underdog</div></div><div class="loser-pct">18%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">25%</span></div><div class="match-meta"><span class="meta-odds">ML -145 / +450</span><span class="meta-venue">East Rutherford, New Jersey</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sun Jun 14</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/gb-sct.png" class="winner-flag" alt="Scotland"><div class="winner-info"><div class="winner-name">Scotland</div><div class="winner-sub">predicted winner · 62%</div></div><div class="winner-pct">62%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/ht.png" class="loser-flag" alt="Haiti"><div class="loser-info"><div class="loser-name">Haiti</div><div class="loser-sub">underdog</div></div><div class="loser-pct">16%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">22%</span></div><div class="match-meta"><span class="meta-odds">ML +500 / -180</span><span class="meta-venue">Foxborough, Massachusetts</span></div></div></div>
+        <div class="match-row"><div class="match-time">Fri Jun 19</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/ma.png" class="winner-flag" alt="Morocco"><div class="winner-info"><div class="winner-name">Morocco</div><div class="winner-sub">predicted winner · 48%</div></div><div class="winner-pct">48%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/gb-sct.png" class="loser-flag" alt="Scotland"><div class="loser-info"><div class="loser-name">Scotland</div><div class="loser-sub">underdog</div></div><div class="loser-pct">23%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">29%</span></div><div class="match-meta"><span class="meta-odds">ML +320 / +100</span><span class="meta-venue">Foxborough, Massachusetts</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sat Jun 20</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/br.png" class="winner-flag" alt="Brazil"><div class="winner-info"><div class="winner-name">Brazil</div><div class="winner-sub">predicted winner · 89%</div></div><div class="winner-pct">89%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/ht.png" class="loser-flag" alt="Haiti"><div class="loser-info"><div class="loser-name">Haiti</div><div class="loser-sub">underdog</div></div><div class="loser-pct">4%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">7%</span></div><div class="match-meta"><span class="meta-odds">ML -1200 / +2500</span><span class="meta-venue">Philadelphia, Pennsylvania</span></div></div></div>
+        <div class="match-row"><div class="match-time">Wed Jun 24</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/ma.png" class="winner-flag" alt="Morocco"><div class="winner-info"><div class="winner-name">Morocco</div><div class="winner-sub">predicted winner · 72%</div></div><div class="winner-pct">72%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/ht.png" class="loser-flag" alt="Haiti"><div class="loser-info"><div class="loser-name">Haiti</div><div class="loser-sub">underdog</div></div><div class="loser-pct">10%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">18%</span></div><div class="match-meta"><span class="meta-odds">ML -285 / +850</span><span class="meta-venue">Atlanta, Georgia</span></div></div></div>
+        <div class="match-row"><div class="match-time">Wed Jun 24</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/br.png" class="winner-flag" alt="Brazil"><div class="winner-info"><div class="winner-name">Brazil</div><div class="winner-sub">predicted winner · 64%</div></div><div class="winner-pct">64%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/gb-sct.png" class="loser-flag" alt="Scotland"><div class="loser-info"><div class="loser-name">Scotland</div><div class="loser-sub">underdog</div></div><div class="loser-pct">16%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">20%</span></div><div class="match-meta"><span class="meta-odds">ML +500 / -205</span><span class="meta-venue">Miami Gardens, Florida</span></div></div></div></div>
     </section>
     <section class="group-block" id="group-D">
       <div class="gb-header">
@@ -1007,126 +751,12 @@ footer strong{color:var(--text);}
         </table>
       </div>
       <div class="gb-matches">
-        <div class="match-row">
-          <div class="match-time">Sat Jun 13</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/us.png" class="mt-flag"><span class="mt-name">United States</span><span class="mt-pct win">48%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/py.png" class="mt-flag"><span class="mt-name">Paraguay</span><span class="mt-pct lose">24%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:48%" title="Home win 48%"></div>
-              <div class="wdl-d" style="width:28%" title="Draw 28%"></div>
-              <div class="wdl-a" style="width:24%" title="Away win 24%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 48%</span>
-              <span style="color:#9ca3af;font-weight:500">D 28%</span>
-              <span style="color:#9ca3af;font-weight:500">A 24%</span>
-            </div>
-            <div class="pred-odds">ML +100 / +300</div>
-            <div class="pred-venue">Inglewood, California</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sun Jun 14</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/au.png" class="mt-flag"><span class="mt-name">Australia</span><span class="mt-pct lose">19%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/tr.png" class="mt-flag"><span class="mt-name">Turkey</span><span class="mt-pct win">56%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:19%" title="Home win 19%"></div>
-              <div class="wdl-d" style="width:25%" title="Draw 25%"></div>
-              <div class="wdl-a" style="width:56%" title="Away win 56%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 19%</span>
-              <span style="color:#9ca3af;font-weight:500">D 25%</span>
-              <span style="color:#22c55e;font-weight:700">A 56%</span>
-            </div>
-            <div class="pred-odds">ML +400 / -140</div>
-            <div class="pred-venue">Vancouver</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Fri Jun 19</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/us.png" class="mt-flag"><span class="mt-name">United States</span><span class="mt-pct win">54%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/au.png" class="mt-flag"><span class="mt-name">Australia</span><span class="mt-pct lose">21%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:54%" title="Home win 54%"></div>
-              <div class="wdl-d" style="width:25%" title="Draw 25%"></div>
-              <div class="wdl-a" style="width:21%" title="Away win 21%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 54%</span>
-              <span style="color:#9ca3af;font-weight:500">D 25%</span>
-              <span style="color:#9ca3af;font-weight:500">A 21%</span>
-            </div>
-            <div class="pred-odds">ML -130 / +350</div>
-            <div class="pred-venue">Seattle, Washington</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sat Jun 20</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/tr.png" class="mt-flag"><span class="mt-name">Turkey</span><span class="mt-pct win">42%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/py.png" class="mt-flag"><span class="mt-name">Paraguay</span><span class="mt-pct lose">28%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:42%" title="Home win 42%"></div>
-              <div class="wdl-d" style="width:30%" title="Draw 30%"></div>
-              <div class="wdl-a" style="width:28%" title="Away win 28%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 42%</span>
-              <span style="color:#9ca3af;font-weight:500">D 30%</span>
-              <span style="color:#9ca3af;font-weight:500">A 28%</span>
-            </div>
-            <div class="pred-odds">ML +125 / +245</div>
-            <div class="pred-venue">Santa Clara, California</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Fri Jun 26</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/py.png" class="mt-flag"><span class="mt-name">Paraguay</span><span class="mt-pct win">44%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/au.png" class="mt-flag"><span class="mt-name">Australia</span><span class="mt-pct lose">27%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:44%" title="Home win 44%"></div>
-              <div class="wdl-d" style="width:29%" title="Draw 29%"></div>
-              <div class="wdl-a" style="width:27%" title="Away win 27%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 44%</span>
-              <span style="color:#9ca3af;font-weight:500">D 29%</span>
-              <span style="color:#9ca3af;font-weight:500">A 27%</span>
-            </div>
-            <div class="pred-odds">ML +115 / +260</div>
-            <div class="pred-venue">Santa Clara, California</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Fri Jun 26</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/tr.png" class="mt-flag"><span class="mt-name">Turkey</span><span class="mt-pct lose">36%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/us.png" class="mt-flag"><span class="mt-name">United States</span><span class="mt-pct win">38%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:36%" title="Home win 36%"></div>
-              <div class="wdl-d" style="width:26%" title="Draw 26%"></div>
-              <div class="wdl-a" style="width:38%" title="Away win 38%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 36%</span>
-              <span style="color:#9ca3af;font-weight:500">D 26%</span>
-              <span style="color:#22c55e;font-weight:700">A 38%</span>
-            </div>
-            <div class="pred-odds">ML +170 / +155</div>
-            <div class="pred-venue">Inglewood, California</div>
-          </div></div></div>
+        <div class="match-row"><div class="match-time">Sat Jun 13</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/us.png" class="winner-flag" alt="United States"><div class="winner-info"><div class="winner-name">United States</div><div class="winner-sub">predicted winner · 48%</div></div><div class="winner-pct">48%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/py.png" class="loser-flag" alt="Paraguay"><div class="loser-info"><div class="loser-name">Paraguay</div><div class="loser-sub">underdog</div></div><div class="loser-pct">24%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">28%</span></div><div class="match-meta"><span class="meta-odds">ML +100 / +300</span><span class="meta-venue">Inglewood, California</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sun Jun 14</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/tr.png" class="winner-flag" alt="Turkey"><div class="winner-info"><div class="winner-name">Turkey</div><div class="winner-sub">predicted winner · 56%</div></div><div class="winner-pct">56%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/au.png" class="loser-flag" alt="Australia"><div class="loser-info"><div class="loser-name">Australia</div><div class="loser-sub">underdog</div></div><div class="loser-pct">19%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">25%</span></div><div class="match-meta"><span class="meta-odds">ML +400 / -140</span><span class="meta-venue">Vancouver</span></div></div></div>
+        <div class="match-row"><div class="match-time">Fri Jun 19</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/us.png" class="winner-flag" alt="United States"><div class="winner-info"><div class="winner-name">United States</div><div class="winner-sub">predicted winner · 54%</div></div><div class="winner-pct">54%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/au.png" class="loser-flag" alt="Australia"><div class="loser-info"><div class="loser-name">Australia</div><div class="loser-sub">underdog</div></div><div class="loser-pct">21%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">25%</span></div><div class="match-meta"><span class="meta-odds">ML -130 / +350</span><span class="meta-venue">Seattle, Washington</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sat Jun 20</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/tr.png" class="winner-flag" alt="Turkey"><div class="winner-info"><div class="winner-name">Turkey</div><div class="winner-sub">predicted winner · 42%</div></div><div class="winner-pct">42%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/py.png" class="loser-flag" alt="Paraguay"><div class="loser-info"><div class="loser-name">Paraguay</div><div class="loser-sub">underdog</div></div><div class="loser-pct">28%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">30%</span></div><div class="match-meta"><span class="meta-odds">ML +125 / +245</span><span class="meta-venue">Santa Clara, California</span></div></div></div>
+        <div class="match-row"><div class="match-time">Fri Jun 26</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/py.png" class="winner-flag" alt="Paraguay"><div class="winner-info"><div class="winner-name">Paraguay</div><div class="winner-sub">predicted winner · 44%</div></div><div class="winner-pct">44%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/au.png" class="loser-flag" alt="Australia"><div class="loser-info"><div class="loser-name">Australia</div><div class="loser-sub">underdog</div></div><div class="loser-pct">27%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">29%</span></div><div class="match-meta"><span class="meta-odds">ML +115 / +260</span><span class="meta-venue">Santa Clara, California</span></div></div></div>
+        <div class="match-row"><div class="match-time">Fri Jun 26</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/us.png" class="winner-flag" alt="United States"><div class="winner-info"><div class="winner-name">United States</div><div class="winner-sub">predicted winner · 38%</div></div><div class="winner-pct">38%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/tr.png" class="loser-flag" alt="Turkey"><div class="loser-info"><div class="loser-name">Turkey</div><div class="loser-sub">underdog</div></div><div class="loser-pct">36%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">26%</span></div><div class="match-meta"><span class="meta-odds">ML +170 / +155</span><span class="meta-venue">Inglewood, California</span></div></div></div></div>
     </section>
     <section class="group-block" id="group-E">
       <div class="gb-header">
@@ -1164,126 +794,12 @@ footer strong{color:var(--text);}
         </table>
       </div>
       <div class="gb-matches">
-        <div class="match-row">
-          <div class="match-time">Sun Jun 14</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/de.png" class="mt-flag"><span class="mt-name">Germany</span><span class="mt-pct win">91%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/cw.png" class="mt-flag"><span class="mt-name">Curaçao</span><span class="mt-pct lose">3%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:91%" title="Home win 91%"></div>
-              <div class="wdl-d" style="width:6%" title="Draw 6%"></div>
-              <div class="wdl-a" style="width:3%" title="Away win 3%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 91%</span>
-              <span style="color:#9ca3af;font-weight:500">D 6%</span>
-              <span style="color:#9ca3af;font-weight:500">A 3%</span>
-            </div>
-            <div class="pred-odds">ML -3500 / +2800</div>
-            <div class="pred-venue">Houston, Texas</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sun Jun 14</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ci.png" class="mt-flag"><span class="mt-name">Ivory Coast</span><span class="mt-pct lose">27%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ec.png" class="mt-flag"><span class="mt-name">Ecuador</span><span class="mt-pct win">39%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:27%" title="Home win 27%"></div>
-              <div class="wdl-d" style="width:34%" title="Draw 34%"></div>
-              <div class="wdl-a" style="width:39%" title="Away win 39%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 27%</span>
-              <span style="color:#9ca3af;font-weight:500">D 34%</span>
-              <span style="color:#22c55e;font-weight:700">A 39%</span>
-            </div>
-            <div class="pred-odds">ML +260 / +145</div>
-            <div class="pred-venue">Philadelphia, Pennsylvania</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sat Jun 20</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/de.png" class="mt-flag"><span class="mt-name">Germany</span><span class="mt-pct win">62%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ci.png" class="mt-flag"><span class="mt-name">Ivory Coast</span><span class="mt-pct lose">17%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:62%" title="Home win 62%"></div>
-              <div class="wdl-d" style="width:21%" title="Draw 21%"></div>
-              <div class="wdl-a" style="width:17%" title="Away win 17%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 62%</span>
-              <span style="color:#9ca3af;font-weight:500">D 21%</span>
-              <span style="color:#9ca3af;font-weight:500">A 17%</span>
-            </div>
-            <div class="pred-odds">ML -180 / +475</div>
-            <div class="pred-venue">Toronto</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sun Jun 21</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ec.png" class="mt-flag"><span class="mt-name">Ecuador</span><span class="mt-pct win">80%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/cw.png" class="mt-flag"><span class="mt-name">Curaçao</span><span class="mt-pct lose">7%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:80%" title="Home win 80%"></div>
-              <div class="wdl-d" style="width:13%" title="Draw 13%"></div>
-              <div class="wdl-a" style="width:7%" title="Away win 7%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 80%</span>
-              <span style="color:#9ca3af;font-weight:500">D 13%</span>
-              <span style="color:#9ca3af;font-weight:500">A 7%</span>
-            </div>
-            <div class="pred-odds">ML -500 / +1200</div>
-            <div class="pred-venue">Kansas City, Missouri</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Thu Jun 25</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/cw.png" class="mt-flag"><span class="mt-name">Curaçao</span><span class="mt-pct lose">7%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ci.png" class="mt-flag"><span class="mt-name">Ivory Coast</span><span class="mt-pct win">78%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:7%" title="Home win 7%"></div>
-              <div class="wdl-d" style="width:15%" title="Draw 15%"></div>
-              <div class="wdl-a" style="width:78%" title="Away win 78%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 7%</span>
-              <span style="color:#9ca3af;font-weight:500">D 15%</span>
-              <span style="color:#22c55e;font-weight:700">A 78%</span>
-            </div>
-            <div class="pred-odds">ML +1200 / -450</div>
-            <div class="pred-venue">Philadelphia, Pennsylvania</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Thu Jun 25</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ec.png" class="mt-flag"><span class="mt-name">Ecuador</span><span class="mt-pct lose">20%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/de.png" class="mt-flag"><span class="mt-name">Germany</span><span class="mt-pct win">55%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:20%" title="Home win 20%"></div>
-              <div class="wdl-d" style="width:25%" title="Draw 25%"></div>
-              <div class="wdl-a" style="width:55%" title="Away win 55%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 20%</span>
-              <span style="color:#9ca3af;font-weight:500">D 25%</span>
-              <span style="color:#22c55e;font-weight:700">A 55%</span>
-            </div>
-            <div class="pred-odds">ML +380 / -135</div>
-            <div class="pred-venue">East Rutherford, New Jersey</div>
-          </div></div></div>
+        <div class="match-row"><div class="match-time">Sun Jun 14</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/de.png" class="winner-flag" alt="Germany"><div class="winner-info"><div class="winner-name">Germany</div><div class="winner-sub">predicted winner · 91%</div></div><div class="winner-pct">91%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/cw.png" class="loser-flag" alt="Curaçao"><div class="loser-info"><div class="loser-name">Curaçao</div><div class="loser-sub">underdog</div></div><div class="loser-pct">3%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">6%</span></div><div class="match-meta"><span class="meta-odds">ML -3500 / +2800</span><span class="meta-venue">Houston, Texas</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sun Jun 14</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/ec.png" class="winner-flag" alt="Ecuador"><div class="winner-info"><div class="winner-name">Ecuador</div><div class="winner-sub">predicted winner · 39%</div></div><div class="winner-pct">39%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/ci.png" class="loser-flag" alt="Ivory Coast"><div class="loser-info"><div class="loser-name">Ivory Coast</div><div class="loser-sub">underdog</div></div><div class="loser-pct">27%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">34%</span></div><div class="match-meta"><span class="meta-odds">ML +260 / +145</span><span class="meta-venue">Philadelphia, Pennsylvania</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sat Jun 20</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/de.png" class="winner-flag" alt="Germany"><div class="winner-info"><div class="winner-name">Germany</div><div class="winner-sub">predicted winner · 62%</div></div><div class="winner-pct">62%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/ci.png" class="loser-flag" alt="Ivory Coast"><div class="loser-info"><div class="loser-name">Ivory Coast</div><div class="loser-sub">underdog</div></div><div class="loser-pct">17%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">21%</span></div><div class="match-meta"><span class="meta-odds">ML -180 / +475</span><span class="meta-venue">Toronto</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sun Jun 21</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/ec.png" class="winner-flag" alt="Ecuador"><div class="winner-info"><div class="winner-name">Ecuador</div><div class="winner-sub">predicted winner · 80%</div></div><div class="winner-pct">80%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/cw.png" class="loser-flag" alt="Curaçao"><div class="loser-info"><div class="loser-name">Curaçao</div><div class="loser-sub">underdog</div></div><div class="loser-pct">7%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">13%</span></div><div class="match-meta"><span class="meta-odds">ML -500 / +1200</span><span class="meta-venue">Kansas City, Missouri</span></div></div></div>
+        <div class="match-row"><div class="match-time">Thu Jun 25</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/ci.png" class="winner-flag" alt="Ivory Coast"><div class="winner-info"><div class="winner-name">Ivory Coast</div><div class="winner-sub">predicted winner · 78%</div></div><div class="winner-pct">78%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/cw.png" class="loser-flag" alt="Curaçao"><div class="loser-info"><div class="loser-name">Curaçao</div><div class="loser-sub">underdog</div></div><div class="loser-pct">7%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">15%</span></div><div class="match-meta"><span class="meta-odds">ML +1200 / -450</span><span class="meta-venue">Philadelphia, Pennsylvania</span></div></div></div>
+        <div class="match-row"><div class="match-time">Thu Jun 25</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/de.png" class="winner-flag" alt="Germany"><div class="winner-info"><div class="winner-name">Germany</div><div class="winner-sub">predicted winner · 55%</div></div><div class="winner-pct">55%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/ec.png" class="loser-flag" alt="Ecuador"><div class="loser-info"><div class="loser-name">Ecuador</div><div class="loser-sub">underdog</div></div><div class="loser-pct">20%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">25%</span></div><div class="match-meta"><span class="meta-odds">ML +380 / -135</span><span class="meta-venue">East Rutherford, New Jersey</span></div></div></div></div>
     </section>
     <section class="group-block" id="group-F">
       <div class="gb-header">
@@ -1321,126 +837,12 @@ footer strong{color:var(--text);}
         </table>
       </div>
       <div class="gb-matches">
-        <div class="match-row">
-          <div class="match-time">Sun Jun 14</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/nl.png" class="mt-flag"><span class="mt-name">Netherlands</span><span class="mt-pct win">46%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/jp.png" class="mt-flag"><span class="mt-name">Japan</span><span class="mt-pct lose">27%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:46%" title="Home win 46%"></div>
-              <div class="wdl-d" style="width:27%" title="Draw 27%"></div>
-              <div class="wdl-a" style="width:27%" title="Away win 27%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 46%</span>
-              <span style="color:#9ca3af;font-weight:500">D 27%</span>
-              <span style="color:#9ca3af;font-weight:500">A 27%</span>
-            </div>
-            <div class="pred-odds">ML +105 / +250</div>
-            <div class="pred-venue">Arlington, Texas</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Mon Jun 15</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/se.png" class="mt-flag"><span class="mt-name">Sweden</span><span class="mt-pct win">50%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/tn.png" class="mt-flag"><span class="mt-name">Tunisia</span><span class="mt-pct lose">22%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:50%" title="Home win 50%"></div>
-              <div class="wdl-d" style="width:28%" title="Draw 28%"></div>
-              <div class="wdl-a" style="width:22%" title="Away win 22%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 50%</span>
-              <span style="color:#9ca3af;font-weight:500">D 28%</span>
-              <span style="color:#9ca3af;font-weight:500">A 22%</span>
-            </div>
-            <div class="pred-odds">ML -105 / +330</div>
-            <div class="pred-venue">Guadalupe</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sat Jun 20</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/nl.png" class="mt-flag"><span class="mt-name">Netherlands</span><span class="mt-pct win">59%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/se.png" class="mt-flag"><span class="mt-name">Sweden</span><span class="mt-pct lose">18%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:59%" title="Home win 59%"></div>
-              <div class="wdl-d" style="width:23%" title="Draw 23%"></div>
-              <div class="wdl-a" style="width:18%" title="Away win 18%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 59%</span>
-              <span style="color:#9ca3af;font-weight:500">D 23%</span>
-              <span style="color:#9ca3af;font-weight:500">A 18%</span>
-            </div>
-            <div class="pred-odds">ML -155 / +425</div>
-            <div class="pred-venue">Houston, Texas</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sun Jun 21</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/tn.png" class="mt-flag"><span class="mt-name">Tunisia</span><span class="mt-pct lose">18%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/jp.png" class="mt-flag"><span class="mt-name">Japan</span><span class="mt-pct win">56%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:18%" title="Home win 18%"></div>
-              <div class="wdl-d" style="width:26%" title="Draw 26%"></div>
-              <div class="wdl-a" style="width:56%" title="Away win 56%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 18%</span>
-              <span style="color:#9ca3af;font-weight:500">D 26%</span>
-              <span style="color:#22c55e;font-weight:700">A 56%</span>
-            </div>
-            <div class="pred-odds">ML +425 / -140</div>
-            <div class="pred-venue">Guadalupe</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Thu Jun 25</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/jp.png" class="mt-flag"><span class="mt-name">Japan</span><span class="mt-pct win">46%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/se.png" class="mt-flag"><span class="mt-name">Sweden</span><span class="mt-pct lose">26%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:46%" title="Home win 46%"></div>
-              <div class="wdl-d" style="width:28%" title="Draw 28%"></div>
-              <div class="wdl-a" style="width:26%" title="Away win 26%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 46%</span>
-              <span style="color:#9ca3af;font-weight:500">D 28%</span>
-              <span style="color:#9ca3af;font-weight:500">A 26%</span>
-            </div>
-            <div class="pred-odds">ML +110 / +265</div>
-            <div class="pred-venue">Arlington, Texas</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Thu Jun 25</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/tn.png" class="mt-flag"><span class="mt-name">Tunisia</span><span class="mt-pct lose">15%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/nl.png" class="mt-flag"><span class="mt-name">Netherlands</span><span class="mt-pct win">63%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:15%" title="Home win 15%"></div>
-              <div class="wdl-d" style="width:22%" title="Draw 22%"></div>
-              <div class="wdl-a" style="width:63%" title="Away win 63%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 15%</span>
-              <span style="color:#9ca3af;font-weight:500">D 22%</span>
-              <span style="color:#22c55e;font-weight:700">A 63%</span>
-            </div>
-            <div class="pred-odds">ML +550 / -190</div>
-            <div class="pred-venue">Kansas City, Missouri</div>
-          </div></div></div>
+        <div class="match-row"><div class="match-time">Sun Jun 14</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/nl.png" class="winner-flag" alt="Netherlands"><div class="winner-info"><div class="winner-name">Netherlands</div><div class="winner-sub">predicted winner · 46%</div></div><div class="winner-pct">46%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/jp.png" class="loser-flag" alt="Japan"><div class="loser-info"><div class="loser-name">Japan</div><div class="loser-sub">underdog</div></div><div class="loser-pct">27%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">27%</span></div><div class="match-meta"><span class="meta-odds">ML +105 / +250</span><span class="meta-venue">Arlington, Texas</span></div></div></div>
+        <div class="match-row"><div class="match-time">Mon Jun 15</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/se.png" class="winner-flag" alt="Sweden"><div class="winner-info"><div class="winner-name">Sweden</div><div class="winner-sub">predicted winner · 50%</div></div><div class="winner-pct">50%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/tn.png" class="loser-flag" alt="Tunisia"><div class="loser-info"><div class="loser-name">Tunisia</div><div class="loser-sub">underdog</div></div><div class="loser-pct">22%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">28%</span></div><div class="match-meta"><span class="meta-odds">ML -105 / +330</span><span class="meta-venue">Guadalupe</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sat Jun 20</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/nl.png" class="winner-flag" alt="Netherlands"><div class="winner-info"><div class="winner-name">Netherlands</div><div class="winner-sub">predicted winner · 59%</div></div><div class="winner-pct">59%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/se.png" class="loser-flag" alt="Sweden"><div class="loser-info"><div class="loser-name">Sweden</div><div class="loser-sub">underdog</div></div><div class="loser-pct">18%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">23%</span></div><div class="match-meta"><span class="meta-odds">ML -155 / +425</span><span class="meta-venue">Houston, Texas</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sun Jun 21</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/jp.png" class="winner-flag" alt="Japan"><div class="winner-info"><div class="winner-name">Japan</div><div class="winner-sub">predicted winner · 56%</div></div><div class="winner-pct">56%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/tn.png" class="loser-flag" alt="Tunisia"><div class="loser-info"><div class="loser-name">Tunisia</div><div class="loser-sub">underdog</div></div><div class="loser-pct">18%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">26%</span></div><div class="match-meta"><span class="meta-odds">ML +425 / -140</span><span class="meta-venue">Guadalupe</span></div></div></div>
+        <div class="match-row"><div class="match-time">Thu Jun 25</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/jp.png" class="winner-flag" alt="Japan"><div class="winner-info"><div class="winner-name">Japan</div><div class="winner-sub">predicted winner · 46%</div></div><div class="winner-pct">46%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/se.png" class="loser-flag" alt="Sweden"><div class="loser-info"><div class="loser-name">Sweden</div><div class="loser-sub">underdog</div></div><div class="loser-pct">26%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">28%</span></div><div class="match-meta"><span class="meta-odds">ML +110 / +265</span><span class="meta-venue">Arlington, Texas</span></div></div></div>
+        <div class="match-row"><div class="match-time">Thu Jun 25</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/nl.png" class="winner-flag" alt="Netherlands"><div class="winner-info"><div class="winner-name">Netherlands</div><div class="winner-sub">predicted winner · 63%</div></div><div class="winner-pct">63%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/tn.png" class="loser-flag" alt="Tunisia"><div class="loser-info"><div class="loser-name">Tunisia</div><div class="loser-sub">underdog</div></div><div class="loser-pct">15%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">22%</span></div><div class="match-meta"><span class="meta-odds">ML +550 / -190</span><span class="meta-venue">Kansas City, Missouri</span></div></div></div></div>
     </section>
     <section class="group-block" id="group-G">
       <div class="gb-header">
@@ -1478,126 +880,12 @@ footer strong{color:var(--text);}
         </table>
       </div>
       <div class="gb-matches">
-        <div class="match-row">
-          <div class="match-time">Mon Jun 15</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/be.png" class="mt-flag"><span class="mt-name">Belgium</span><span class="mt-pct win">57%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/eg.png" class="mt-flag"><span class="mt-name">Egypt</span><span class="mt-pct lose">19%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:57%" title="Home win 57%"></div>
-              <div class="wdl-d" style="width:24%" title="Draw 24%"></div>
-              <div class="wdl-a" style="width:19%" title="Away win 19%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 57%</span>
-              <span style="color:#9ca3af;font-weight:500">D 24%</span>
-              <span style="color:#9ca3af;font-weight:500">A 19%</span>
-            </div>
-            <div class="pred-odds">ML -155 / +400</div>
-            <div class="pred-venue">Seattle, Washington</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Tue Jun 16</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ir.png" class="mt-flag"><span class="mt-name">Iran</span><span class="mt-pct win">50%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/nz.png" class="mt-flag"><span class="mt-name">New Zealand</span><span class="mt-pct lose">22%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:50%" title="Home win 50%"></div>
-              <div class="wdl-d" style="width:28%" title="Draw 28%"></div>
-              <div class="wdl-a" style="width:22%" title="Away win 22%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 50%</span>
-              <span style="color:#9ca3af;font-weight:500">D 28%</span>
-              <span style="color:#9ca3af;font-weight:500">A 22%</span>
-            </div>
-            <div class="pred-odds">ML -110 / +340</div>
-            <div class="pred-venue">Inglewood, California</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sun Jun 21</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/be.png" class="mt-flag"><span class="mt-name">Belgium</span><span class="mt-pct win">68%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ir.png" class="mt-flag"><span class="mt-name">Iran</span><span class="mt-pct lose">12%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:68%" title="Home win 68%"></div>
-              <div class="wdl-d" style="width:20%" title="Draw 20%"></div>
-              <div class="wdl-a" style="width:12%" title="Away win 12%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 68%</span>
-              <span style="color:#9ca3af;font-weight:500">D 20%</span>
-              <span style="color:#9ca3af;font-weight:500">A 12%</span>
-            </div>
-            <div class="pred-odds">ML -245 / +700</div>
-            <div class="pred-venue">Inglewood, California</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Mon Jun 22</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/nz.png" class="mt-flag"><span class="mt-name">New Zealand</span><span class="mt-pct lose">20%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/eg.png" class="mt-flag"><span class="mt-name">Egypt</span><span class="mt-pct win">54%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:20%" title="Home win 20%"></div>
-              <div class="wdl-d" style="width:26%" title="Draw 26%"></div>
-              <div class="wdl-a" style="width:54%" title="Away win 54%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 20%</span>
-              <span style="color:#9ca3af;font-weight:500">D 26%</span>
-              <span style="color:#22c55e;font-weight:700">A 54%</span>
-            </div>
-            <div class="pred-odds">ML +370 / -130</div>
-            <div class="pred-venue">Vancouver</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sat Jun 27</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/eg.png" class="mt-flag"><span class="mt-name">Egypt</span><span class="mt-pct win">42%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ir.png" class="mt-flag"><span class="mt-name">Iran</span><span class="mt-pct lose">26%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:42%" title="Home win 42%"></div>
-              <div class="wdl-d" style="width:32%" title="Draw 32%"></div>
-              <div class="wdl-a" style="width:26%" title="Away win 26%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 42%</span>
-              <span style="color:#9ca3af;font-weight:500">D 32%</span>
-              <span style="color:#9ca3af;font-weight:500">A 26%</span>
-            </div>
-            <div class="pred-odds">ML +130 / +265</div>
-            <div class="pred-venue">Seattle, Washington</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sat Jun 27</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/nz.png" class="mt-flag"><span class="mt-name">New Zealand</span><span class="mt-pct lose">10%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/be.png" class="mt-flag"><span class="mt-name">Belgium</span><span class="mt-pct win">74%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:10%" title="Home win 10%"></div>
-              <div class="wdl-d" style="width:16%" title="Draw 16%"></div>
-              <div class="wdl-a" style="width:74%" title="Away win 74%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 10%</span>
-              <span style="color:#9ca3af;font-weight:500">D 16%</span>
-              <span style="color:#22c55e;font-weight:700">A 74%</span>
-            </div>
-            <div class="pred-odds">ML +900 / -340</div>
-            <div class="pred-venue">Vancouver</div>
-          </div></div></div>
+        <div class="match-row"><div class="match-time">Mon Jun 15</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/be.png" class="winner-flag" alt="Belgium"><div class="winner-info"><div class="winner-name">Belgium</div><div class="winner-sub">predicted winner · 57%</div></div><div class="winner-pct">57%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/eg.png" class="loser-flag" alt="Egypt"><div class="loser-info"><div class="loser-name">Egypt</div><div class="loser-sub">underdog</div></div><div class="loser-pct">19%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">24%</span></div><div class="match-meta"><span class="meta-odds">ML -155 / +400</span><span class="meta-venue">Seattle, Washington</span></div></div></div>
+        <div class="match-row"><div class="match-time">Tue Jun 16</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/ir.png" class="winner-flag" alt="Iran"><div class="winner-info"><div class="winner-name">Iran</div><div class="winner-sub">predicted winner · 50%</div></div><div class="winner-pct">50%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/nz.png" class="loser-flag" alt="New Zealand"><div class="loser-info"><div class="loser-name">New Zealand</div><div class="loser-sub">underdog</div></div><div class="loser-pct">22%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">28%</span></div><div class="match-meta"><span class="meta-odds">ML -110 / +340</span><span class="meta-venue">Inglewood, California</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sun Jun 21</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/be.png" class="winner-flag" alt="Belgium"><div class="winner-info"><div class="winner-name">Belgium</div><div class="winner-sub">predicted winner · 68%</div></div><div class="winner-pct">68%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/ir.png" class="loser-flag" alt="Iran"><div class="loser-info"><div class="loser-name">Iran</div><div class="loser-sub">underdog</div></div><div class="loser-pct">12%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">20%</span></div><div class="match-meta"><span class="meta-odds">ML -245 / +700</span><span class="meta-venue">Inglewood, California</span></div></div></div>
+        <div class="match-row"><div class="match-time">Mon Jun 22</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/eg.png" class="winner-flag" alt="Egypt"><div class="winner-info"><div class="winner-name">Egypt</div><div class="winner-sub">predicted winner · 54%</div></div><div class="winner-pct">54%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/nz.png" class="loser-flag" alt="New Zealand"><div class="loser-info"><div class="loser-name">New Zealand</div><div class="loser-sub">underdog</div></div><div class="loser-pct">20%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">26%</span></div><div class="match-meta"><span class="meta-odds">ML +370 / -130</span><span class="meta-venue">Vancouver</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sat Jun 27</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/eg.png" class="winner-flag" alt="Egypt"><div class="winner-info"><div class="winner-name">Egypt</div><div class="winner-sub">predicted winner · 42%</div></div><div class="winner-pct">42%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/ir.png" class="loser-flag" alt="Iran"><div class="loser-info"><div class="loser-name">Iran</div><div class="loser-sub">underdog</div></div><div class="loser-pct">26%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">32%</span></div><div class="match-meta"><span class="meta-odds">ML +130 / +265</span><span class="meta-venue">Seattle, Washington</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sat Jun 27</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/be.png" class="winner-flag" alt="Belgium"><div class="winner-info"><div class="winner-name">Belgium</div><div class="winner-sub">predicted winner · 74%</div></div><div class="winner-pct">74%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/nz.png" class="loser-flag" alt="New Zealand"><div class="loser-info"><div class="loser-name">New Zealand</div><div class="loser-sub">underdog</div></div><div class="loser-pct">10%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">16%</span></div><div class="match-meta"><span class="meta-odds">ML +900 / -340</span><span class="meta-venue">Vancouver</span></div></div></div></div>
     </section>
     <section class="group-block" id="group-H">
       <div class="gb-header">
@@ -1635,126 +923,12 @@ footer strong{color:var(--text);}
         </table>
       </div>
       <div class="gb-matches">
-        <div class="match-row">
-          <div class="match-time">Mon Jun 15</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/es.png" class="mt-flag"><span class="mt-name">Spain</span><span class="mt-pct win">88%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/cv.png" class="mt-flag"><span class="mt-name">Cape Verde</span><span class="mt-pct lose">4%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:88%" title="Home win 88%"></div>
-              <div class="wdl-d" style="width:8%" title="Draw 8%"></div>
-              <div class="wdl-a" style="width:4%" title="Away win 4%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 88%</span>
-              <span style="color:#9ca3af;font-weight:500">D 8%</span>
-              <span style="color:#9ca3af;font-weight:500">A 4%</span>
-            </div>
-            <div class="pred-odds">ML -1200 / +2500</div>
-            <div class="pred-venue">Atlanta, Georgia</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Mon Jun 15</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/sa.png" class="mt-flag"><span class="mt-name">Saudi Arabia</span><span class="mt-pct lose">12%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/uy.png" class="mt-flag"><span class="mt-name">Uruguay</span><span class="mt-pct win">67%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:12%" title="Home win 12%"></div>
-              <div class="wdl-d" style="width:21%" title="Draw 21%"></div>
-              <div class="wdl-a" style="width:67%" title="Away win 67%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 12%</span>
-              <span style="color:#9ca3af;font-weight:500">D 21%</span>
-              <span style="color:#22c55e;font-weight:700">A 67%</span>
-            </div>
-            <div class="pred-odds">ML +700 / -230</div>
-            <div class="pred-venue">Miami Gardens, Florida</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sun Jun 21</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/es.png" class="mt-flag"><span class="mt-name">Spain</span><span class="mt-pct win">87%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/sa.png" class="mt-flag"><span class="mt-name">Saudi Arabia</span><span class="mt-pct lose">4%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:87%" title="Home win 87%"></div>
-              <div class="wdl-d" style="width:9%" title="Draw 9%"></div>
-              <div class="wdl-a" style="width:4%" title="Away win 4%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 87%</span>
-              <span style="color:#9ca3af;font-weight:500">D 9%</span>
-              <span style="color:#9ca3af;font-weight:500">A 4%</span>
-            </div>
-            <div class="pred-odds">ML -1000 / +2200</div>
-            <div class="pred-venue">Atlanta, Georgia</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sun Jun 21</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/uy.png" class="mt-flag"><span class="mt-name">Uruguay</span><span class="mt-pct win">68%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/cv.png" class="mt-flag"><span class="mt-name">Cape Verde</span><span class="mt-pct lose">12%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:68%" title="Home win 68%"></div>
-              <div class="wdl-d" style="width:20%" title="Draw 20%"></div>
-              <div class="wdl-a" style="width:12%" title="Away win 12%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 68%</span>
-              <span style="color:#9ca3af;font-weight:500">D 20%</span>
-              <span style="color:#9ca3af;font-weight:500">A 12%</span>
-            </div>
-            <div class="pred-odds">ML -240 / +700</div>
-            <div class="pred-venue">Miami Gardens, Florida</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sat Jun 27</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/cv.png" class="mt-flag"><span class="mt-name">Cape Verde</span><span class="mt-pct win">37%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/sa.png" class="mt-flag"><span class="mt-name">Saudi Arabia</span><span class="mt-pct lose">34%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:37%" title="Home win 37%"></div>
-              <div class="wdl-d" style="width:29%" title="Draw 29%"></div>
-              <div class="wdl-a" style="width:34%" title="Away win 34%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 37%</span>
-              <span style="color:#9ca3af;font-weight:500">D 29%</span>
-              <span style="color:#9ca3af;font-weight:500">A 34%</span>
-            </div>
-            <div class="pred-odds">ML +160 / +185</div>
-            <div class="pred-venue">Houston, Texas</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sat Jun 27</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/uy.png" class="mt-flag"><span class="mt-name">Uruguay</span><span class="mt-pct lose">18%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/es.png" class="mt-flag"><span class="mt-name">Spain</span><span class="mt-pct win">58%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:18%" title="Home win 18%"></div>
-              <div class="wdl-d" style="width:24%" title="Draw 24%"></div>
-              <div class="wdl-a" style="width:58%" title="Away win 58%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 18%</span>
-              <span style="color:#9ca3af;font-weight:500">D 24%</span>
-              <span style="color:#22c55e;font-weight:700">A 58%</span>
-            </div>
-            <div class="pred-odds">ML +450 / -155</div>
-            <div class="pred-venue">Guadalajara</div>
-          </div></div></div>
+        <div class="match-row"><div class="match-time">Mon Jun 15</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/es.png" class="winner-flag" alt="Spain"><div class="winner-info"><div class="winner-name">Spain</div><div class="winner-sub">predicted winner · 88%</div></div><div class="winner-pct">88%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/cv.png" class="loser-flag" alt="Cape Verde"><div class="loser-info"><div class="loser-name">Cape Verde</div><div class="loser-sub">underdog</div></div><div class="loser-pct">4%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">8%</span></div><div class="match-meta"><span class="meta-odds">ML -1200 / +2500</span><span class="meta-venue">Atlanta, Georgia</span></div></div></div>
+        <div class="match-row"><div class="match-time">Mon Jun 15</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/uy.png" class="winner-flag" alt="Uruguay"><div class="winner-info"><div class="winner-name">Uruguay</div><div class="winner-sub">predicted winner · 67%</div></div><div class="winner-pct">67%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/sa.png" class="loser-flag" alt="Saudi Arabia"><div class="loser-info"><div class="loser-name">Saudi Arabia</div><div class="loser-sub">underdog</div></div><div class="loser-pct">12%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">21%</span></div><div class="match-meta"><span class="meta-odds">ML +700 / -230</span><span class="meta-venue">Miami Gardens, Florida</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sun Jun 21</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/es.png" class="winner-flag" alt="Spain"><div class="winner-info"><div class="winner-name">Spain</div><div class="winner-sub">predicted winner · 87%</div></div><div class="winner-pct">87%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/sa.png" class="loser-flag" alt="Saudi Arabia"><div class="loser-info"><div class="loser-name">Saudi Arabia</div><div class="loser-sub">underdog</div></div><div class="loser-pct">4%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">9%</span></div><div class="match-meta"><span class="meta-odds">ML -1000 / +2200</span><span class="meta-venue">Atlanta, Georgia</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sun Jun 21</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/uy.png" class="winner-flag" alt="Uruguay"><div class="winner-info"><div class="winner-name">Uruguay</div><div class="winner-sub">predicted winner · 68%</div></div><div class="winner-pct">68%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/cv.png" class="loser-flag" alt="Cape Verde"><div class="loser-info"><div class="loser-name">Cape Verde</div><div class="loser-sub">underdog</div></div><div class="loser-pct">12%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">20%</span></div><div class="match-meta"><span class="meta-odds">ML -240 / +700</span><span class="meta-venue">Miami Gardens, Florida</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sat Jun 27</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/cv.png" class="winner-flag" alt="Cape Verde"><div class="winner-info"><div class="winner-name">Cape Verde</div><div class="winner-sub">predicted winner · 37%</div></div><div class="winner-pct">37%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/sa.png" class="loser-flag" alt="Saudi Arabia"><div class="loser-info"><div class="loser-name">Saudi Arabia</div><div class="loser-sub">underdog</div></div><div class="loser-pct">34%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">29%</span></div><div class="match-meta"><span class="meta-odds">ML +160 / +185</span><span class="meta-venue">Houston, Texas</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sat Jun 27</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/es.png" class="winner-flag" alt="Spain"><div class="winner-info"><div class="winner-name">Spain</div><div class="winner-sub">predicted winner · 58%</div></div><div class="winner-pct">58%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/uy.png" class="loser-flag" alt="Uruguay"><div class="loser-info"><div class="loser-name">Uruguay</div><div class="loser-sub">underdog</div></div><div class="loser-pct">18%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">24%</span></div><div class="match-meta"><span class="meta-odds">ML +450 / -155</span><span class="meta-venue">Guadalajara</span></div></div></div></div>
     </section>
     <section class="group-block" id="group-I">
       <div class="gb-header">
@@ -1792,126 +966,12 @@ footer strong{color:var(--text);}
         </table>
       </div>
       <div class="gb-matches">
-        <div class="match-row">
-          <div class="match-time">Tue Jun 16</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/fr.png" class="mt-flag"><span class="mt-name">France</span><span class="mt-pct win">65%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/sn.png" class="mt-flag"><span class="mt-name">Senegal</span><span class="mt-pct lose">14%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:65%" title="Home win 65%"></div>
-              <div class="wdl-d" style="width:21%" title="Draw 21%"></div>
-              <div class="wdl-a" style="width:14%" title="Away win 14%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 65%</span>
-              <span style="color:#9ca3af;font-weight:500">D 21%</span>
-              <span style="color:#9ca3af;font-weight:500">A 14%</span>
-            </div>
-            <div class="pred-odds">ML -215 / +600</div>
-            <div class="pred-venue">East Rutherford, New Jersey</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Tue Jun 16</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/iq.png" class="mt-flag"><span class="mt-name">Iraq</span><span class="mt-pct lose">7%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/no.png" class="mt-flag"><span class="mt-name">Norway</span><span class="mt-pct win">79%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:7%" title="Home win 7%"></div>
-              <div class="wdl-d" style="width:14%" title="Draw 14%"></div>
-              <div class="wdl-a" style="width:79%" title="Away win 79%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 7%</span>
-              <span style="color:#9ca3af;font-weight:500">D 14%</span>
-              <span style="color:#22c55e;font-weight:700">A 79%</span>
-            </div>
-            <div class="pred-odds">ML +1300 / -475</div>
-            <div class="pred-venue">Foxborough, Massachusetts</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Mon Jun 22</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/fr.png" class="mt-flag"><span class="mt-name">France</span><span class="mt-pct win">86%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/iq.png" class="mt-flag"><span class="mt-name">Iraq</span><span class="mt-pct lose">4%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:86%" title="Home win 86%"></div>
-              <div class="wdl-d" style="width:10%" title="Draw 10%"></div>
-              <div class="wdl-a" style="width:4%" title="Away win 4%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 86%</span>
-              <span style="color:#9ca3af;font-weight:500">D 10%</span>
-              <span style="color:#9ca3af;font-weight:500">A 4%</span>
-            </div>
-            <div class="pred-odds">ML -800 / +2500</div>
-            <div class="pred-venue">Philadelphia, Pennsylvania</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Tue Jun 23</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/no.png" class="mt-flag"><span class="mt-name">Norway</span><span class="mt-pct win">45%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/sn.png" class="mt-flag"><span class="mt-name">Senegal</span><span class="mt-pct lose">28%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:45%" title="Home win 45%"></div>
-              <div class="wdl-d" style="width:27%" title="Draw 27%"></div>
-              <div class="wdl-a" style="width:28%" title="Away win 28%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 45%</span>
-              <span style="color:#9ca3af;font-weight:500">D 27%</span>
-              <span style="color:#9ca3af;font-weight:500">A 28%</span>
-            </div>
-            <div class="pred-odds">ML +115 / +240</div>
-            <div class="pred-venue">East Rutherford, New Jersey</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Fri Jun 26</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/no.png" class="mt-flag"><span class="mt-name">Norway</span><span class="mt-pct lose">21%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/fr.png" class="mt-flag"><span class="mt-name">France</span><span class="mt-pct win">53%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:21%" title="Home win 21%"></div>
-              <div class="wdl-d" style="width:26%" title="Draw 26%"></div>
-              <div class="wdl-a" style="width:53%" title="Away win 53%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 21%</span>
-              <span style="color:#9ca3af;font-weight:500">D 26%</span>
-              <span style="color:#22c55e;font-weight:700">A 53%</span>
-            </div>
-            <div class="pred-odds">ML +350 / -120</div>
-            <div class="pred-venue">Foxborough, Massachusetts</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Fri Jun 26</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/sn.png" class="mt-flag"><span class="mt-name">Senegal</span><span class="mt-pct win">68%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/iq.png" class="mt-flag"><span class="mt-name">Iraq</span><span class="mt-pct lose">12%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:68%" title="Home win 68%"></div>
-              <div class="wdl-d" style="width:20%" title="Draw 20%"></div>
-              <div class="wdl-a" style="width:12%" title="Away win 12%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 68%</span>
-              <span style="color:#9ca3af;font-weight:500">D 20%</span>
-              <span style="color:#9ca3af;font-weight:500">A 12%</span>
-            </div>
-            <div class="pred-odds">ML -235 / +700</div>
-            <div class="pred-venue">Toronto</div>
-          </div></div></div>
+        <div class="match-row"><div class="match-time">Tue Jun 16</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/fr.png" class="winner-flag" alt="France"><div class="winner-info"><div class="winner-name">France</div><div class="winner-sub">predicted winner · 65%</div></div><div class="winner-pct">65%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/sn.png" class="loser-flag" alt="Senegal"><div class="loser-info"><div class="loser-name">Senegal</div><div class="loser-sub">underdog</div></div><div class="loser-pct">14%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">21%</span></div><div class="match-meta"><span class="meta-odds">ML -215 / +600</span><span class="meta-venue">East Rutherford, New Jersey</span></div></div></div>
+        <div class="match-row"><div class="match-time">Tue Jun 16</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/no.png" class="winner-flag" alt="Norway"><div class="winner-info"><div class="winner-name">Norway</div><div class="winner-sub">predicted winner · 79%</div></div><div class="winner-pct">79%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/iq.png" class="loser-flag" alt="Iraq"><div class="loser-info"><div class="loser-name">Iraq</div><div class="loser-sub">underdog</div></div><div class="loser-pct">7%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">14%</span></div><div class="match-meta"><span class="meta-odds">ML +1300 / -475</span><span class="meta-venue">Foxborough, Massachusetts</span></div></div></div>
+        <div class="match-row"><div class="match-time">Mon Jun 22</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/fr.png" class="winner-flag" alt="France"><div class="winner-info"><div class="winner-name">France</div><div class="winner-sub">predicted winner · 86%</div></div><div class="winner-pct">86%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/iq.png" class="loser-flag" alt="Iraq"><div class="loser-info"><div class="loser-name">Iraq</div><div class="loser-sub">underdog</div></div><div class="loser-pct">4%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">10%</span></div><div class="match-meta"><span class="meta-odds">ML -800 / +2500</span><span class="meta-venue">Philadelphia, Pennsylvania</span></div></div></div>
+        <div class="match-row"><div class="match-time">Tue Jun 23</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/no.png" class="winner-flag" alt="Norway"><div class="winner-info"><div class="winner-name">Norway</div><div class="winner-sub">predicted winner · 45%</div></div><div class="winner-pct">45%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/sn.png" class="loser-flag" alt="Senegal"><div class="loser-info"><div class="loser-name">Senegal</div><div class="loser-sub">underdog</div></div><div class="loser-pct">28%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">27%</span></div><div class="match-meta"><span class="meta-odds">ML +115 / +240</span><span class="meta-venue">East Rutherford, New Jersey</span></div></div></div>
+        <div class="match-row"><div class="match-time">Fri Jun 26</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/fr.png" class="winner-flag" alt="France"><div class="winner-info"><div class="winner-name">France</div><div class="winner-sub">predicted winner · 53%</div></div><div class="winner-pct">53%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/no.png" class="loser-flag" alt="Norway"><div class="loser-info"><div class="loser-name">Norway</div><div class="loser-sub">underdog</div></div><div class="loser-pct">21%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">26%</span></div><div class="match-meta"><span class="meta-odds">ML +350 / -120</span><span class="meta-venue">Foxborough, Massachusetts</span></div></div></div>
+        <div class="match-row"><div class="match-time">Fri Jun 26</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/sn.png" class="winner-flag" alt="Senegal"><div class="winner-info"><div class="winner-name">Senegal</div><div class="winner-sub">predicted winner · 68%</div></div><div class="winner-pct">68%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/iq.png" class="loser-flag" alt="Iraq"><div class="loser-info"><div class="loser-name">Iraq</div><div class="loser-sub">underdog</div></div><div class="loser-pct">12%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">20%</span></div><div class="match-meta"><span class="meta-odds">ML -235 / +700</span><span class="meta-venue">Toronto</span></div></div></div></div>
     </section>
     <section class="group-block" id="group-J">
       <div class="gb-header">
@@ -1949,126 +1009,12 @@ footer strong{color:var(--text);}
         </table>
       </div>
       <div class="gb-matches">
-        <div class="match-row">
-          <div class="match-time">Wed Jun 17</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ar.png" class="mt-flag"><span class="mt-name">Argentina</span><span class="mt-pct win">68%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/dz.png" class="mt-flag"><span class="mt-name">Algeria</span><span class="mt-pct lose">11%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:68%" title="Home win 68%"></div>
-              <div class="wdl-d" style="width:21%" title="Draw 21%"></div>
-              <div class="wdl-a" style="width:11%" title="Away win 11%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 68%</span>
-              <span style="color:#9ca3af;font-weight:500">D 21%</span>
-              <span style="color:#9ca3af;font-weight:500">A 11%</span>
-            </div>
-            <div class="pred-odds">ML -245 / +800</div>
-            <div class="pred-venue">Kansas City, Missouri</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Wed Jun 17</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/at.png" class="mt-flag"><span class="mt-name">Austria</span><span class="mt-pct win">72%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/jo.png" class="mt-flag"><span class="mt-name">Jordan</span><span class="mt-pct lose">10%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:72%" title="Home win 72%"></div>
-              <div class="wdl-d" style="width:18%" title="Draw 18%"></div>
-              <div class="wdl-a" style="width:10%" title="Away win 10%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 72%</span>
-              <span style="color:#9ca3af;font-weight:500">D 18%</span>
-              <span style="color:#9ca3af;font-weight:500">A 10%</span>
-            </div>
-            <div class="pred-odds">ML -310 / +850</div>
-            <div class="pred-venue">Santa Clara, California</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Mon Jun 22</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ar.png" class="mt-flag"><span class="mt-name">Argentina</span><span class="mt-pct win">58%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/at.png" class="mt-flag"><span class="mt-name">Austria</span><span class="mt-pct lose">17%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:58%" title="Home win 58%"></div>
-              <div class="wdl-d" style="width:25%" title="Draw 25%"></div>
-              <div class="wdl-a" style="width:17%" title="Away win 17%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 58%</span>
-              <span style="color:#9ca3af;font-weight:500">D 25%</span>
-              <span style="color:#9ca3af;font-weight:500">A 17%</span>
-            </div>
-            <div class="pred-odds">ML -155 / +475</div>
-            <div class="pred-venue">Arlington, Texas</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Tue Jun 23</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/jo.png" class="mt-flag"><span class="mt-name">Jordan</span><span class="mt-pct lose">15%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/dz.png" class="mt-flag"><span class="mt-name">Algeria</span><span class="mt-pct win">63%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:15%" title="Home win 15%"></div>
-              <div class="wdl-d" style="width:22%" title="Draw 22%"></div>
-              <div class="wdl-a" style="width:63%" title="Away win 63%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 15%</span>
-              <span style="color:#9ca3af;font-weight:500">D 22%</span>
-              <span style="color:#22c55e;font-weight:700">A 63%</span>
-            </div>
-            <div class="pred-odds">ML +550 / -190</div>
-            <div class="pred-venue">Santa Clara, California</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sun Jun 28</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/dz.png" class="mt-flag"><span class="mt-name">Algeria</span><span class="mt-pct lose">26%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/at.png" class="mt-flag"><span class="mt-name">Austria</span><span class="mt-pct win">43%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:26%" title="Home win 26%"></div>
-              <div class="wdl-d" style="width:31%" title="Draw 31%"></div>
-              <div class="wdl-a" style="width:43%" title="Away win 43%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 26%</span>
-              <span style="color:#9ca3af;font-weight:500">D 31%</span>
-              <span style="color:#22c55e;font-weight:700">A 43%</span>
-            </div>
-            <div class="pred-odds">ML +275 / +125</div>
-            <div class="pred-venue">Kansas City, Missouri</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sun Jun 28</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/jo.png" class="mt-flag"><span class="mt-name">Jordan</span><span class="mt-pct lose">7%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/ar.png" class="mt-flag"><span class="mt-name">Argentina</span><span class="mt-pct win">79%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:7%" title="Home win 7%"></div>
-              <div class="wdl-d" style="width:14%" title="Draw 14%"></div>
-              <div class="wdl-a" style="width:79%" title="Away win 79%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 7%</span>
-              <span style="color:#9ca3af;font-weight:500">D 14%</span>
-              <span style="color:#22c55e;font-weight:700">A 79%</span>
-            </div>
-            <div class="pred-odds">ML +1300 / -475</div>
-            <div class="pred-venue">Arlington, Texas</div>
-          </div></div></div>
+        <div class="match-row"><div class="match-time">Wed Jun 17</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/ar.png" class="winner-flag" alt="Argentina"><div class="winner-info"><div class="winner-name">Argentina</div><div class="winner-sub">predicted winner · 68%</div></div><div class="winner-pct">68%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/dz.png" class="loser-flag" alt="Algeria"><div class="loser-info"><div class="loser-name">Algeria</div><div class="loser-sub">underdog</div></div><div class="loser-pct">11%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">21%</span></div><div class="match-meta"><span class="meta-odds">ML -245 / +800</span><span class="meta-venue">Kansas City, Missouri</span></div></div></div>
+        <div class="match-row"><div class="match-time">Wed Jun 17</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/at.png" class="winner-flag" alt="Austria"><div class="winner-info"><div class="winner-name">Austria</div><div class="winner-sub">predicted winner · 72%</div></div><div class="winner-pct">72%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/jo.png" class="loser-flag" alt="Jordan"><div class="loser-info"><div class="loser-name">Jordan</div><div class="loser-sub">underdog</div></div><div class="loser-pct">10%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">18%</span></div><div class="match-meta"><span class="meta-odds">ML -310 / +850</span><span class="meta-venue">Santa Clara, California</span></div></div></div>
+        <div class="match-row"><div class="match-time">Mon Jun 22</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/ar.png" class="winner-flag" alt="Argentina"><div class="winner-info"><div class="winner-name">Argentina</div><div class="winner-sub">predicted winner · 58%</div></div><div class="winner-pct">58%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/at.png" class="loser-flag" alt="Austria"><div class="loser-info"><div class="loser-name">Austria</div><div class="loser-sub">underdog</div></div><div class="loser-pct">17%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">25%</span></div><div class="match-meta"><span class="meta-odds">ML -155 / +475</span><span class="meta-venue">Arlington, Texas</span></div></div></div>
+        <div class="match-row"><div class="match-time">Tue Jun 23</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/dz.png" class="winner-flag" alt="Algeria"><div class="winner-info"><div class="winner-name">Algeria</div><div class="winner-sub">predicted winner · 63%</div></div><div class="winner-pct">63%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/jo.png" class="loser-flag" alt="Jordan"><div class="loser-info"><div class="loser-name">Jordan</div><div class="loser-sub">underdog</div></div><div class="loser-pct">15%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">22%</span></div><div class="match-meta"><span class="meta-odds">ML +550 / -190</span><span class="meta-venue">Santa Clara, California</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sun Jun 28</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/at.png" class="winner-flag" alt="Austria"><div class="winner-info"><div class="winner-name">Austria</div><div class="winner-sub">predicted winner · 43%</div></div><div class="winner-pct">43%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/dz.png" class="loser-flag" alt="Algeria"><div class="loser-info"><div class="loser-name">Algeria</div><div class="loser-sub">underdog</div></div><div class="loser-pct">26%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">31%</span></div><div class="match-meta"><span class="meta-odds">ML +275 / +125</span><span class="meta-venue">Kansas City, Missouri</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sun Jun 28</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/ar.png" class="winner-flag" alt="Argentina"><div class="winner-info"><div class="winner-name">Argentina</div><div class="winner-sub">predicted winner · 79%</div></div><div class="winner-pct">79%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/jo.png" class="loser-flag" alt="Jordan"><div class="loser-info"><div class="loser-name">Jordan</div><div class="loser-sub">underdog</div></div><div class="loser-pct">7%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">14%</span></div><div class="match-meta"><span class="meta-odds">ML +1300 / -475</span><span class="meta-venue">Arlington, Texas</span></div></div></div></div>
     </section>
     <section class="group-block" id="group-K">
       <div class="gb-header">
@@ -2106,126 +1052,12 @@ footer strong{color:var(--text);}
         </table>
       </div>
       <div class="gb-matches">
-        <div class="match-row">
-          <div class="match-time">Wed Jun 17</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/pt.png" class="mt-flag"><span class="mt-name">Portugal</span><span class="mt-pct win">75%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/cd.png" class="mt-flag"><span class="mt-name">DR Congo</span><span class="mt-pct lose">9%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:75%" title="Home win 75%"></div>
-              <div class="wdl-d" style="width:16%" title="Draw 16%"></div>
-              <div class="wdl-a" style="width:9%" title="Away win 9%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 75%</span>
-              <span style="color:#9ca3af;font-weight:500">D 16%</span>
-              <span style="color:#9ca3af;font-weight:500">A 9%</span>
-            </div>
-            <div class="pred-odds">ML -350 / +1000</div>
-            <div class="pred-venue">Houston, Texas</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Thu Jun 18</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/uz.png" class="mt-flag"><span class="mt-name">Uzbekistan</span><span class="mt-pct lose">11%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/co.png" class="mt-flag"><span class="mt-name">Colombia</span><span class="mt-pct win">68%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:11%" title="Home win 11%"></div>
-              <div class="wdl-d" style="width:21%" title="Draw 21%"></div>
-              <div class="wdl-a" style="width:68%" title="Away win 68%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 11%</span>
-              <span style="color:#9ca3af;font-weight:500">D 21%</span>
-              <span style="color:#22c55e;font-weight:700">A 68%</span>
-            </div>
-            <div class="pred-odds">ML +750 / -240</div>
-            <div class="pred-venue">Mexico City</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Tue Jun 23</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/pt.png" class="mt-flag"><span class="mt-name">Portugal</span><span class="mt-pct win">77%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/uz.png" class="mt-flag"><span class="mt-name">Uzbekistan</span><span class="mt-pct lose">8%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:77%" title="Home win 77%"></div>
-              <div class="wdl-d" style="width:15%" title="Draw 15%"></div>
-              <div class="wdl-a" style="width:8%" title="Away win 8%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 77%</span>
-              <span style="color:#9ca3af;font-weight:500">D 15%</span>
-              <span style="color:#9ca3af;font-weight:500">A 8%</span>
-            </div>
-            <div class="pred-odds">ML -425 / +1100</div>
-            <div class="pred-venue">Houston, Texas</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Wed Jun 24</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/co.png" class="mt-flag"><span class="mt-name">Colombia</span><span class="mt-pct win">66%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/cd.png" class="mt-flag"><span class="mt-name">DR Congo</span><span class="mt-pct lose">12%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:66%" title="Home win 66%"></div>
-              <div class="wdl-d" style="width:22%" title="Draw 22%"></div>
-              <div class="wdl-a" style="width:12%" title="Away win 12%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 66%</span>
-              <span style="color:#9ca3af;font-weight:500">D 22%</span>
-              <span style="color:#9ca3af;font-weight:500">A 12%</span>
-            </div>
-            <div class="pred-odds">ML -220 / +700</div>
-            <div class="pred-venue">Guadalajara</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sat Jun 27</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/co.png" class="mt-flag"><span class="mt-name">Colombia</span><span class="mt-pct lose">28%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/pt.png" class="mt-flag"><span class="mt-name">Portugal</span><span class="mt-pct win">44%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:28%" title="Home win 28%"></div>
-              <div class="wdl-d" style="width:28%" title="Draw 28%"></div>
-              <div class="wdl-a" style="width:44%" title="Away win 44%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 28%</span>
-              <span style="color:#9ca3af;font-weight:500">D 28%</span>
-              <span style="color:#22c55e;font-weight:700">A 44%</span>
-            </div>
-            <div class="pred-odds">ML +250 / +120</div>
-            <div class="pred-venue">Miami Gardens, Florida</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sat Jun 27</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/cd.png" class="mt-flag"><span class="mt-name">DR Congo</span><span class="mt-pct win">41%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/uz.png" class="mt-flag"><span class="mt-name">Uzbekistan</span><span class="mt-pct lose">30%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:41%" title="Home win 41%"></div>
-              <div class="wdl-d" style="width:29%" title="Draw 29%"></div>
-              <div class="wdl-a" style="width:30%" title="Away win 30%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 41%</span>
-              <span style="color:#9ca3af;font-weight:500">D 29%</span>
-              <span style="color:#9ca3af;font-weight:500">A 30%</span>
-            </div>
-            <div class="pred-odds">ML +135 / +215</div>
-            <div class="pred-venue">Atlanta, Georgia</div>
-          </div></div></div>
+        <div class="match-row"><div class="match-time">Wed Jun 17</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/pt.png" class="winner-flag" alt="Portugal"><div class="winner-info"><div class="winner-name">Portugal</div><div class="winner-sub">predicted winner · 75%</div></div><div class="winner-pct">75%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/cd.png" class="loser-flag" alt="DR Congo"><div class="loser-info"><div class="loser-name">DR Congo</div><div class="loser-sub">underdog</div></div><div class="loser-pct">9%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">16%</span></div><div class="match-meta"><span class="meta-odds">ML -350 / +1000</span><span class="meta-venue">Houston, Texas</span></div></div></div>
+        <div class="match-row"><div class="match-time">Thu Jun 18</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/co.png" class="winner-flag" alt="Colombia"><div class="winner-info"><div class="winner-name">Colombia</div><div class="winner-sub">predicted winner · 68%</div></div><div class="winner-pct">68%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/uz.png" class="loser-flag" alt="Uzbekistan"><div class="loser-info"><div class="loser-name">Uzbekistan</div><div class="loser-sub">underdog</div></div><div class="loser-pct">11%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">21%</span></div><div class="match-meta"><span class="meta-odds">ML +750 / -240</span><span class="meta-venue">Mexico City</span></div></div></div>
+        <div class="match-row"><div class="match-time">Tue Jun 23</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/pt.png" class="winner-flag" alt="Portugal"><div class="winner-info"><div class="winner-name">Portugal</div><div class="winner-sub">predicted winner · 77%</div></div><div class="winner-pct">77%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/uz.png" class="loser-flag" alt="Uzbekistan"><div class="loser-info"><div class="loser-name">Uzbekistan</div><div class="loser-sub">underdog</div></div><div class="loser-pct">8%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">15%</span></div><div class="match-meta"><span class="meta-odds">ML -425 / +1100</span><span class="meta-venue">Houston, Texas</span></div></div></div>
+        <div class="match-row"><div class="match-time">Wed Jun 24</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/co.png" class="winner-flag" alt="Colombia"><div class="winner-info"><div class="winner-name">Colombia</div><div class="winner-sub">predicted winner · 66%</div></div><div class="winner-pct">66%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/cd.png" class="loser-flag" alt="DR Congo"><div class="loser-info"><div class="loser-name">DR Congo</div><div class="loser-sub">underdog</div></div><div class="loser-pct">12%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">22%</span></div><div class="match-meta"><span class="meta-odds">ML -220 / +700</span><span class="meta-venue">Guadalajara</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sat Jun 27</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/pt.png" class="winner-flag" alt="Portugal"><div class="winner-info"><div class="winner-name">Portugal</div><div class="winner-sub">predicted winner · 44%</div></div><div class="winner-pct">44%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/co.png" class="loser-flag" alt="Colombia"><div class="loser-info"><div class="loser-name">Colombia</div><div class="loser-sub">underdog</div></div><div class="loser-pct">28%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">28%</span></div><div class="match-meta"><span class="meta-odds">ML +250 / +120</span><span class="meta-venue">Miami Gardens, Florida</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sat Jun 27</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/cd.png" class="winner-flag" alt="DR Congo"><div class="winner-info"><div class="winner-name">DR Congo</div><div class="winner-sub">predicted winner · 41%</div></div><div class="winner-pct">41%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/uz.png" class="loser-flag" alt="Uzbekistan"><div class="loser-info"><div class="loser-name">Uzbekistan</div><div class="loser-sub">underdog</div></div><div class="loser-pct">30%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">29%</span></div><div class="match-meta"><span class="meta-odds">ML +135 / +215</span><span class="meta-venue">Atlanta, Georgia</span></div></div></div></div>
     </section>
     <section class="group-block" id="group-L">
       <div class="gb-header">
@@ -2263,126 +1095,12 @@ footer strong{color:var(--text);}
         </table>
       </div>
       <div class="gb-matches">
-        <div class="match-row">
-          <div class="match-time">Wed Jun 17</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/gb-eng.png" class="mt-flag"><span class="mt-name">England</span><span class="mt-pct win">56%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/hr.png" class="mt-flag"><span class="mt-name">Croatia</span><span class="mt-pct lose">20%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:56%" title="Home win 56%"></div>
-              <div class="wdl-d" style="width:24%" title="Draw 24%"></div>
-              <div class="wdl-a" style="width:20%" title="Away win 20%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 56%</span>
-              <span style="color:#9ca3af;font-weight:500">D 24%</span>
-              <span style="color:#9ca3af;font-weight:500">A 20%</span>
-            </div>
-            <div class="pred-odds">ML -140 / +380</div>
-            <div class="pred-venue">Arlington, Texas</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Wed Jun 17</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/gh.png" class="mt-flag"><span class="mt-name">Ghana</span><span class="mt-pct win">46%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/pa.png" class="mt-flag"><span class="mt-name">Panama</span><span class="mt-pct lose">26%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:46%" title="Home win 46%"></div>
-              <div class="wdl-d" style="width:28%" title="Draw 28%"></div>
-              <div class="wdl-a" style="width:26%" title="Away win 26%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 46%</span>
-              <span style="color:#9ca3af;font-weight:500">D 28%</span>
-              <span style="color:#9ca3af;font-weight:500">A 26%</span>
-            </div>
-            <div class="pred-odds">ML +110 / +265</div>
-            <div class="pred-venue">Toronto</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Tue Jun 23</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/gb-eng.png" class="mt-flag"><span class="mt-name">England</span><span class="mt-pct win">73%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/gh.png" class="mt-flag"><span class="mt-name">Ghana</span><span class="mt-pct lose">10%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:73%" title="Home win 73%"></div>
-              <div class="wdl-d" style="width:17%" title="Draw 17%"></div>
-              <div class="wdl-a" style="width:10%" title="Away win 10%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 73%</span>
-              <span style="color:#9ca3af;font-weight:500">D 17%</span>
-              <span style="color:#9ca3af;font-weight:500">A 10%</span>
-            </div>
-            <div class="pred-odds">ML -320 / +900</div>
-            <div class="pred-venue">Foxborough, Massachusetts</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Tue Jun 23</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/pa.png" class="mt-flag"><span class="mt-name">Panama</span><span class="mt-pct lose">15%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/hr.png" class="mt-flag"><span class="mt-name">Croatia</span><span class="mt-pct win">61%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:15%" title="Home win 15%"></div>
-              <div class="wdl-d" style="width:24%" title="Draw 24%"></div>
-              <div class="wdl-a" style="width:61%" title="Away win 61%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 15%</span>
-              <span style="color:#9ca3af;font-weight:500">D 24%</span>
-              <span style="color:#22c55e;font-weight:700">A 61%</span>
-            </div>
-            <div class="pred-odds">ML +550 / -180</div>
-            <div class="pred-venue">Toronto</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sat Jun 27</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/hr.png" class="mt-flag"><span class="mt-name">Croatia</span><span class="mt-pct win">58%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/gh.png" class="mt-flag"><span class="mt-name">Ghana</span><span class="mt-pct lose">18%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:58%" title="Home win 58%"></div>
-              <div class="wdl-d" style="width:24%" title="Draw 24%"></div>
-              <div class="wdl-a" style="width:18%" title="Away win 18%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#22c55e;font-weight:700">H 58%</span>
-              <span style="color:#9ca3af;font-weight:500">D 24%</span>
-              <span style="color:#9ca3af;font-weight:500">A 18%</span>
-            </div>
-            <div class="pred-odds">ML -150 / +450</div>
-            <div class="pred-venue">Philadelphia, Pennsylvania</div>
-          </div></div>
-        <div class="match-row">
-          <div class="match-time">Sat Jun 27</div>
-          <div class="match-teams">
-            <div class="mt-row"><img src="https://flagcdn.com/h24/pa.png" class="mt-flag"><span class="mt-name">Panama</span><span class="mt-pct lose">11%</span></div>
-            <div class="mt-row"><img src="https://flagcdn.com/h24/gb-eng.png" class="mt-flag"><span class="mt-name">England</span><span class="mt-pct win">74%</span></div>
-          </div>
-          <div class="match-pred">
-            <div class="wdl-bar">
-              <div class="wdl-h" style="width:11%" title="Home win 11%"></div>
-              <div class="wdl-d" style="width:15%" title="Draw 15%"></div>
-              <div class="wdl-a" style="width:74%" title="Away win 74%"></div>
-            </div>
-            <div class="wdl-labels">
-              <span style="color:#9ca3af;font-weight:500">H 11%</span>
-              <span style="color:#9ca3af;font-weight:500">D 15%</span>
-              <span style="color:#22c55e;font-weight:700">A 74%</span>
-            </div>
-            <div class="pred-odds">ML +750 / -340</div>
-            <div class="pred-venue">East Rutherford, New Jersey</div>
-          </div></div></div>
+        <div class="match-row"><div class="match-time">Wed Jun 17</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/gb-eng.png" class="winner-flag" alt="England"><div class="winner-info"><div class="winner-name">England</div><div class="winner-sub">predicted winner · 56%</div></div><div class="winner-pct">56%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/hr.png" class="loser-flag" alt="Croatia"><div class="loser-info"><div class="loser-name">Croatia</div><div class="loser-sub">underdog</div></div><div class="loser-pct">20%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">24%</span></div><div class="match-meta"><span class="meta-odds">ML -140 / +380</span><span class="meta-venue">Arlington, Texas</span></div></div></div>
+        <div class="match-row"><div class="match-time">Wed Jun 17</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/gh.png" class="winner-flag" alt="Ghana"><div class="winner-info"><div class="winner-name">Ghana</div><div class="winner-sub">predicted winner · 46%</div></div><div class="winner-pct">46%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/pa.png" class="loser-flag" alt="Panama"><div class="loser-info"><div class="loser-name">Panama</div><div class="loser-sub">underdog</div></div><div class="loser-pct">26%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">28%</span></div><div class="match-meta"><span class="meta-odds">ML +110 / +265</span><span class="meta-venue">Toronto</span></div></div></div>
+        <div class="match-row"><div class="match-time">Tue Jun 23</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/gb-eng.png" class="winner-flag" alt="England"><div class="winner-info"><div class="winner-name">England</div><div class="winner-sub">predicted winner · 73%</div></div><div class="winner-pct">73%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/gh.png" class="loser-flag" alt="Ghana"><div class="loser-info"><div class="loser-name">Ghana</div><div class="loser-sub">underdog</div></div><div class="loser-pct">10%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">17%</span></div><div class="match-meta"><span class="meta-odds">ML -320 / +900</span><span class="meta-venue">Foxborough, Massachusetts</span></div></div></div>
+        <div class="match-row"><div class="match-time">Tue Jun 23</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/hr.png" class="winner-flag" alt="Croatia"><div class="winner-info"><div class="winner-name">Croatia</div><div class="winner-sub">predicted winner · 61%</div></div><div class="winner-pct">61%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/pa.png" class="loser-flag" alt="Panama"><div class="loser-info"><div class="loser-name">Panama</div><div class="loser-sub">underdog</div></div><div class="loser-pct">15%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">24%</span></div><div class="match-meta"><span class="meta-odds">ML +550 / -180</span><span class="meta-venue">Toronto</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sat Jun 27</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/hr.png" class="winner-flag" alt="Croatia"><div class="winner-info"><div class="winner-name">Croatia</div><div class="winner-sub">predicted winner · 58%</div></div><div class="winner-pct">58%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/gh.png" class="loser-flag" alt="Ghana"><div class="loser-info"><div class="loser-name">Ghana</div><div class="loser-sub">underdog</div></div><div class="loser-pct">18%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">24%</span></div><div class="match-meta"><span class="meta-odds">ML -150 / +450</span><span class="meta-venue">Philadelphia, Pennsylvania</span></div></div></div>
+        <div class="match-row"><div class="match-time">Sat Jun 27</div><div class="match-main"><div class="winner-row"><img src="https://flagcdn.com/h40/gb-eng.png" class="winner-flag" alt="England"><div class="winner-info"><div class="winner-name">England</div><div class="winner-sub">predicted winner · 74%</div></div><div class="winner-pct">74%</div><span class="winner-badge">FAVORED</span></div><div class="loser-row"><img src="https://flagcdn.com/h40/pa.png" class="loser-flag" alt="Panama"><div class="loser-info"><div class="loser-name">Panama</div><div class="loser-sub">underdog</div></div><div class="loser-pct">11%</div></div><div class="draw-row"><span class="draw-dot"></span><span class="draw-label">Draw</span><span class="draw-pct">15%</span></div><div class="match-meta"><span class="meta-odds">ML +750 / -340</span><span class="meta-venue">East Rutherford, New Jersey</span></div></div></div></div>
     </section></div>
   </section>
 
