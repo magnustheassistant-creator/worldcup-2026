@@ -57,7 +57,6 @@ body{
 .lock-team{display:flex;align-items:center;gap:6px;flex:1;font-weight:600;font-size:0.9rem;}
 .lock-team.dog{color:var(--text-muted);font-weight:500;}
 .lock-flag{width:24px;height:16px;border-radius:2px;box-shadow:0 0 0 1px var(--border);}
-.lock-score{font-size:1.5rem;font-weight:800;color:var(--accent-2);padding:0 8px;}
 .lock-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;margin-bottom:8px;background:var(--bg-3);}
 .lock-bar-fav{background:linear-gradient(90deg,var(--accent),#16a34a);}
 .lock-bar-dog{background:rgba(239,68,68,0.3);}
@@ -113,8 +112,15 @@ body{
 .mt-pct{font-weight:700;color:var(--text-muted);font-family:monospace;min-width:36px;text-align:right;}
 .mt-pct.win{color:var(--accent);}
 .mt-pct.lose{color:var(--text-dim);}
-.match-pred{text-align:right;}
-.pred-score{font-size:1.2rem;font-weight:800;color:var(--accent-2);}
+.match-pred{text-align:right;display:flex;flex-direction:column;gap:4px;}
+.wdl-bar{display:flex;height:8px;border-radius:4px;overflow:hidden;background:var(--bg-2);}
+.wdl-h{background:#22c55e;}
+.wdl-d{background:#fbbf24;}
+.wdl-a{background:#ef4444;}
+.wdl-labels{display:flex;justify-content:space-between;font-size:0.7rem;font-family:monospace;}
+.wdl-labels span{flex:1;text-align:center;}
+.wdl-labels span:first-child{text-align:left;}
+.wdl-labels span:last-child{text-align:right;}
 .pred-odds{font-size:0.7rem;color:var(--text-muted);font-family:monospace;}
 .pred-venue{font-size:0.65rem;color:var(--text-dim);}
 
@@ -165,10 +171,17 @@ footer strong{color:var(--text);}
   .locks-grid,.closes-grid{grid-template-columns:1fr;}
   .match-row{grid-template-columns:80px 1fr 90px;gap:8px;padding:8px;}
   .match-time{font-size:0.65rem;}
-  .pred-score{font-size:1rem;}
   .tc-stats{grid-template-columns:1fr;}
   .container{padding:16px;}
 }
+
+.lock-wdl{flex:1;}
+.lock-wdl-bar{display:flex;height:8px;border-radius:4px;overflow:hidden;background:var(--bg-3);margin-bottom:6px;}
+.lock-wdl-fav{background:#22c55e;}
+.lock-wdl-draw{background:#fbbf24;}
+.lock-wdl-other{background:#ef4444;}
+.lock-wdl-labels{display:flex;justify-content:space-between;font-size:0.65rem;color:var(--text-muted);font-weight:600;}
+.lock-wdl-labels .lwf-fav{color:#22c55e;}
 </style>
 </head>
 <body>
@@ -199,7 +212,14 @@ footer strong{color:var(--text);}
       <div class="lock-date">Sun Jun 14 · 17:00 UTC</div>
       <div class="lock-matchup">
         <div class="lock-team fav"><img src="https://flagcdn.com/h40/de.png" class="lock-flag"><span>Germany</span></div>
-        <div class="lock-score">3-0</div>
+        <div class="lock-wdl">
+        <div class="lock-wdl-bar">
+          <div class="lock-wdl-fav" style="width:91%"></div>
+          <div class="lock-wdl-draw" style="width:18%"></div>
+          <div class="lock-wdl-other" style="width:0%"></div>
+        </div>
+        <div class="lock-wdl-labels"><span class="lwf-fav">Germany</span><span>Draw</span><span>Curaçao</span></div>
+      </div>
         <div class="lock-team dog"><img src="https://flagcdn.com/h40/cw.png" class="lock-flag"><span>Curaçao</span></div>
       </div>
       <div class="lock-bar"><div class="lock-bar-fav" style="width:91%"></div><div class="lock-bar-dog" style="width:9%"></div></div>
@@ -209,7 +229,14 @@ footer strong{color:var(--text);}
       <div class="lock-date">Sat Jun 20 · 00:30 UTC</div>
       <div class="lock-matchup">
         <div class="lock-team fav"><img src="https://flagcdn.com/h40/br.png" class="lock-flag"><span>Brazil</span></div>
-        <div class="lock-score">2-0</div>
+        <div class="lock-wdl">
+        <div class="lock-wdl-bar">
+          <div class="lock-wdl-fav" style="width:89%"></div>
+          <div class="lock-wdl-draw" style="width:18%"></div>
+          <div class="lock-wdl-other" style="width:0%"></div>
+        </div>
+        <div class="lock-wdl-labels"><span class="lwf-fav">Brazil</span><span>Draw</span><span>Haiti</span></div>
+      </div>
         <div class="lock-team dog"><img src="https://flagcdn.com/h40/ht.png" class="lock-flag"><span>Haiti</span></div>
       </div>
       <div class="lock-bar"><div class="lock-bar-fav" style="width:89%"></div><div class="lock-bar-dog" style="width:11%"></div></div>
@@ -219,7 +246,14 @@ footer strong{color:var(--text);}
       <div class="lock-date">Mon Jun 15 · 16:00 UTC</div>
       <div class="lock-matchup">
         <div class="lock-team fav"><img src="https://flagcdn.com/h40/es.png" class="lock-flag"><span>Spain</span></div>
-        <div class="lock-score">2-0</div>
+        <div class="lock-wdl">
+        <div class="lock-wdl-bar">
+          <div class="lock-wdl-fav" style="width:88%"></div>
+          <div class="lock-wdl-draw" style="width:18%"></div>
+          <div class="lock-wdl-other" style="width:0%"></div>
+        </div>
+        <div class="lock-wdl-labels"><span class="lwf-fav">Spain</span><span>Draw</span><span>Cape Verde</span></div>
+      </div>
         <div class="lock-team dog"><img src="https://flagcdn.com/h40/cv.png" class="lock-flag"><span>Cape Verde</span></div>
       </div>
       <div class="lock-bar"><div class="lock-bar-fav" style="width:88%"></div><div class="lock-bar-dog" style="width:12%"></div></div>
@@ -229,7 +263,14 @@ footer strong{color:var(--text);}
       <div class="lock-date">Sun Jun 21 · 16:00 UTC</div>
       <div class="lock-matchup">
         <div class="lock-team fav"><img src="https://flagcdn.com/h40/es.png" class="lock-flag"><span>Spain</span></div>
-        <div class="lock-score">2-0</div>
+        <div class="lock-wdl">
+        <div class="lock-wdl-bar">
+          <div class="lock-wdl-fav" style="width:87%"></div>
+          <div class="lock-wdl-draw" style="width:18%"></div>
+          <div class="lock-wdl-other" style="width:0%"></div>
+        </div>
+        <div class="lock-wdl-labels"><span class="lwf-fav">Spain</span><span>Draw</span><span>Saudi Arab</span></div>
+      </div>
         <div class="lock-team dog"><img src="https://flagcdn.com/h40/sa.png" class="lock-flag"><span>Saudi Arabia</span></div>
       </div>
       <div class="lock-bar"><div class="lock-bar-fav" style="width:87%"></div><div class="lock-bar-dog" style="width:13%"></div></div>
@@ -239,7 +280,14 @@ footer strong{color:var(--text);}
       <div class="lock-date">Mon Jun 22 · 21:00 UTC</div>
       <div class="lock-matchup">
         <div class="lock-team fav"><img src="https://flagcdn.com/h40/fr.png" class="lock-flag"><span>France</span></div>
-        <div class="lock-score">2-0</div>
+        <div class="lock-wdl">
+        <div class="lock-wdl-bar">
+          <div class="lock-wdl-fav" style="width:86%"></div>
+          <div class="lock-wdl-draw" style="width:18%"></div>
+          <div class="lock-wdl-other" style="width:0%"></div>
+        </div>
+        <div class="lock-wdl-labels"><span class="lwf-fav">France</span><span>Draw</span><span>Iraq</span></div>
+      </div>
         <div class="lock-team dog"><img src="https://flagcdn.com/h40/iq.png" class="lock-flag"><span>Iraq</span></div>
       </div>
       <div class="lock-bar"><div class="lock-bar-fav" style="width:86%"></div><div class="lock-bar-dog" style="width:14%"></div></div>
@@ -249,7 +297,14 @@ footer strong{color:var(--text);}
       <div class="lock-date">Sun Jun 21 · 00:00 UTC</div>
       <div class="lock-matchup">
         <div class="lock-team fav"><img src="https://flagcdn.com/h40/ec.png" class="lock-flag"><span>Ecuador</span></div>
-        <div class="lock-score">1-0</div>
+        <div class="lock-wdl">
+        <div class="lock-wdl-bar">
+          <div class="lock-wdl-fav" style="width:80%"></div>
+          <div class="lock-wdl-draw" style="width:18%"></div>
+          <div class="lock-wdl-other" style="width:2%"></div>
+        </div>
+        <div class="lock-wdl-labels"><span class="lwf-fav">Ecuador</span><span>Draw</span><span>Curaçao</span></div>
+      </div>
         <div class="lock-team dog"><img src="https://flagcdn.com/h40/cw.png" class="lock-flag"><span>Curaçao</span></div>
       </div>
       <div class="lock-bar"><div class="lock-bar-fav" style="width:80%"></div><div class="lock-bar-dog" style="width:20%"></div></div>
@@ -259,7 +314,14 @@ footer strong{color:var(--text);}
       <div class="lock-date">Tue Jun 16 · 22:00 UTC</div>
       <div class="lock-matchup">
         <div class="lock-team fav"><img src="https://flagcdn.com/h40/no.png" class="lock-flag"><span>Norway</span></div>
-        <div class="lock-score">0-1</div>
+        <div class="lock-wdl">
+        <div class="lock-wdl-bar">
+          <div class="lock-wdl-fav" style="width:79%"></div>
+          <div class="lock-wdl-draw" style="width:18%"></div>
+          <div class="lock-wdl-other" style="width:3%"></div>
+        </div>
+        <div class="lock-wdl-labels"><span class="lwf-fav">Norway</span><span>Draw</span><span>Iraq</span></div>
+      </div>
         <div class="lock-team dog"><img src="https://flagcdn.com/h40/iq.png" class="lock-flag"><span>Iraq</span></div>
       </div>
       <div class="lock-bar"><div class="lock-bar-fav" style="width:79%"></div><div class="lock-bar-dog" style="width:21%"></div></div>
@@ -269,7 +331,14 @@ footer strong{color:var(--text);}
       <div class="lock-date">Sun Jun 28 · 02:00 UTC</div>
       <div class="lock-matchup">
         <div class="lock-team fav"><img src="https://flagcdn.com/h40/ar.png" class="lock-flag"><span>Argentina</span></div>
-        <div class="lock-score">0-1</div>
+        <div class="lock-wdl">
+        <div class="lock-wdl-bar">
+          <div class="lock-wdl-fav" style="width:79%"></div>
+          <div class="lock-wdl-draw" style="width:18%"></div>
+          <div class="lock-wdl-other" style="width:3%"></div>
+        </div>
+        <div class="lock-wdl-labels"><span class="lwf-fav">Argentina</span><span>Draw</span><span>Jordan</span></div>
+      </div>
         <div class="lock-team dog"><img src="https://flagcdn.com/h40/jo.png" class="lock-flag"><span>Jordan</span></div>
       </div>
       <div class="lock-bar"><div class="lock-bar-fav" style="width:79%"></div><div class="lock-bar-dog" style="width:21%"></div></div>
@@ -279,7 +348,14 @@ footer strong{color:var(--text);}
       <div class="lock-date">Thu Jun 25 · 20:00 UTC</div>
       <div class="lock-matchup">
         <div class="lock-team fav"><img src="https://flagcdn.com/h40/ci.png" class="lock-flag"><span>Ivory Coast</span></div>
-        <div class="lock-score">0-1</div>
+        <div class="lock-wdl">
+        <div class="lock-wdl-bar">
+          <div class="lock-wdl-fav" style="width:78%"></div>
+          <div class="lock-wdl-draw" style="width:18%"></div>
+          <div class="lock-wdl-other" style="width:4%"></div>
+        </div>
+        <div class="lock-wdl-labels"><span class="lwf-fav">Ivory Coas</span><span>Draw</span><span>Curaçao</span></div>
+      </div>
         <div class="lock-team dog"><img src="https://flagcdn.com/h40/cw.png" class="lock-flag"><span>Curaçao</span></div>
       </div>
       <div class="lock-bar"><div class="lock-bar-fav" style="width:78%"></div><div class="lock-bar-dog" style="width:22%"></div></div>
@@ -289,7 +365,14 @@ footer strong{color:var(--text);}
       <div class="lock-date">Sat Jun 13 · 19:00 UTC</div>
       <div class="lock-matchup">
         <div class="lock-team fav"><img src="https://flagcdn.com/h40/ch.png" class="lock-flag"><span>Switzerland</span></div>
-        <div class="lock-score">0-1</div>
+        <div class="lock-wdl">
+        <div class="lock-wdl-bar">
+          <div class="lock-wdl-fav" style="width:77%"></div>
+          <div class="lock-wdl-draw" style="width:18%"></div>
+          <div class="lock-wdl-other" style="width:5%"></div>
+        </div>
+        <div class="lock-wdl-labels"><span class="lwf-fav">Switzerlan</span><span>Draw</span><span>Qatar</span></div>
+      </div>
         <div class="lock-team dog"><img src="https://flagcdn.com/h40/qa.png" class="lock-flag"><span>Qatar</span></div>
       </div>
       <div class="lock-bar"><div class="lock-bar-fav" style="width:77%"></div><div class="lock-bar-dog" style="width:23%"></div></div>
@@ -299,7 +382,14 @@ footer strong{color:var(--text);}
       <div class="lock-date">Tue Jun 23 · 17:00 UTC</div>
       <div class="lock-matchup">
         <div class="lock-team fav"><img src="https://flagcdn.com/h40/pt.png" class="lock-flag"><span>Portugal</span></div>
-        <div class="lock-score">2-0</div>
+        <div class="lock-wdl">
+        <div class="lock-wdl-bar">
+          <div class="lock-wdl-fav" style="width:77%"></div>
+          <div class="lock-wdl-draw" style="width:18%"></div>
+          <div class="lock-wdl-other" style="width:5%"></div>
+        </div>
+        <div class="lock-wdl-labels"><span class="lwf-fav">Portugal</span><span>Draw</span><span>Uzbekistan</span></div>
+      </div>
         <div class="lock-team dog"><img src="https://flagcdn.com/h40/uz.png" class="lock-flag"><span>Uzbekistan</span></div>
       </div>
       <div class="lock-bar"><div class="lock-bar-fav" style="width:77%"></div><div class="lock-bar-dog" style="width:23%"></div></div>
@@ -453,11 +543,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/za.png" class="mt-flag"><span class="mt-name">South Africa</span><span class="mt-pct lose">11%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:68%" title="Home win 68%"></div>
+              <div class="wdl-d" style="width:21%" title="Draw 21%"></div>
+              <div class="wdl-a" style="width:11%" title="Away win 11%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 68%</span>
+              <span style="color:#9ca3af;font-weight:500">D 21%</span>
+              <span style="color:#9ca3af;font-weight:500">A 11%</span>
+            </div>
             <div class="pred-odds">ML -245 / +750</div>
             <div class="pred-venue">Mexico City</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Fri Jun 12</div>
           <div class="match-teams">
@@ -465,11 +563,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/cz.png" class="mt-flag"><span class="mt-name">Czech Republic</span><span class="mt-pct lose">33%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:36%" title="Home win 36%"></div>
+              <div class="wdl-d" style="width:31%" title="Draw 31%"></div>
+              <div class="wdl-a" style="width:33%" title="Away win 33%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 36%</span>
+              <span style="color:#9ca3af;font-weight:500">D 31%</span>
+              <span style="color:#9ca3af;font-weight:500">A 33%</span>
+            </div>
             <div class="pred-odds">ML +165 / +190</div>
             <div class="pred-venue">Guadalajara</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Thu Jun 18</div>
           <div class="match-teams">
@@ -477,11 +583,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/za.png" class="mt-flag"><span class="mt-name">South Africa</span><span class="mt-pct lose">23%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:49%" title="Home win 49%"></div>
+              <div class="wdl-d" style="width:28%" title="Draw 28%"></div>
+              <div class="wdl-a" style="width:23%" title="Away win 23%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 49%</span>
+              <span style="color:#9ca3af;font-weight:500">D 28%</span>
+              <span style="color:#9ca3af;font-weight:500">A 23%</span>
+            </div>
             <div class="pred-odds">ML -105 / +320</div>
             <div class="pred-venue">Atlanta, Georgia</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Fri Jun 19</div>
           <div class="match-teams">
@@ -489,11 +603,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/kr.png" class="mt-flag"><span class="mt-name">South Korea</span><span class="mt-pct lose">20%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:53%" title="Home win 53%"></div>
+              <div class="wdl-d" style="width:27%" title="Draw 27%"></div>
+              <div class="wdl-a" style="width:20%" title="Away win 20%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 53%</span>
+              <span style="color:#9ca3af;font-weight:500">D 27%</span>
+              <span style="color:#9ca3af;font-weight:500">A 20%</span>
+            </div>
             <div class="pred-odds">ML -125 / +370</div>
             <div class="pred-venue">Guadalajara</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Thu Jun 25</div>
           <div class="match-teams">
@@ -501,11 +623,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/mx.png" class="mt-flag"><span class="mt-name">Mexico</span><span class="mt-pct win">53%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:20%" title="Home win 20%"></div>
+              <div class="wdl-d" style="width:27%" title="Draw 27%"></div>
+              <div class="wdl-a" style="width:53%" title="Away win 53%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 20%</span>
+              <span style="color:#9ca3af;font-weight:500">D 27%</span>
+              <span style="color:#22c55e;font-weight:700">A 53%</span>
+            </div>
             <div class="pred-odds">ML +370 / -125</div>
             <div class="pred-venue">Mexico City</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Thu Jun 25</div>
           <div class="match-teams">
@@ -513,11 +643,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/kr.png" class="mt-flag"><span class="mt-name">South Korea</span><span class="mt-pct win">49%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:24%" title="Home win 24%"></div>
+              <div class="wdl-d" style="width:27%" title="Draw 27%"></div>
+              <div class="wdl-a" style="width:49%" title="Away win 49%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 24%</span>
+              <span style="color:#9ca3af;font-weight:500">D 27%</span>
+              <span style="color:#22c55e;font-weight:700">A 49%</span>
+            </div>
             <div class="pred-odds">ML +300 / -105</div>
             <div class="pred-venue">Guadalupe</div>
-          </div>
-        </div></div>
+          </div></div></div>
     </section>
     <section class="group-block" id="group-B">
       <div class="gb-header">
@@ -562,11 +700,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/ba.png" class="mt-flag"><span class="mt-name">Bosnia and Herzegovina</span><span class="mt-pct lose">21%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:52%" title="Home win 52%"></div>
+              <div class="wdl-d" style="width:27%" title="Draw 27%"></div>
+              <div class="wdl-a" style="width:21%" title="Away win 21%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 52%</span>
+              <span style="color:#9ca3af;font-weight:500">D 27%</span>
+              <span style="color:#9ca3af;font-weight:500">A 21%</span>
+            </div>
             <div class="pred-odds">ML -120 / +360</div>
             <div class="pred-venue">Toronto</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sat Jun 13</div>
           <div class="match-teams">
@@ -574,11 +720,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/ch.png" class="mt-flag"><span class="mt-name">Switzerland</span><span class="mt-pct win">77%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:8%" title="Home win 8%"></div>
+              <div class="wdl-d" style="width:15%" title="Draw 15%"></div>
+              <div class="wdl-a" style="width:77%" title="Away win 77%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 8%</span>
+              <span style="color:#9ca3af;font-weight:500">D 15%</span>
+              <span style="color:#22c55e;font-weight:700">A 77%</span>
+            </div>
             <div class="pred-odds">ML +1100 / -425</div>
             <div class="pred-venue">Santa Clara, California</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Thu Jun 18</div>
           <div class="match-teams">
@@ -586,11 +740,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/ba.png" class="mt-flag"><span class="mt-name">Bosnia and Herzegovina</span><span class="mt-pct lose">18%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:59%" title="Home win 59%"></div>
+              <div class="wdl-d" style="width:23%" title="Draw 23%"></div>
+              <div class="wdl-a" style="width:18%" title="Away win 18%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 59%</span>
+              <span style="color:#9ca3af;font-weight:500">D 23%</span>
+              <span style="color:#9ca3af;font-weight:500">A 18%</span>
+            </div>
             <div class="pred-odds">ML -160 / +450</div>
             <div class="pred-venue">Inglewood, California</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Thu Jun 18</div>
           <div class="match-teams">
@@ -598,11 +760,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/qa.png" class="mt-flag"><span class="mt-name">Qatar</span><span class="mt-pct lose">9%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:73%" title="Home win 73%"></div>
+              <div class="wdl-d" style="width:18%" title="Draw 18%"></div>
+              <div class="wdl-a" style="width:9%" title="Away win 9%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 73%</span>
+              <span style="color:#9ca3af;font-weight:500">D 18%</span>
+              <span style="color:#9ca3af;font-weight:500">A 9%</span>
+            </div>
             <div class="pred-odds">ML -320 / +1000</div>
             <div class="pred-venue">Vancouver</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Wed Jun 24</div>
           <div class="match-teams">
@@ -610,11 +780,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/qa.png" class="mt-flag"><span class="mt-name">Qatar</span><span class="mt-pct lose">15%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:61%" title="Home win 61%"></div>
+              <div class="wdl-d" style="width:24%" title="Draw 24%"></div>
+              <div class="wdl-a" style="width:15%" title="Away win 15%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 61%</span>
+              <span style="color:#9ca3af;font-weight:500">D 24%</span>
+              <span style="color:#9ca3af;font-weight:500">A 15%</span>
+            </div>
             <div class="pred-odds">ML -175 / +550</div>
             <div class="pred-venue">Seattle, Washington</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Wed Jun 24</div>
           <div class="match-teams">
@@ -622,11 +800,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/ca.png" class="mt-flag"><span class="mt-name">Canada</span><span class="mt-pct lose">28%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:45%" title="Home win 45%"></div>
+              <div class="wdl-d" style="width:27%" title="Draw 27%"></div>
+              <div class="wdl-a" style="width:28%" title="Away win 28%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 45%</span>
+              <span style="color:#9ca3af;font-weight:500">D 27%</span>
+              <span style="color:#9ca3af;font-weight:500">A 28%</span>
+            </div>
             <div class="pred-odds">ML +115 / +250</div>
             <div class="pred-venue">Vancouver</div>
-          </div>
-        </div></div>
+          </div></div></div>
     </section>
     <section class="group-block" id="group-C">
       <div class="gb-header">
@@ -671,11 +857,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/ma.png" class="mt-flag"><span class="mt-name">Morocco</span><span class="mt-pct lose">18%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:57%" title="Home win 57%"></div>
+              <div class="wdl-d" style="width:25%" title="Draw 25%"></div>
+              <div class="wdl-a" style="width:18%" title="Away win 18%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 57%</span>
+              <span style="color:#9ca3af;font-weight:500">D 25%</span>
+              <span style="color:#9ca3af;font-weight:500">A 18%</span>
+            </div>
             <div class="pred-odds">ML -145 / +450</div>
             <div class="pred-venue">East Rutherford, New Jersey</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sun Jun 14</div>
           <div class="match-teams">
@@ -683,11 +877,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/gb-sct.png" class="mt-flag"><span class="mt-name">Scotland</span><span class="mt-pct win">62%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:16%" title="Home win 16%"></div>
+              <div class="wdl-d" style="width:22%" title="Draw 22%"></div>
+              <div class="wdl-a" style="width:62%" title="Away win 62%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 16%</span>
+              <span style="color:#9ca3af;font-weight:500">D 22%</span>
+              <span style="color:#22c55e;font-weight:700">A 62%</span>
+            </div>
             <div class="pred-odds">ML +500 / -180</div>
             <div class="pred-venue">Foxborough, Massachusetts</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Fri Jun 19</div>
           <div class="match-teams">
@@ -695,11 +897,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/ma.png" class="mt-flag"><span class="mt-name">Morocco</span><span class="mt-pct win">48%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:23%" title="Home win 23%"></div>
+              <div class="wdl-d" style="width:29%" title="Draw 29%"></div>
+              <div class="wdl-a" style="width:48%" title="Away win 48%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 23%</span>
+              <span style="color:#9ca3af;font-weight:500">D 29%</span>
+              <span style="color:#22c55e;font-weight:700">A 48%</span>
+            </div>
             <div class="pred-odds">ML +320 / +100</div>
             <div class="pred-venue">Foxborough, Massachusetts</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sat Jun 20</div>
           <div class="match-teams">
@@ -707,11 +917,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/ht.png" class="mt-flag"><span class="mt-name">Haiti</span><span class="mt-pct lose">4%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">2-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:89%" title="Home win 89%"></div>
+              <div class="wdl-d" style="width:7%" title="Draw 7%"></div>
+              <div class="wdl-a" style="width:4%" title="Away win 4%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 89%</span>
+              <span style="color:#9ca3af;font-weight:500">D 7%</span>
+              <span style="color:#9ca3af;font-weight:500">A 4%</span>
+            </div>
             <div class="pred-odds">ML -1200 / +2500</div>
             <div class="pred-venue">Philadelphia, Pennsylvania</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Wed Jun 24</div>
           <div class="match-teams">
@@ -719,11 +937,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/ht.png" class="mt-flag"><span class="mt-name">Haiti</span><span class="mt-pct lose">10%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:72%" title="Home win 72%"></div>
+              <div class="wdl-d" style="width:18%" title="Draw 18%"></div>
+              <div class="wdl-a" style="width:10%" title="Away win 10%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 72%</span>
+              <span style="color:#9ca3af;font-weight:500">D 18%</span>
+              <span style="color:#9ca3af;font-weight:500">A 10%</span>
+            </div>
             <div class="pred-odds">ML -285 / +850</div>
             <div class="pred-venue">Atlanta, Georgia</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Wed Jun 24</div>
           <div class="match-teams">
@@ -731,11 +957,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/br.png" class="mt-flag"><span class="mt-name">Brazil</span><span class="mt-pct win">64%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:16%" title="Home win 16%"></div>
+              <div class="wdl-d" style="width:20%" title="Draw 20%"></div>
+              <div class="wdl-a" style="width:64%" title="Away win 64%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 16%</span>
+              <span style="color:#9ca3af;font-weight:500">D 20%</span>
+              <span style="color:#22c55e;font-weight:700">A 64%</span>
+            </div>
             <div class="pred-odds">ML +500 / -205</div>
             <div class="pred-venue">Miami Gardens, Florida</div>
-          </div>
-        </div></div>
+          </div></div></div>
     </section>
     <section class="group-block" id="group-D">
       <div class="gb-header">
@@ -780,11 +1014,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/py.png" class="mt-flag"><span class="mt-name">Paraguay</span><span class="mt-pct lose">24%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:48%" title="Home win 48%"></div>
+              <div class="wdl-d" style="width:28%" title="Draw 28%"></div>
+              <div class="wdl-a" style="width:24%" title="Away win 24%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 48%</span>
+              <span style="color:#9ca3af;font-weight:500">D 28%</span>
+              <span style="color:#9ca3af;font-weight:500">A 24%</span>
+            </div>
             <div class="pred-odds">ML +100 / +300</div>
             <div class="pred-venue">Inglewood, California</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sun Jun 14</div>
           <div class="match-teams">
@@ -792,11 +1034,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/tr.png" class="mt-flag"><span class="mt-name">Turkey</span><span class="mt-pct win">56%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:19%" title="Home win 19%"></div>
+              <div class="wdl-d" style="width:25%" title="Draw 25%"></div>
+              <div class="wdl-a" style="width:56%" title="Away win 56%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 19%</span>
+              <span style="color:#9ca3af;font-weight:500">D 25%</span>
+              <span style="color:#22c55e;font-weight:700">A 56%</span>
+            </div>
             <div class="pred-odds">ML +400 / -140</div>
             <div class="pred-venue">Vancouver</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Fri Jun 19</div>
           <div class="match-teams">
@@ -804,11 +1054,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/au.png" class="mt-flag"><span class="mt-name">Australia</span><span class="mt-pct lose">21%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:54%" title="Home win 54%"></div>
+              <div class="wdl-d" style="width:25%" title="Draw 25%"></div>
+              <div class="wdl-a" style="width:21%" title="Away win 21%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 54%</span>
+              <span style="color:#9ca3af;font-weight:500">D 25%</span>
+              <span style="color:#9ca3af;font-weight:500">A 21%</span>
+            </div>
             <div class="pred-odds">ML -130 / +350</div>
             <div class="pred-venue">Seattle, Washington</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sat Jun 20</div>
           <div class="match-teams">
@@ -816,11 +1074,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/py.png" class="mt-flag"><span class="mt-name">Paraguay</span><span class="mt-pct lose">28%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:42%" title="Home win 42%"></div>
+              <div class="wdl-d" style="width:30%" title="Draw 30%"></div>
+              <div class="wdl-a" style="width:28%" title="Away win 28%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 42%</span>
+              <span style="color:#9ca3af;font-weight:500">D 30%</span>
+              <span style="color:#9ca3af;font-weight:500">A 28%</span>
+            </div>
             <div class="pred-odds">ML +125 / +245</div>
             <div class="pred-venue">Santa Clara, California</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Fri Jun 26</div>
           <div class="match-teams">
@@ -828,11 +1094,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/au.png" class="mt-flag"><span class="mt-name">Australia</span><span class="mt-pct lose">27%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:44%" title="Home win 44%"></div>
+              <div class="wdl-d" style="width:29%" title="Draw 29%"></div>
+              <div class="wdl-a" style="width:27%" title="Away win 27%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 44%</span>
+              <span style="color:#9ca3af;font-weight:500">D 29%</span>
+              <span style="color:#9ca3af;font-weight:500">A 27%</span>
+            </div>
             <div class="pred-odds">ML +115 / +260</div>
             <div class="pred-venue">Santa Clara, California</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Fri Jun 26</div>
           <div class="match-teams">
@@ -840,11 +1114,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/us.png" class="mt-flag"><span class="mt-name">United States</span><span class="mt-pct win">38%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:36%" title="Home win 36%"></div>
+              <div class="wdl-d" style="width:26%" title="Draw 26%"></div>
+              <div class="wdl-a" style="width:38%" title="Away win 38%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 36%</span>
+              <span style="color:#9ca3af;font-weight:500">D 26%</span>
+              <span style="color:#22c55e;font-weight:700">A 38%</span>
+            </div>
             <div class="pred-odds">ML +170 / +155</div>
             <div class="pred-venue">Inglewood, California</div>
-          </div>
-        </div></div>
+          </div></div></div>
     </section>
     <section class="group-block" id="group-E">
       <div class="gb-header">
@@ -889,11 +1171,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/cw.png" class="mt-flag"><span class="mt-name">Curaçao</span><span class="mt-pct lose">3%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">3-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:91%" title="Home win 91%"></div>
+              <div class="wdl-d" style="width:6%" title="Draw 6%"></div>
+              <div class="wdl-a" style="width:3%" title="Away win 3%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 91%</span>
+              <span style="color:#9ca3af;font-weight:500">D 6%</span>
+              <span style="color:#9ca3af;font-weight:500">A 3%</span>
+            </div>
             <div class="pred-odds">ML -3500 / +2800</div>
             <div class="pred-venue">Houston, Texas</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sun Jun 14</div>
           <div class="match-teams">
@@ -901,11 +1191,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/ec.png" class="mt-flag"><span class="mt-name">Ecuador</span><span class="mt-pct win">39%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:27%" title="Home win 27%"></div>
+              <div class="wdl-d" style="width:34%" title="Draw 34%"></div>
+              <div class="wdl-a" style="width:39%" title="Away win 39%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 27%</span>
+              <span style="color:#9ca3af;font-weight:500">D 34%</span>
+              <span style="color:#22c55e;font-weight:700">A 39%</span>
+            </div>
             <div class="pred-odds">ML +260 / +145</div>
             <div class="pred-venue">Philadelphia, Pennsylvania</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sat Jun 20</div>
           <div class="match-teams">
@@ -913,11 +1211,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/ci.png" class="mt-flag"><span class="mt-name">Ivory Coast</span><span class="mt-pct lose">17%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:62%" title="Home win 62%"></div>
+              <div class="wdl-d" style="width:21%" title="Draw 21%"></div>
+              <div class="wdl-a" style="width:17%" title="Away win 17%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 62%</span>
+              <span style="color:#9ca3af;font-weight:500">D 21%</span>
+              <span style="color:#9ca3af;font-weight:500">A 17%</span>
+            </div>
             <div class="pred-odds">ML -180 / +475</div>
             <div class="pred-venue">Toronto</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sun Jun 21</div>
           <div class="match-teams">
@@ -925,11 +1231,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/cw.png" class="mt-flag"><span class="mt-name">Curaçao</span><span class="mt-pct lose">7%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:80%" title="Home win 80%"></div>
+              <div class="wdl-d" style="width:13%" title="Draw 13%"></div>
+              <div class="wdl-a" style="width:7%" title="Away win 7%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 80%</span>
+              <span style="color:#9ca3af;font-weight:500">D 13%</span>
+              <span style="color:#9ca3af;font-weight:500">A 7%</span>
+            </div>
             <div class="pred-odds">ML -500 / +1200</div>
             <div class="pred-venue">Kansas City, Missouri</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Thu Jun 25</div>
           <div class="match-teams">
@@ -937,11 +1251,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/ci.png" class="mt-flag"><span class="mt-name">Ivory Coast</span><span class="mt-pct win">78%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:7%" title="Home win 7%"></div>
+              <div class="wdl-d" style="width:15%" title="Draw 15%"></div>
+              <div class="wdl-a" style="width:78%" title="Away win 78%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 7%</span>
+              <span style="color:#9ca3af;font-weight:500">D 15%</span>
+              <span style="color:#22c55e;font-weight:700">A 78%</span>
+            </div>
             <div class="pred-odds">ML +1200 / -450</div>
             <div class="pred-venue">Philadelphia, Pennsylvania</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Thu Jun 25</div>
           <div class="match-teams">
@@ -949,11 +1271,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/de.png" class="mt-flag"><span class="mt-name">Germany</span><span class="mt-pct win">55%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:20%" title="Home win 20%"></div>
+              <div class="wdl-d" style="width:25%" title="Draw 25%"></div>
+              <div class="wdl-a" style="width:55%" title="Away win 55%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 20%</span>
+              <span style="color:#9ca3af;font-weight:500">D 25%</span>
+              <span style="color:#22c55e;font-weight:700">A 55%</span>
+            </div>
             <div class="pred-odds">ML +380 / -135</div>
             <div class="pred-venue">East Rutherford, New Jersey</div>
-          </div>
-        </div></div>
+          </div></div></div>
     </section>
     <section class="group-block" id="group-F">
       <div class="gb-header">
@@ -998,11 +1328,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/jp.png" class="mt-flag"><span class="mt-name">Japan</span><span class="mt-pct lose">27%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:46%" title="Home win 46%"></div>
+              <div class="wdl-d" style="width:27%" title="Draw 27%"></div>
+              <div class="wdl-a" style="width:27%" title="Away win 27%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 46%</span>
+              <span style="color:#9ca3af;font-weight:500">D 27%</span>
+              <span style="color:#9ca3af;font-weight:500">A 27%</span>
+            </div>
             <div class="pred-odds">ML +105 / +250</div>
             <div class="pred-venue">Arlington, Texas</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Mon Jun 15</div>
           <div class="match-teams">
@@ -1010,11 +1348,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/tn.png" class="mt-flag"><span class="mt-name">Tunisia</span><span class="mt-pct lose">22%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:50%" title="Home win 50%"></div>
+              <div class="wdl-d" style="width:28%" title="Draw 28%"></div>
+              <div class="wdl-a" style="width:22%" title="Away win 22%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 50%</span>
+              <span style="color:#9ca3af;font-weight:500">D 28%</span>
+              <span style="color:#9ca3af;font-weight:500">A 22%</span>
+            </div>
             <div class="pred-odds">ML -105 / +330</div>
             <div class="pred-venue">Guadalupe</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sat Jun 20</div>
           <div class="match-teams">
@@ -1022,11 +1368,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/se.png" class="mt-flag"><span class="mt-name">Sweden</span><span class="mt-pct lose">18%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:59%" title="Home win 59%"></div>
+              <div class="wdl-d" style="width:23%" title="Draw 23%"></div>
+              <div class="wdl-a" style="width:18%" title="Away win 18%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 59%</span>
+              <span style="color:#9ca3af;font-weight:500">D 23%</span>
+              <span style="color:#9ca3af;font-weight:500">A 18%</span>
+            </div>
             <div class="pred-odds">ML -155 / +425</div>
             <div class="pred-venue">Houston, Texas</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sun Jun 21</div>
           <div class="match-teams">
@@ -1034,11 +1388,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/jp.png" class="mt-flag"><span class="mt-name">Japan</span><span class="mt-pct win">56%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:18%" title="Home win 18%"></div>
+              <div class="wdl-d" style="width:26%" title="Draw 26%"></div>
+              <div class="wdl-a" style="width:56%" title="Away win 56%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 18%</span>
+              <span style="color:#9ca3af;font-weight:500">D 26%</span>
+              <span style="color:#22c55e;font-weight:700">A 56%</span>
+            </div>
             <div class="pred-odds">ML +425 / -140</div>
             <div class="pred-venue">Guadalupe</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Thu Jun 25</div>
           <div class="match-teams">
@@ -1046,11 +1408,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/se.png" class="mt-flag"><span class="mt-name">Sweden</span><span class="mt-pct lose">26%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:46%" title="Home win 46%"></div>
+              <div class="wdl-d" style="width:28%" title="Draw 28%"></div>
+              <div class="wdl-a" style="width:26%" title="Away win 26%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 46%</span>
+              <span style="color:#9ca3af;font-weight:500">D 28%</span>
+              <span style="color:#9ca3af;font-weight:500">A 26%</span>
+            </div>
             <div class="pred-odds">ML +110 / +265</div>
             <div class="pred-venue">Arlington, Texas</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Thu Jun 25</div>
           <div class="match-teams">
@@ -1058,11 +1428,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/nl.png" class="mt-flag"><span class="mt-name">Netherlands</span><span class="mt-pct win">63%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:15%" title="Home win 15%"></div>
+              <div class="wdl-d" style="width:22%" title="Draw 22%"></div>
+              <div class="wdl-a" style="width:63%" title="Away win 63%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 15%</span>
+              <span style="color:#9ca3af;font-weight:500">D 22%</span>
+              <span style="color:#22c55e;font-weight:700">A 63%</span>
+            </div>
             <div class="pred-odds">ML +550 / -190</div>
             <div class="pred-venue">Kansas City, Missouri</div>
-          </div>
-        </div></div>
+          </div></div></div>
     </section>
     <section class="group-block" id="group-G">
       <div class="gb-header">
@@ -1107,11 +1485,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/eg.png" class="mt-flag"><span class="mt-name">Egypt</span><span class="mt-pct lose">19%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:57%" title="Home win 57%"></div>
+              <div class="wdl-d" style="width:24%" title="Draw 24%"></div>
+              <div class="wdl-a" style="width:19%" title="Away win 19%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 57%</span>
+              <span style="color:#9ca3af;font-weight:500">D 24%</span>
+              <span style="color:#9ca3af;font-weight:500">A 19%</span>
+            </div>
             <div class="pred-odds">ML -155 / +400</div>
             <div class="pred-venue">Seattle, Washington</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Tue Jun 16</div>
           <div class="match-teams">
@@ -1119,11 +1505,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/nz.png" class="mt-flag"><span class="mt-name">New Zealand</span><span class="mt-pct lose">22%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:50%" title="Home win 50%"></div>
+              <div class="wdl-d" style="width:28%" title="Draw 28%"></div>
+              <div class="wdl-a" style="width:22%" title="Away win 22%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 50%</span>
+              <span style="color:#9ca3af;font-weight:500">D 28%</span>
+              <span style="color:#9ca3af;font-weight:500">A 22%</span>
+            </div>
             <div class="pred-odds">ML -110 / +340</div>
             <div class="pred-venue">Inglewood, California</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sun Jun 21</div>
           <div class="match-teams">
@@ -1131,11 +1525,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/ir.png" class="mt-flag"><span class="mt-name">Iran</span><span class="mt-pct lose">12%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:68%" title="Home win 68%"></div>
+              <div class="wdl-d" style="width:20%" title="Draw 20%"></div>
+              <div class="wdl-a" style="width:12%" title="Away win 12%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 68%</span>
+              <span style="color:#9ca3af;font-weight:500">D 20%</span>
+              <span style="color:#9ca3af;font-weight:500">A 12%</span>
+            </div>
             <div class="pred-odds">ML -245 / +700</div>
             <div class="pred-venue">Inglewood, California</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Mon Jun 22</div>
           <div class="match-teams">
@@ -1143,11 +1545,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/eg.png" class="mt-flag"><span class="mt-name">Egypt</span><span class="mt-pct win">54%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:20%" title="Home win 20%"></div>
+              <div class="wdl-d" style="width:26%" title="Draw 26%"></div>
+              <div class="wdl-a" style="width:54%" title="Away win 54%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 20%</span>
+              <span style="color:#9ca3af;font-weight:500">D 26%</span>
+              <span style="color:#22c55e;font-weight:700">A 54%</span>
+            </div>
             <div class="pred-odds">ML +370 / -130</div>
             <div class="pred-venue">Vancouver</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sat Jun 27</div>
           <div class="match-teams">
@@ -1155,11 +1565,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/ir.png" class="mt-flag"><span class="mt-name">Iran</span><span class="mt-pct lose">26%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:42%" title="Home win 42%"></div>
+              <div class="wdl-d" style="width:32%" title="Draw 32%"></div>
+              <div class="wdl-a" style="width:26%" title="Away win 26%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 42%</span>
+              <span style="color:#9ca3af;font-weight:500">D 32%</span>
+              <span style="color:#9ca3af;font-weight:500">A 26%</span>
+            </div>
             <div class="pred-odds">ML +130 / +265</div>
             <div class="pred-venue">Seattle, Washington</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sat Jun 27</div>
           <div class="match-teams">
@@ -1167,11 +1585,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/be.png" class="mt-flag"><span class="mt-name">Belgium</span><span class="mt-pct win">74%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:10%" title="Home win 10%"></div>
+              <div class="wdl-d" style="width:16%" title="Draw 16%"></div>
+              <div class="wdl-a" style="width:74%" title="Away win 74%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 10%</span>
+              <span style="color:#9ca3af;font-weight:500">D 16%</span>
+              <span style="color:#22c55e;font-weight:700">A 74%</span>
+            </div>
             <div class="pred-odds">ML +900 / -340</div>
             <div class="pred-venue">Vancouver</div>
-          </div>
-        </div></div>
+          </div></div></div>
     </section>
     <section class="group-block" id="group-H">
       <div class="gb-header">
@@ -1216,11 +1642,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/cv.png" class="mt-flag"><span class="mt-name">Cape Verde</span><span class="mt-pct lose">4%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">2-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:88%" title="Home win 88%"></div>
+              <div class="wdl-d" style="width:8%" title="Draw 8%"></div>
+              <div class="wdl-a" style="width:4%" title="Away win 4%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 88%</span>
+              <span style="color:#9ca3af;font-weight:500">D 8%</span>
+              <span style="color:#9ca3af;font-weight:500">A 4%</span>
+            </div>
             <div class="pred-odds">ML -1200 / +2500</div>
             <div class="pred-venue">Atlanta, Georgia</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Mon Jun 15</div>
           <div class="match-teams">
@@ -1228,11 +1662,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/uy.png" class="mt-flag"><span class="mt-name">Uruguay</span><span class="mt-pct win">67%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:12%" title="Home win 12%"></div>
+              <div class="wdl-d" style="width:21%" title="Draw 21%"></div>
+              <div class="wdl-a" style="width:67%" title="Away win 67%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 12%</span>
+              <span style="color:#9ca3af;font-weight:500">D 21%</span>
+              <span style="color:#22c55e;font-weight:700">A 67%</span>
+            </div>
             <div class="pred-odds">ML +700 / -230</div>
             <div class="pred-venue">Miami Gardens, Florida</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sun Jun 21</div>
           <div class="match-teams">
@@ -1240,11 +1682,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/sa.png" class="mt-flag"><span class="mt-name">Saudi Arabia</span><span class="mt-pct lose">4%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">2-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:87%" title="Home win 87%"></div>
+              <div class="wdl-d" style="width:9%" title="Draw 9%"></div>
+              <div class="wdl-a" style="width:4%" title="Away win 4%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 87%</span>
+              <span style="color:#9ca3af;font-weight:500">D 9%</span>
+              <span style="color:#9ca3af;font-weight:500">A 4%</span>
+            </div>
             <div class="pred-odds">ML -1000 / +2200</div>
             <div class="pred-venue">Atlanta, Georgia</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sun Jun 21</div>
           <div class="match-teams">
@@ -1252,11 +1702,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/cv.png" class="mt-flag"><span class="mt-name">Cape Verde</span><span class="mt-pct lose">12%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:68%" title="Home win 68%"></div>
+              <div class="wdl-d" style="width:20%" title="Draw 20%"></div>
+              <div class="wdl-a" style="width:12%" title="Away win 12%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 68%</span>
+              <span style="color:#9ca3af;font-weight:500">D 20%</span>
+              <span style="color:#9ca3af;font-weight:500">A 12%</span>
+            </div>
             <div class="pred-odds">ML -240 / +700</div>
             <div class="pred-venue">Miami Gardens, Florida</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sat Jun 27</div>
           <div class="match-teams">
@@ -1264,11 +1722,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/sa.png" class="mt-flag"><span class="mt-name">Saudi Arabia</span><span class="mt-pct lose">34%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:37%" title="Home win 37%"></div>
+              <div class="wdl-d" style="width:29%" title="Draw 29%"></div>
+              <div class="wdl-a" style="width:34%" title="Away win 34%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 37%</span>
+              <span style="color:#9ca3af;font-weight:500">D 29%</span>
+              <span style="color:#9ca3af;font-weight:500">A 34%</span>
+            </div>
             <div class="pred-odds">ML +160 / +185</div>
             <div class="pred-venue">Houston, Texas</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sat Jun 27</div>
           <div class="match-teams">
@@ -1276,11 +1742,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/es.png" class="mt-flag"><span class="mt-name">Spain</span><span class="mt-pct win">58%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:18%" title="Home win 18%"></div>
+              <div class="wdl-d" style="width:24%" title="Draw 24%"></div>
+              <div class="wdl-a" style="width:58%" title="Away win 58%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 18%</span>
+              <span style="color:#9ca3af;font-weight:500">D 24%</span>
+              <span style="color:#22c55e;font-weight:700">A 58%</span>
+            </div>
             <div class="pred-odds">ML +450 / -155</div>
             <div class="pred-venue">Guadalajara</div>
-          </div>
-        </div></div>
+          </div></div></div>
     </section>
     <section class="group-block" id="group-I">
       <div class="gb-header">
@@ -1325,11 +1799,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/sn.png" class="mt-flag"><span class="mt-name">Senegal</span><span class="mt-pct lose">14%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:65%" title="Home win 65%"></div>
+              <div class="wdl-d" style="width:21%" title="Draw 21%"></div>
+              <div class="wdl-a" style="width:14%" title="Away win 14%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 65%</span>
+              <span style="color:#9ca3af;font-weight:500">D 21%</span>
+              <span style="color:#9ca3af;font-weight:500">A 14%</span>
+            </div>
             <div class="pred-odds">ML -215 / +600</div>
             <div class="pred-venue">East Rutherford, New Jersey</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Tue Jun 16</div>
           <div class="match-teams">
@@ -1337,11 +1819,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/no.png" class="mt-flag"><span class="mt-name">Norway</span><span class="mt-pct win">79%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:7%" title="Home win 7%"></div>
+              <div class="wdl-d" style="width:14%" title="Draw 14%"></div>
+              <div class="wdl-a" style="width:79%" title="Away win 79%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 7%</span>
+              <span style="color:#9ca3af;font-weight:500">D 14%</span>
+              <span style="color:#22c55e;font-weight:700">A 79%</span>
+            </div>
             <div class="pred-odds">ML +1300 / -475</div>
             <div class="pred-venue">Foxborough, Massachusetts</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Mon Jun 22</div>
           <div class="match-teams">
@@ -1349,11 +1839,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/iq.png" class="mt-flag"><span class="mt-name">Iraq</span><span class="mt-pct lose">4%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">2-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:86%" title="Home win 86%"></div>
+              <div class="wdl-d" style="width:10%" title="Draw 10%"></div>
+              <div class="wdl-a" style="width:4%" title="Away win 4%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 86%</span>
+              <span style="color:#9ca3af;font-weight:500">D 10%</span>
+              <span style="color:#9ca3af;font-weight:500">A 4%</span>
+            </div>
             <div class="pred-odds">ML -800 / +2500</div>
             <div class="pred-venue">Philadelphia, Pennsylvania</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Tue Jun 23</div>
           <div class="match-teams">
@@ -1361,11 +1859,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/sn.png" class="mt-flag"><span class="mt-name">Senegal</span><span class="mt-pct lose">28%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:45%" title="Home win 45%"></div>
+              <div class="wdl-d" style="width:27%" title="Draw 27%"></div>
+              <div class="wdl-a" style="width:28%" title="Away win 28%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 45%</span>
+              <span style="color:#9ca3af;font-weight:500">D 27%</span>
+              <span style="color:#9ca3af;font-weight:500">A 28%</span>
+            </div>
             <div class="pred-odds">ML +115 / +240</div>
             <div class="pred-venue">East Rutherford, New Jersey</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Fri Jun 26</div>
           <div class="match-teams">
@@ -1373,11 +1879,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/fr.png" class="mt-flag"><span class="mt-name">France</span><span class="mt-pct win">53%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:21%" title="Home win 21%"></div>
+              <div class="wdl-d" style="width:26%" title="Draw 26%"></div>
+              <div class="wdl-a" style="width:53%" title="Away win 53%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 21%</span>
+              <span style="color:#9ca3af;font-weight:500">D 26%</span>
+              <span style="color:#22c55e;font-weight:700">A 53%</span>
+            </div>
             <div class="pred-odds">ML +350 / -120</div>
             <div class="pred-venue">Foxborough, Massachusetts</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Fri Jun 26</div>
           <div class="match-teams">
@@ -1385,11 +1899,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/iq.png" class="mt-flag"><span class="mt-name">Iraq</span><span class="mt-pct lose">12%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:68%" title="Home win 68%"></div>
+              <div class="wdl-d" style="width:20%" title="Draw 20%"></div>
+              <div class="wdl-a" style="width:12%" title="Away win 12%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 68%</span>
+              <span style="color:#9ca3af;font-weight:500">D 20%</span>
+              <span style="color:#9ca3af;font-weight:500">A 12%</span>
+            </div>
             <div class="pred-odds">ML -235 / +700</div>
             <div class="pred-venue">Toronto</div>
-          </div>
-        </div></div>
+          </div></div></div>
     </section>
     <section class="group-block" id="group-J">
       <div class="gb-header">
@@ -1434,11 +1956,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/dz.png" class="mt-flag"><span class="mt-name">Algeria</span><span class="mt-pct lose">11%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:68%" title="Home win 68%"></div>
+              <div class="wdl-d" style="width:21%" title="Draw 21%"></div>
+              <div class="wdl-a" style="width:11%" title="Away win 11%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 68%</span>
+              <span style="color:#9ca3af;font-weight:500">D 21%</span>
+              <span style="color:#9ca3af;font-weight:500">A 11%</span>
+            </div>
             <div class="pred-odds">ML -245 / +800</div>
             <div class="pred-venue">Kansas City, Missouri</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Wed Jun 17</div>
           <div class="match-teams">
@@ -1446,11 +1976,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/jo.png" class="mt-flag"><span class="mt-name">Jordan</span><span class="mt-pct lose">10%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:72%" title="Home win 72%"></div>
+              <div class="wdl-d" style="width:18%" title="Draw 18%"></div>
+              <div class="wdl-a" style="width:10%" title="Away win 10%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 72%</span>
+              <span style="color:#9ca3af;font-weight:500">D 18%</span>
+              <span style="color:#9ca3af;font-weight:500">A 10%</span>
+            </div>
             <div class="pred-odds">ML -310 / +850</div>
             <div class="pred-venue">Santa Clara, California</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Mon Jun 22</div>
           <div class="match-teams">
@@ -1458,11 +1996,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/at.png" class="mt-flag"><span class="mt-name">Austria</span><span class="mt-pct lose">17%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:58%" title="Home win 58%"></div>
+              <div class="wdl-d" style="width:25%" title="Draw 25%"></div>
+              <div class="wdl-a" style="width:17%" title="Away win 17%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 58%</span>
+              <span style="color:#9ca3af;font-weight:500">D 25%</span>
+              <span style="color:#9ca3af;font-weight:500">A 17%</span>
+            </div>
             <div class="pred-odds">ML -155 / +475</div>
             <div class="pred-venue">Arlington, Texas</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Tue Jun 23</div>
           <div class="match-teams">
@@ -1470,11 +2016,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/dz.png" class="mt-flag"><span class="mt-name">Algeria</span><span class="mt-pct win">63%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:15%" title="Home win 15%"></div>
+              <div class="wdl-d" style="width:22%" title="Draw 22%"></div>
+              <div class="wdl-a" style="width:63%" title="Away win 63%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 15%</span>
+              <span style="color:#9ca3af;font-weight:500">D 22%</span>
+              <span style="color:#22c55e;font-weight:700">A 63%</span>
+            </div>
             <div class="pred-odds">ML +550 / -190</div>
             <div class="pred-venue">Santa Clara, California</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sun Jun 28</div>
           <div class="match-teams">
@@ -1482,11 +2036,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/at.png" class="mt-flag"><span class="mt-name">Austria</span><span class="mt-pct win">43%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:26%" title="Home win 26%"></div>
+              <div class="wdl-d" style="width:31%" title="Draw 31%"></div>
+              <div class="wdl-a" style="width:43%" title="Away win 43%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 26%</span>
+              <span style="color:#9ca3af;font-weight:500">D 31%</span>
+              <span style="color:#22c55e;font-weight:700">A 43%</span>
+            </div>
             <div class="pred-odds">ML +275 / +125</div>
             <div class="pred-venue">Kansas City, Missouri</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sun Jun 28</div>
           <div class="match-teams">
@@ -1494,11 +2056,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/ar.png" class="mt-flag"><span class="mt-name">Argentina</span><span class="mt-pct win">79%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:7%" title="Home win 7%"></div>
+              <div class="wdl-d" style="width:14%" title="Draw 14%"></div>
+              <div class="wdl-a" style="width:79%" title="Away win 79%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 7%</span>
+              <span style="color:#9ca3af;font-weight:500">D 14%</span>
+              <span style="color:#22c55e;font-weight:700">A 79%</span>
+            </div>
             <div class="pred-odds">ML +1300 / -475</div>
             <div class="pred-venue">Arlington, Texas</div>
-          </div>
-        </div></div>
+          </div></div></div>
     </section>
     <section class="group-block" id="group-K">
       <div class="gb-header">
@@ -1543,11 +2113,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/cd.png" class="mt-flag"><span class="mt-name">DR Congo</span><span class="mt-pct lose">9%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:75%" title="Home win 75%"></div>
+              <div class="wdl-d" style="width:16%" title="Draw 16%"></div>
+              <div class="wdl-a" style="width:9%" title="Away win 9%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 75%</span>
+              <span style="color:#9ca3af;font-weight:500">D 16%</span>
+              <span style="color:#9ca3af;font-weight:500">A 9%</span>
+            </div>
             <div class="pred-odds">ML -350 / +1000</div>
             <div class="pred-venue">Houston, Texas</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Thu Jun 18</div>
           <div class="match-teams">
@@ -1555,11 +2133,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/co.png" class="mt-flag"><span class="mt-name">Colombia</span><span class="mt-pct win">68%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:11%" title="Home win 11%"></div>
+              <div class="wdl-d" style="width:21%" title="Draw 21%"></div>
+              <div class="wdl-a" style="width:68%" title="Away win 68%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 11%</span>
+              <span style="color:#9ca3af;font-weight:500">D 21%</span>
+              <span style="color:#22c55e;font-weight:700">A 68%</span>
+            </div>
             <div class="pred-odds">ML +750 / -240</div>
             <div class="pred-venue">Mexico City</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Tue Jun 23</div>
           <div class="match-teams">
@@ -1567,11 +2153,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/uz.png" class="mt-flag"><span class="mt-name">Uzbekistan</span><span class="mt-pct lose">8%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">2-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:77%" title="Home win 77%"></div>
+              <div class="wdl-d" style="width:15%" title="Draw 15%"></div>
+              <div class="wdl-a" style="width:8%" title="Away win 8%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 77%</span>
+              <span style="color:#9ca3af;font-weight:500">D 15%</span>
+              <span style="color:#9ca3af;font-weight:500">A 8%</span>
+            </div>
             <div class="pred-odds">ML -425 / +1100</div>
             <div class="pred-venue">Houston, Texas</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Wed Jun 24</div>
           <div class="match-teams">
@@ -1579,11 +2173,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/cd.png" class="mt-flag"><span class="mt-name">DR Congo</span><span class="mt-pct lose">12%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:66%" title="Home win 66%"></div>
+              <div class="wdl-d" style="width:22%" title="Draw 22%"></div>
+              <div class="wdl-a" style="width:12%" title="Away win 12%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 66%</span>
+              <span style="color:#9ca3af;font-weight:500">D 22%</span>
+              <span style="color:#9ca3af;font-weight:500">A 12%</span>
+            </div>
             <div class="pred-odds">ML -220 / +700</div>
             <div class="pred-venue">Guadalajara</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sat Jun 27</div>
           <div class="match-teams">
@@ -1591,11 +2193,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/pt.png" class="mt-flag"><span class="mt-name">Portugal</span><span class="mt-pct win">44%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:28%" title="Home win 28%"></div>
+              <div class="wdl-d" style="width:28%" title="Draw 28%"></div>
+              <div class="wdl-a" style="width:44%" title="Away win 44%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 28%</span>
+              <span style="color:#9ca3af;font-weight:500">D 28%</span>
+              <span style="color:#22c55e;font-weight:700">A 44%</span>
+            </div>
             <div class="pred-odds">ML +250 / +120</div>
             <div class="pred-venue">Miami Gardens, Florida</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sat Jun 27</div>
           <div class="match-teams">
@@ -1603,11 +2213,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/uz.png" class="mt-flag"><span class="mt-name">Uzbekistan</span><span class="mt-pct lose">30%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:41%" title="Home win 41%"></div>
+              <div class="wdl-d" style="width:29%" title="Draw 29%"></div>
+              <div class="wdl-a" style="width:30%" title="Away win 30%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 41%</span>
+              <span style="color:#9ca3af;font-weight:500">D 29%</span>
+              <span style="color:#9ca3af;font-weight:500">A 30%</span>
+            </div>
             <div class="pred-odds">ML +135 / +215</div>
             <div class="pred-venue">Atlanta, Georgia</div>
-          </div>
-        </div></div>
+          </div></div></div>
     </section>
     <section class="group-block" id="group-L">
       <div class="gb-header">
@@ -1652,11 +2270,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/hr.png" class="mt-flag"><span class="mt-name">Croatia</span><span class="mt-pct lose">20%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:56%" title="Home win 56%"></div>
+              <div class="wdl-d" style="width:24%" title="Draw 24%"></div>
+              <div class="wdl-a" style="width:20%" title="Away win 20%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 56%</span>
+              <span style="color:#9ca3af;font-weight:500">D 24%</span>
+              <span style="color:#9ca3af;font-weight:500">A 20%</span>
+            </div>
             <div class="pred-odds">ML -140 / +380</div>
             <div class="pred-venue">Arlington, Texas</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Wed Jun 17</div>
           <div class="match-teams">
@@ -1664,11 +2290,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/pa.png" class="mt-flag"><span class="mt-name">Panama</span><span class="mt-pct lose">26%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:46%" title="Home win 46%"></div>
+              <div class="wdl-d" style="width:28%" title="Draw 28%"></div>
+              <div class="wdl-a" style="width:26%" title="Away win 26%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 46%</span>
+              <span style="color:#9ca3af;font-weight:500">D 28%</span>
+              <span style="color:#9ca3af;font-weight:500">A 26%</span>
+            </div>
             <div class="pred-odds">ML +110 / +265</div>
             <div class="pred-venue">Toronto</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Tue Jun 23</div>
           <div class="match-teams">
@@ -1676,11 +2310,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/gh.png" class="mt-flag"><span class="mt-name">Ghana</span><span class="mt-pct lose">10%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:73%" title="Home win 73%"></div>
+              <div class="wdl-d" style="width:17%" title="Draw 17%"></div>
+              <div class="wdl-a" style="width:10%" title="Away win 10%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 73%</span>
+              <span style="color:#9ca3af;font-weight:500">D 17%</span>
+              <span style="color:#9ca3af;font-weight:500">A 10%</span>
+            </div>
             <div class="pred-odds">ML -320 / +900</div>
             <div class="pred-venue">Foxborough, Massachusetts</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Tue Jun 23</div>
           <div class="match-teams">
@@ -1688,11 +2330,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/hr.png" class="mt-flag"><span class="mt-name">Croatia</span><span class="mt-pct win">61%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:15%" title="Home win 15%"></div>
+              <div class="wdl-d" style="width:24%" title="Draw 24%"></div>
+              <div class="wdl-a" style="width:61%" title="Away win 61%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 15%</span>
+              <span style="color:#9ca3af;font-weight:500">D 24%</span>
+              <span style="color:#22c55e;font-weight:700">A 61%</span>
+            </div>
             <div class="pred-odds">ML +550 / -180</div>
             <div class="pred-venue">Toronto</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sat Jun 27</div>
           <div class="match-teams">
@@ -1700,11 +2350,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/gh.png" class="mt-flag"><span class="mt-name">Ghana</span><span class="mt-pct lose">18%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">1-0</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:58%" title="Home win 58%"></div>
+              <div class="wdl-d" style="width:24%" title="Draw 24%"></div>
+              <div class="wdl-a" style="width:18%" title="Away win 18%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#22c55e;font-weight:700">H 58%</span>
+              <span style="color:#9ca3af;font-weight:500">D 24%</span>
+              <span style="color:#9ca3af;font-weight:500">A 18%</span>
+            </div>
             <div class="pred-odds">ML -150 / +450</div>
             <div class="pred-venue">Philadelphia, Pennsylvania</div>
-          </div>
-        </div>
+          </div></div>
         <div class="match-row">
           <div class="match-time">Sat Jun 27</div>
           <div class="match-teams">
@@ -1712,11 +2370,19 @@ footer strong{color:var(--text);}
             <div class="mt-row"><img src="https://flagcdn.com/h24/gb-eng.png" class="mt-flag"><span class="mt-name">England</span><span class="mt-pct win">74%</span></div>
           </div>
           <div class="match-pred">
-            <div class="pred-score">0-1</div>
+            <div class="wdl-bar">
+              <div class="wdl-h" style="width:11%" title="Home win 11%"></div>
+              <div class="wdl-d" style="width:15%" title="Draw 15%"></div>
+              <div class="wdl-a" style="width:74%" title="Away win 74%"></div>
+            </div>
+            <div class="wdl-labels">
+              <span style="color:#9ca3af;font-weight:500">H 11%</span>
+              <span style="color:#9ca3af;font-weight:500">D 15%</span>
+              <span style="color:#22c55e;font-weight:700">A 74%</span>
+            </div>
             <div class="pred-odds">ML +750 / -340</div>
             <div class="pred-venue">East Rutherford, New Jersey</div>
-          </div>
-        </div></div>
+          </div></div></div>
     </section></div>
   </section>
 
